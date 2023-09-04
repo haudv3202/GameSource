@@ -1885,14 +1885,14 @@ public class BossesData {
     public static final BossData BOSS_Tien_Bip = new BossData(
             "Boss Tiến Bịp", //name
             ConstPlayer.TRAI_DAT, //gender
-            new short[]{576, 577, 578, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            new short[]{397, 398, 399, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             200000, //dame
             new long[]{300000000L}, //hp
-            new int[]{27,28,29,30}, //map join
+            new int[]{29}, //map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 1000},
-                //                    {Skill.TAI_TAO_NANG_LUONG, 7, 90000},
-                {Skill.THAI_DUONG_HA_SAN, 5, 5000},
+//                                    {Skill.TAI_TAO_NANG_LUONG, 7, 12000},
+                {Skill.THAI_DUONG_HA_SAN, 5, 10000},
                 {Skill.LIEN_HOAN, 7, 300},},//skill//skill
             new String[]{"|-2|Ơ Anh Tiến Bịp"}, //text chat 1
             new String[]{"|-1|Các ngươi thật là yếu ớt",
@@ -1901,6 +1901,7 @@ public class BossesData {
                 "|-1|Mấy con gà,Nhào zô",}, //text chat 2
             new String[]{"|-1|Đợi Đấy !"}, //text chat 3
             REST_1_M
+            
     );
     
     public static final BossData BOSS_Namec_Phan_Dien = new BossData(
