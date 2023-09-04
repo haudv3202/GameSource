@@ -18,7 +18,6 @@ import com.girlkun.server.Manager;
 import com.girlkun.services.Service;
 import com.girlkun.services.func.TopService;
 import com.girlkun.utils.Util;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,7 +71,10 @@ public class Map implements Runnable {
         this.initItem();
         this.initTrapMap();
     }
-
+    
+   
+  
+  
     private void initZone(int nZone, int maxPlayer) {
         switch (this.type) {
             case ConstMap.MAP_OFFLINE:

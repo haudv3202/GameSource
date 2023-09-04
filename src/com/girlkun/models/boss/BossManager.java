@@ -149,7 +149,6 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.RAMBO);
 
             this.createBoss(BossID.FIDE);
-
             this.createBoss(BossID.DR_KORE);
 
             this.createBoss(BossID.ANDROID_14);
@@ -166,6 +165,8 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.Gokuvocuc);
             this.createBoss(BossID.BossTienBip);
             this.createBoss(BossID.BossNamecPhanDien);
+            this.createBoss(BossID.BROLYDETU);            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -322,6 +323,8 @@ public class BossManager implements Runnable {
                     return new BossTienBip();
                 case BossID.BossNamecPhanDien:
                     return new BossNamecPhanDien();
+                case BossID.BROLYDETU:
+                    return new com.girlkun.models.boss.list_boss.BrolyDeTu.Broly();
                 default:
                     return null;
             }

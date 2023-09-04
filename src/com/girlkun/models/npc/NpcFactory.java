@@ -2086,9 +2086,9 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
                         if (player.getSession().is_gift_box) {
-                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?\n|7|Đổi x1 Cỏ Sức Mạnh sẽ nhận được 10 tỷ sức mạnh", "Hút Cỏ", "Giải tán bang hội", "Top Nạp","Chuyển Sinh");
+                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?\n|7|Đổi x1 Cỏ Sức Mạnh sẽ nhận được 10 tỷ sức mạnh", "Giải tán bang hội", "Top Nạp","Chuyển Sinh");
                         } else {
-                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?", "Hút Cỏ", "Giải tán bang hội","Chuyển Sinh","Top SK\nNăng Động","Top\n Săn Boss");
+                            this.createOtherMenu(player, ConstNpc.BASE_MENU, "Chào con, con muốn ta giúp gì nào?", "Giải tán bang hội","Chuyển Sinh","Top SK\nNăng Động","Top\n Săn Boss");
                         }
                     }
                 }
@@ -2099,34 +2099,34 @@ public class NpcFactory {
                 if (canOpenNpc(player)) {
                     if (player.iDMark.isBaseMenu()) {
                         switch (select) {
-                            case 0 :
-                                {
-                                    Item cosm = null;
-                                    try {
-                                        cosm = InventoryServiceNew.gI().findItemBag(player, 1245);
-                                    } catch (Exception e) {
-//                                        throw new RuntimeException(e);
-                                    }
-                                    if (cosm == null || cosm.quantity < 1) {
-                                        this.npcChat(player, "Bạn không đủ Cỏ Sức Mạnh");
-                                    
-                                    } else if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
-                                        this.npcChat(player, "Hành trang của bạn không đủ chỗ trống");
-                                    } else {                                        
-                                        InventoryServiceNew.gI().subQuantityItemsBag(player, cosm, 1);
-                                        Service.getInstance().sendMoney(player);
-                                        player.nPoint.power+=10000000000L;                                       
-                                        player.nPoint.tiemNang+=10000000000L;
-                                        this.npcChat(player, "Bạn nhận 10 tỷ tiềm năng + sức mạnh");
-                                    }
-                                    break;
-                                }                                 
+//                            case 0 :
+//                                {
+//                                    Item cosm = null;
+//                                    try {
+//                                        cosm = InventoryServiceNew.gI().findItemBag(player, 1245);
+//                                    } catch (Exception e) {
+////                                        throw new RuntimeException(e);
+//                                    }
+//                                    if (cosm == null || cosm.quantity < 1) {
+//                                        this.npcChat(player, "Bạn không đủ Cỏ Sức Mạnh");
+//                                    
+//                                    } else if (InventoryServiceNew.gI().getCountEmptyBag(player) == 0) {
+//                                        this.npcChat(player, "Hành trang của bạn không đủ chỗ trống");
+//                                    } else {                                        
+//                                        InventoryServiceNew.gI().subQuantityItemsBag(player, cosm, 1);
+//                                        Service.getInstance().sendMoney(player);
+//                                        player.nPoint.power+=10000000000L;                                       
+//                                        player.nPoint.tiemNang+=10000000000L;
+//                                        this.npcChat(player, "Bạn nhận 10 tỷ tiềm năng + sức mạnh");
+//                                    }
+//                                    break;
+//                                }                                 
 //                            case 0:
 //                                this.npcChat(player, "Ta giàu quá rồi nên không có nhu cầu đổi tiền. Haha");
 //                                 Input.gI().createFormQDTV(player);
 
                                 
-                            case 1:
+                            case 0:
                                 Clan clan = player.clan;
                                 if (clan != null) {
                                     ClanMember cm = clan.getClanMember((int) player.id);
@@ -2147,13 +2147,13 @@ public class NpcFactory {
                                 }
                                 Service.getInstance().sendThongBao(player, "Có bang hội đâu ba!!!");
                                 break;
-                            case 3:
+                            case 1:
                                 Service.getInstance().sendThongBaoOK(player,TopService.getTopHoTong());
                                 break;
-                            case 4:
+                            case 2:
                                 Service.getInstance().sendThongBaoOK(player,TopService.getTopSK());
                                 break;
-                            case 2:
+                            case 3:
                                 //Service.gI().sendThongBaoOK(player,"Bú");
                                 if(player.getSession().player.nPoint.power < 180000000000L &&  player.getSession().player.nPoint.dameg == 32000 ){
                                 Service.gI().sendThongBaoOK(player, "Cần 180 Tỉ Sức Mạnh Để Chuyển Sinh 1!");}
@@ -2435,11 +2435,12 @@ public class NpcFactory {
             public void openBaseMenu(Player player) {
                 if (canOpenNpc(player)) {
                     if (!TaskService.gI().checkDoneTaskTalkNpc(player, this)) {
+//                        , "Nhận đệ tử"
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
                                 "Cố Gắng Có Làm Mới Có Ăn Con, đừng lo lắng cho ta.\n"
                                         .replaceAll("%1", player.gender == ConstPlayer.TRAI_DAT ? "Quy lão Kamê"
                                                 : player.gender == ConstPlayer.NAMEC ? "Trưởng lão Guru" : "Vua Vegeta") + "Đừng quên hàng ngày gặp ta Điểm Danh để nhận \n50K Hồng Ngọc và 5 tỷ vàng nhé!",
-                                "Đổi Mật Khẩu", "Nhận 200K ngọc xanh", "Nhận đệ tử", "Nhận\nVàng", "Giftcode","Điểm danh\nhàng ngày");
+                                "Đổi Mật Khẩu", "Nhận 200K ngọc xanh", "Nhận\nVàng", "Giftcode","Điểm danh\nhàng ngày");
 
                     }
                 }
@@ -2462,16 +2463,15 @@ public class NpcFactory {
                                 Service.getInstance().sendMoney(player);
                                 Service.getInstance().sendThongBao(player, "Con vừa nhận được 200K ngọc xanh");
                                 break;
+//                            case 2:
+//                                if (player.pet == null) {
+//                                    PetService.gI().createNormalPet(player);
+//                                    Service.getInstance().sendThongBao(player, "Con vừa nhận được đệ tử! Hãy chăm sóc nó nhé");
+//                                } else {
+//                                    this.npcChat(player, "Đã có đệ tử rồi mà!");
+//                                }
+//                                break;
                             case 2:
-                                if (player.pet == null) {
-                                    PetService.gI().createNormalPet(player);
-                                    Service.getInstance().sendThongBao(player, "Con vừa nhận được đệ tử! Hãy chăm sóc nó nhé");
-                                } else {
-                                    this.npcChat(player, "Đã có đệ tử rồi mà!");
-                                   
-                                }
-                                break;
-                            case 3:
                                 if (Maintenance.isRuning) {
                                     break;
                                 }
@@ -2494,11 +2494,11 @@ public class NpcFactory {
                                 }
                                 break;
 
-                            case 4:
+                            case 3:
                                 Input.gI().createFormGiftCode(player);
                                 break;
                                 
-                            case 5:
+                            case 4:
                             { 
                                  LocalDate now = LocalDate.now();
                                 // Chuyển đổi giá trị mili giây thành LocalDate

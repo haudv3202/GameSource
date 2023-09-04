@@ -22,7 +22,7 @@ public class PetService {
     public void createNormalPet(Player player, int gender, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, false, false, false, false, (byte) gender);
+                createNewPet(player, false,false, true, false, false, (byte) gender);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -36,7 +36,7 @@ public class PetService {
     public void createNormalPet(Player player, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, false, false, false, false);
+                createNewPet(player,false, false, true, false, false);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -50,7 +50,7 @@ public class PetService {
     public void createMabuPet1(Player player, int gender, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, true, false, false, false, (byte) gender);
+                createNewPet(player, true,false, false, false, false, (byte) gender);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -79,7 +79,7 @@ public class PetService {
     public void createBerusPet(Player player, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, false, true, false, false);
+                createNewPet(player, false, true,false, false, false);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -93,7 +93,7 @@ public class PetService {
     public void createBerusPet(Player player, int gender, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, false, true, false, false, (byte) gender);
+                createNewPet(player, false, true,false, false, false, (byte) gender);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -104,10 +104,23 @@ public class PetService {
         }).start();
     }
 
+    public void createGokuPet(Player player, int gender, byte... limitPower) {
+        new Thread(() -> {
+            try {
+                createNewPet(player, false,false, true, false, false, (byte) gender);
+                if (limitPower != null && limitPower.length == 1) {
+                    player.pet.nPoint.limitPower = limitPower[0];
+                }
+                Thread.sleep(1000);
+                Service.getInstance().chatJustForMe(player, player.pet, "Chào sư phụ!Hãy nhận con làm đệ tử!!");
+            } catch (Exception e) {
+            }
+        }).start();
+    }
     public void createPicPet(Player player, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, false, false, true, false);
+                createNewPet(player, false,false, false, true, false);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -121,7 +134,7 @@ public class PetService {
     public void createPicPet(Player player, int gender, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, false, false, true, false, (byte) gender);
+                createNewPet(player, false, false,false, true, false, (byte) gender);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -148,7 +161,7 @@ public class PetService {
     public void createXencon(Player player, int gender, byte... limitPower) {
         new Thread(() -> {
             try {
-                createNewPet(player, false, false, false, true, (byte) gender);
+                createNewPet(player, false,false, false, false, true, (byte) gender);
                 if (limitPower != null && limitPower.length == 1) {
                     player.pet.nPoint.limitPower = limitPower[0];
                 }
@@ -224,6 +237,18 @@ public class PetService {
         player.pet = null;
         createBerusPet(player, gender, limitPower);
     }
+    
+    public void changeGokuPet(Player player, int gender) {
+        byte limitPower = player.pet.nPoint.limitPower;
+        if (player.fusion.typeFusion != ConstPlayer.NON_FUSION) {
+            player.pet.unFusion();
+        }
+        ChangeMapService.gI().exitMap(player.pet);
+        player.pet.dispose();
+        player.pet = null;
+        createGokuPet(player, gender, limitPower);
+    }
+
 
     public void changePicPet(Player player) {
         byte limitPower = player.pet.nPoint.limitPower;
@@ -327,6 +352,19 @@ public class PetService {
         petData[4] = Util.nextInt(0, 2); //crit
         return petData;
     }
+    
+    
+    private int[] getDataPetGoku() {
+        long[] hpmp = {1700, 1800, 1900, 2000, 2100, 2200};
+        int[] petData = new int[5];
+        petData[0] = Util.nextInt(40, 110) * 20; //hp
+        petData[1] = Util.nextInt(40, 110) * 20; //mp
+        petData[2] = Util.nextInt(50, 130); //dame
+        petData[3] = Util.nextInt(9, 50); //def
+        petData[4] = Util.nextInt(0, 2); //crit
+        return petData;
+    }
+
 
     private int[] getDataPetPic() {
         long[] hpmp = {2000, 2100, 2200, 2300, 2400, 2500};
@@ -350,14 +388,14 @@ public class PetService {
         return petData;
     }
 
-    private void createNewPet(Player player, boolean isMabu, boolean isBerus, boolean isPic, boolean isXencon, byte... gender) {
+    private void createNewPet(Player player, boolean isMabu, boolean isBerus,boolean isGoku, boolean isPic, boolean isXencon, byte... gender) {
         int[] data = isXencon ? isMabu ? isPic ? getDataXencon() : getDataPetMabu() : getDataPetPic() : getDataPetNormal();
         Pet pet = new Pet(player);
-        pet.name = "$" + (isMabu ? "Mabư" : isBerus ? "Black Gohan Rose" : isPic ? "Super Broly" : isXencon ? "Xên Con" : "Đệ tử");
+        pet.name = "$" + (isMabu ? "Mabư" : isBerus ? "Đệ Berus" : isGoku ? "Goku Hủy Diệt" : isPic ? "Super Broly" : isXencon ? "Xên Con" : "Đệ tử");
         pet.gender = (gender != null && gender.length != 0) ? gender[0] : (byte) Util.nextInt(0, 2);
         pet.id = -player.id;
-        pet.nPoint.power = isMabu || isBerus || isPic || isXencon ? 1500000 : 2000;
-        pet.typePet = (byte) (isXencon ? 4 : isMabu ? 1 : isBerus ? 2 : isPic ? 3 : 0);
+        pet.nPoint.power = isMabu || isBerus || isGoku || isPic || isXencon ? 1500000 : 2000;
+        pet.typePet = (byte) (isXencon ? 4 : isMabu ? 1 : isBerus ? 2 : isGoku  ? 34 : isPic ? 3 : 0);
         pet.nPoint.stamina = 1000;
         pet.nPoint.maxStamina = 1000;
         pet.nPoint.hpg = data[0];
