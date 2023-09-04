@@ -29,7 +29,7 @@ public void active() {
     super.active();
     if(Util.canDoWithTime(st,300000)){
         this.changeStatus(BossStatus.LEAVE_MAP);
-    }else if(this.nPoint.hp >= 100000000){
+    }else if(this.nPoint.hp >= 500000000){
         this.setDie(null);
         this.die(null);
     }
