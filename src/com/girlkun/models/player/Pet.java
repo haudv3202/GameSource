@@ -555,7 +555,7 @@ public class Pet extends Player {
         if (this.typePet == 1) {
             return 297; // Ma Bư
         } else if (this.typePet == 2) {
-            return 5067; // Black Gohan Rose
+            return 879; // Black Gohan Rose
         } else if (this.typePet == 3) {
             return 1318; // Supper Broly
         } else if (this.typePet == 3) {
@@ -634,7 +634,7 @@ public class Pet extends Player {
         } else if (this.typePet == 1) {
             return 297;
         } else if (this.typePet == 2) {
-            return 508;
+            return 879;
         }else if (this.typePet == 3) {
             return 1318;
         }else if (this.typePet == 4) {
@@ -719,7 +719,7 @@ public class Pet extends Player {
         } else if (this.typePet == 1 && !this.isTransform) {
             return 298;
         } else if (this.typePet == 2 && !this.isTransform) {
-            return 509;
+            return 880;
         }else if (this.typePet == 3 && !this.isTransform) {
             return 1319;
         } else if (this.typePet == 4 && !this.isTransform) {
@@ -808,7 +808,7 @@ public class Pet extends Player {
         } else if (this.typePet == 1 && !this.isTransform) {
             return 299;
         } else if (this.typePet == 2 && !this.isTransform) {
-            return 510;
+            return 881;
         }else if (this.typePet == 3 && !this.isTransform) {
             return 1320;
         } else if (this.typePet == 4 && !this.isTransform) {

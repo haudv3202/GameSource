@@ -353,7 +353,7 @@ public class PetService {
     private void createNewPet(Player player, boolean isMabu, boolean isBerus, boolean isPic, boolean isXencon, byte... gender) {
         int[] data = isXencon ? isMabu ? isPic ? getDataXencon() : getDataPetMabu() : getDataPetPic() : getDataPetNormal();
         Pet pet = new Pet(player);
-        pet.name = "$" + (isMabu ? "Mabư" : isBerus ? "Berus" : isPic ? "Super Broly" : isXencon ? "Xên Con" : "Đệ tử");
+        pet.name = "$" + (isMabu ? "Mabư" : isBerus ? "Black Gohan Rose" : isPic ? "Super Broly" : isXencon ? "Xên Con" : "Đệ tử");
         pet.gender = (gender != null && gender.length != 0) ? gender[0] : (byte) Util.nextInt(0, 2);
         pet.id = -player.id;
         pet.nPoint.power = isMabu || isBerus || isPic || isXencon ? 1500000 : 2000;
