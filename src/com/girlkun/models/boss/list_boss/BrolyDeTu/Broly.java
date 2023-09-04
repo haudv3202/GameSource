@@ -58,7 +58,7 @@ private void HoiPhuc() throws Exception {
         this.chat(2, "Mọi người cẩn thận sức mạnh hắn ta tăng đột biến..");
         this.chat("Graaaaaa...");
         this.lastTimeHP = System.currentTimeMillis();
-        this.timeHP = Util.nextInt(1000, 10000);
+        this.timeHP = Util.nextInt(500, 10000);
         this.LasthpBoss = pl.nPoint.hp;
     }
     
