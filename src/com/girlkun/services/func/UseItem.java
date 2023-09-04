@@ -425,9 +425,6 @@ public class UseItem {
                         case 1108: //đổi đệ tử
                             changePetBerus(pl, item);
                             break;
-                        case 2050: //đổi đệ tử goku
-                            changePetGoku(pl, item);
-                            break;
                         case 543: //đổi đệ tử
                             {
                             if (InventoryServiceNew.gI().getCountEmptyBag(pl) == 0) {
@@ -573,19 +570,6 @@ public class UseItem {
 //                gender = 0;
 //            }
             PetService.gI().changeBerusPet(player, gender);
-            InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1);
-        } else {
-            Service.getInstance().sendThongBao(player, "Không thể thực hiện");
-        }
-    }
-    
-     private void changePetGoku(Player player, Item item) {
-        if (player.pet != null) {
-            int gender = player.pet.gender ;
-//            if (gender > 2) {
-//                gender = 0;
-//            }
-            PetService.gI().changeGokuPet(player, gender);
             InventoryServiceNew.gI().subQuantityItemsBag(player, item, 1);
         } else {
             Service.getInstance().sendThongBao(player, "Không thể thực hiện");

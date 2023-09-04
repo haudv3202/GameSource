@@ -550,7 +550,7 @@ public class Pet extends Player {
             PlayerService.gI().playerMove(this, this.location.x, this.location.y);
         }
     }
-//avatar
+
     public short getAvatar() {
         if (this.typePet == 1) {
             return 297; // Ma Bư
@@ -620,13 +620,11 @@ public class Pet extends Player {
             return 838 ; //  Whis
             } else if (this.typePet == 33) {
             return 1324 ; // Baby Vegeta
-        } else if (this.typePet == 34) {
-            return 8928 ; // goku
         }else {
             return PET_ID[3][this.gender];
         }
     }
-//body
+
     @Override
     public short getHead() {
         if (effectSkill.isMonkey) {
@@ -699,8 +697,6 @@ public class Pet extends Player {
             return 838 ;
             } else if (this.typePet == 33) {
             return 1324 ;
-             } else if (this.typePet == 34) {
-            return 992 ;
         } else if (inventory.itemsBody.get(5).isNotNullItem()) {
             int part = inventory.itemsBody.get(5).template.head;
             if (part != -1) {
@@ -713,7 +709,7 @@ public class Pet extends Player {
             return PET_ID[3][this.gender];
         }
     }
-//body
+
     @Override
     public short getBody() {
         if (effectSkill.isMonkey) {
@@ -786,8 +782,6 @@ public class Pet extends Player {
             return 839  ;
             } else if (this.typePet == 33&& !this.isTransform) {
             return 1325  ;
-            } else if (this.typePet == 34&& !this.isTransform) {
-            return 976  ;
             
         } else if (inventory.itemsBody.get(5).isNotNullItem()) {
             int body = inventory.itemsBody.get(5).template.body;
@@ -875,8 +869,8 @@ public class Pet extends Player {
             return 510;
             } else if (this.typePet == 32&& !this.isTransform) {
             return 840 ;
-            } else if (this.typePet == 34&& !this.isTransform) {
-            return 977;
+            } else if (this.typePet == 33&& !this.isTransform) {
+            return 1326;
         } else if (inventory.itemsBody.get(5).isNotNullItem()) {
             int leg = inventory.itemsBody.get(5).template.leg;
             if (leg != -1) {
