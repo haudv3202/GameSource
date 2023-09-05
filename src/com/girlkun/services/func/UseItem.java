@@ -444,7 +444,7 @@ public class UseItem {
                             }
                             break;
                         }
-                        case 542: //đổi đệ tử
+                        case 2050: //đổi đệ tử
                             changePetPic(pl, item);
                             break;
                         

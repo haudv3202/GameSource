@@ -40,7 +40,7 @@ public class DrLyChee extends Boss {
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{1309, 1310, 1311, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
                ((5000 * level)), //dame    
-                new long[]{((1000000000L * level))}, //hp
+                new long[]{((500000000L * level))}, //hp
                 new int[]{148}, //map join
                 new int[][]{
                 {Skill.DEMON, 3, 1}, {Skill.DEMON, 6, 2}, {Skill.DRAGON, 7, 3}, {Skill.DRAGON, 1, 4}, {Skill.GALICK, 5, 5},

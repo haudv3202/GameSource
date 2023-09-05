@@ -65,7 +65,7 @@ public class HaChiJack extends Boss {
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{639, 640, 641, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
                 ((5000 * level)), //dame
-                new long[]{((1000000000L * level))}, //hp
+                new long[]{((500000000L * level))}, //hp
                 new int[]{148}, //map join
                 new int[][]{
                 {Skill.DEMON, 3, 1}, {Skill.DEMON, 6, 2}, {Skill.DRAGON, 7, 3}, {Skill.DRAGON, 1, 4}, {Skill.GALICK, 5, 5},
@@ -159,7 +159,7 @@ public class HaChiJack extends Boss {
         if (Util.isTrue(40, 100) && plAtt != null) {//tỉ lệ hụt của thiên sứ
             Util.isTrue(this.nPoint.tlNeDon, 1000000);
             if (Util.isTrue(1, 100)) {
-                this.chat("Đạt Gà đánh mạnh lên");
+                this.chat("Mày đánh mạnh lên");
                 this.chat("Hiếu Gà đánh mạnh lên");
             } else if (Util.isTrue(1, 100)) {
                 this.chat("Ngậm hành đi kkkkk");
