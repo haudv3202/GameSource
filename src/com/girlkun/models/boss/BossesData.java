@@ -1332,7 +1332,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{950, 951, 952, -1, -1, -1},
             20000,//dame
-            new long[]{2000000000L}, //hp
+            new long[]{200000000000L}, //hp
 //            29,13,20,
             new int[]{37},//map join
             new int[][]{
@@ -1353,11 +1353,11 @@ public class BossesData {
             "Goku vô cực",
             ConstPlayer.XAYDA,
             new short[]{1231, 1232, 1233, -1, -1, -1},//outfit {head, body, leg, bag, aura, eff}
-            200000,//dame
+            1000000,//dame
             new long[]{2000000000L}, //hp
             new int[]{92,93,94,96,97,98,99,100},//map join
             new int[][]{
-                {Skill.KAMEJOKO, 7, 5000},
+                {Skill.KAMEJOKO, 7, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
                  {Skill.QUA_CAU_KENH_KHI, 7, 50000},
                 {Skill.KHIEN_NANG_LUONG, 7, 100000},
