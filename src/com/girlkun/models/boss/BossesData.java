@@ -1311,7 +1311,7 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{297, 298, 299, -1, -1, -1},
             20000,//dame
-            new long[]{2000000L}, //hp
+            new long[]{2000000000L}, //hp
             new int[]{52},//map join
             new int[][]{
                 {Skill.KAMEJOKO, 3, 5000},
@@ -1324,6 +1324,29 @@ public class BossesData {
             new String[]{"|-1|Nhớ mặt tao đấy",
                 "|-1|Tobe continue.."}, //text chat 3
             REST_10_M
+    );
+    
+    
+    public static final BossData MABUNOEL = new BossData(
+            "Bư Thích Kẹo",
+            ConstPlayer.XAYDA,
+            new short[]{950, 951, 952, -1, -1, -1},
+            20000,//dame
+            new long[]{2000000000L}, //hp
+//            29,13,20,
+            new int[]{37},//map join
+            new int[][]{
+                {Skill.KAMEJOKO, 3, 5000},
+                {Skill.LIEN_HOAN, 7, 100},
+                {Skill.KHIEN_NANG_LUONG, 7, 20000},
+                {Skill.THAI_DUONG_HA_SAN, 7, 13000},
+                {Skill.SOCOLA, 7, 10000}},
+            //skill
+            new String[]{"|-2|Ma Bư đã xuất hiện"}, //text chat 1
+            new String[]{"|-1|Noel Tới rồi!","|-1|Thèm kẹo quá","|-1|Mang kẹo đến đây","|-1|Chúng mày ngon nhể","|-1|Happy Christmas"}, //text chat 2
+            new String[]{"|-1|Nhớ mặt tao đấy",
+                "|-1|Tobe continue.."}, //text chat 3
+            REST_1_M
     );
     
      public static final BossData gokuvocuc = new BossData(

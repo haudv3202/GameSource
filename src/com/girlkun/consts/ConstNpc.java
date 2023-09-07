@@ -166,7 +166,8 @@ public class ConstNpc {
     public static final int MENU_PHAN_RA_DO_THAN_LINH = 504;
     public static final int MENU_NANG_CAP_DO_TS = 505;
     public static final int MENU_NANG_DOI_SKH_VIP = 506;
-
+    public static final int MENU_DOIQUA = 11000;
+        public static final int MENU_DA_NANG_CAP = 11001;
     //index menu linh canh
     public static final int MENU_JOIN_DOANH_TRAI = 502;
 

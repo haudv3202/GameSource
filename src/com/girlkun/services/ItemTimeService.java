@@ -11,7 +11,6 @@ import com.girlkun.models.player.Player;
 import com.girlkun.network.io.Message;
 import com.girlkun.utils.Logger;
 
-
 public class ItemTimeService {
 
     private static ItemTimeService i;
@@ -44,7 +43,7 @@ public class ItemTimeService {
         if (player.itemTime.isUseCuongNo) {
             sendItemTime(player, 2754, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeCuongNo)) / 1000));
         }
-        
+
         if (player.itemTime.isUseAnDanh) {
             sendItemTime(player, 2760, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeAnDanh)) / 1000));
         }
@@ -57,10 +56,24 @@ public class ItemTimeService {
         if (player.itemTime.isUseGiapXen2) {
             sendItemTime(player, 10714, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeGiapXen2)) / 1000));
         }
-        if (player.itemTime.isUseCuongNo2) {
-            sendItemTime(player, 10716, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeCuongNo2)) / 1000));
+
+        if (!(player.itemTime.isUseCuongNo2 && player.itemTime.isUseCuongNoEvent)) {
+            if (player.itemTime.isUseCuongNo2) {
+                sendItemTime(player, 10716, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeCuongNo2)) / 1000));
+            }
+            if (player.itemTime.isUseCuongNoEvent) {
+                sendItemTime(player, 9651, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeCuongNoEvent)) / 1000));
+            }
         }
-        
+
+        if (player.itemTime.isUseBoKhiEvent) {
+            sendItemTime(player, 4117, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeCuongNo2)) / 1000));
+        }
+
+        if (player.itemTime.isUseBoHuyetEvent) {
+            sendItemTime(player, 4131, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeBoHuyetEvent)) / 1000));
+        }
+
         if (player.itemTime.isUseAnDanh2) {
             sendItemTime(player, 10717, (int) ((TIME_ITEM - (System.currentTimeMillis() - player.itemTime.lastTimeAnDanh2)) / 1000));
         }
@@ -70,14 +83,14 @@ public class ItemTimeService {
         if (player.itemTime.isUseMayDo) {
             sendItemTime(player, 2758, (int) ((TIME_MAY_DO - (System.currentTimeMillis() - player.itemTime.lastTimeUseMayDo)) / 1000));
         }
-                if (player.itemTime.isUseMayDo2) {//2758 icon// cai nay time co cho bằng cái máy dò kia ko
+        if (player.itemTime.isUseMayDo2) {//2758 icon// cai nay time co cho bằng cái máy dò kia ko
             sendItemTime(player, 11274, (int) ((TIME_MAY_DO2 - (System.currentTimeMillis() - player.itemTime.lastTimeUseMayDo2)) / 1000));
         }
         if (player.itemTime.isDuoikhi) {
             sendItemTime(player, player.itemTime.iconDuoi, (int) ((TIME_DUOI_KHI - (System.currentTimeMillis() - player.itemTime.lastTimeDuoikhi)) / 1000));
         }
         if (player.itemTime.isUseTDLT) {
-            sendItemTime(player, 4387,player.itemTime.timeTDLT / 1000);
+            sendItemTime(player, 4387, player.itemTime.timeTDLT / 1000);
         }
     }
 
@@ -132,7 +145,7 @@ public class ItemTimeService {
             sendTextTime(player, DOANH_TRAI, "Doanh trại độc nhãn", secondsLeft);
         }
     }
-    
+
     public void sendTextGas(Player player) {
         if (player.clan != null
                 && player.clan.timeOpenKhiGas != 0) {
@@ -141,6 +154,7 @@ public class ItemTimeService {
             sendTextTime(player, KHI_GASS, "Khí Gas Hủy Diệt: ", secondsLeft);
         }
     }
+
     public void sendTextBanDoKhoBau(Player player) {
 //        if (player.clan != null
 //                && player.clan.timeOpenBanDoKhoBau != 0) {
@@ -157,11 +171,12 @@ public class ItemTimeService {
     public void removeTextTime(Player player, byte id) {
         sendTextTime(player, id, "", 0);
     }
-       public void removeTextKhiGas(Player player) {
-        removeTextTime(player, KHI_GASS );
+
+    public void removeTextKhiGas(Player player) {
+        removeTextTime(player, KHI_GASS);
     }
 
-     private void sendTextTime(Player player, byte id, String text, int seconds) {
+    private void sendTextTime(Player player, byte id, String text, int seconds) {
         Message msg;
         try {
             msg = new Message(65);
@@ -173,6 +188,7 @@ public class ItemTimeService {
         } catch (Exception e) {
         }
     }
+
     public void sendItemTime(Player player, int itemId, int time) {
         Message msg;
         try {

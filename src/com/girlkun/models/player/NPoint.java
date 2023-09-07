@@ -373,11 +373,11 @@ public class NPoint {
                             break;
                         case 225:// Tỉ lệ giáp PS
                             this.tlDef.add(io.param);
-                            break;                      
+                            break;
                         case 226: // Tỉ lệ né đòn PS
                             this.tlNeDon += io.param;
                             break;
-                                    
+
                     }
                 }
             }
@@ -410,7 +410,7 @@ public class NPoint {
                                 break;
                             case 108: //#% Né đòn
                                 this.tlNeDon += io.param;
-                                
+
                         }
                     }
                     break;
@@ -443,14 +443,14 @@ public class NPoint {
                                 this.tlMp.add(io.param);
                                 break;
                             case 108: //#% Né đòn
-                                this.tlNeDon += io.param; 
+                                this.tlNeDon += io.param;
                         }
                     }
                     break;
                 }
             }
         }
-        
+
         setDameTrainArmor();
         setBasePoint();
     }
@@ -555,8 +555,7 @@ public class NPoint {
             }
         }
         //pet mabư
-     
-     
+
 //        if (this.player.isPet && ((Pet) this.player).typePet >= 3
 //                && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
 //            this.hpMax += ((long) this.hpMax * 50 / 100);
@@ -635,7 +634,7 @@ public class NPoint {
                 || (this.player.isPet
                 && ((Pet) this.player).status != Pet.FUSION)) {
             if (this.player.effectSkill.tiLeHPHuytSao != 0) {
-                this.hpMax += ((long)this.hpMax * this.player.effectSkill.tiLeHPHuytSao / 100);
+                this.hpMax += ((long) this.hpMax * this.player.effectSkill.tiLeHPHuytSao / 100);
 
             }
         }
@@ -646,6 +645,11 @@ public class NPoint {
         if (this.player.itemTime != null && this.player.itemTime.isUseBoHuyet2) {
             this.hpMax *= 2.2;
         }
+//        item event
+        if (this.player.itemTime != null && this.player.itemTime.isUseBoHuyetEvent) {
+            this.hpMax *= 2.3;
+        }
+
         if (this.player.zone != null && MapService.gI().isMapCold(this.player.zone.map)
                 && !this.isKhongLanh) {
             this.hpMax /= 2;
@@ -723,7 +727,6 @@ public class NPoint {
         }
 
         //pet mabư
-        
         if (this.player.isPet && ((Pet) this.player).typePet > 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
             this.mpMax += ((long) this.mpMax * 50 / 100);//MP berus
@@ -761,6 +764,10 @@ public class NPoint {
         if (this.player.itemTime != null && this.player.itemTime.isUseBoKhi2) {
             this.mpMax *= 2.2;
         }
+
+        if (this.player.itemTime != null && this.player.itemTime.isUseBoKhiEvent) {
+            this.mpMax *= 2.3;
+        }
         //phù
         if (this.player.zone != null && MapService.gI().isMapBlackBallWar(this.player.zone.map.mapId)) {
             this.mpMax *= this.player.effectSkin.xHPKI;
@@ -792,14 +799,14 @@ public class NPoint {
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
             this.dame += ((long) this.dame * 20 / 100);
         }
-                if (this.player.isPet && ((Pet) this.player).typePet == 1
+        if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
             this.dame += ((long) this.dame * 30 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
             this.dame += ((long) this.dame * 40 / 100);
-         }
+        }
 
         //pet Berus
         if (this.player.isPet && ((Pet) this.player).typePet == 2
@@ -817,8 +824,7 @@ public class NPoint {
         //pet mabư
 
         //pet mabư
-
-         if (this.player.isPet && ((Pet) this.player).typePet >= 4
+        if (this.player.isPet && ((Pet) this.player).typePet >= 4
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
             this.dame += ((long) this.dame * 50 / 100);
         }
@@ -850,11 +856,16 @@ public class NPoint {
             this.dame += this.player.pet.nPoint.dame;
         }
         //cuồng nộ
-        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo) {
-            this.dame += dameg;
-        }
         if (this.player.itemTime != null && this.player.itemTime.isUseCuongNo2) {
-            this.dame += dameg *3 ;
+            this.dame += dameg * 3;
+        }
+
+        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNoEvent) {
+            this.dame += dameg * 3.2;
+        }
+
+        if (this.player.itemTime != null && this.player.itemTime.isUseCuongNoEvent) {
+            this.dame += dameg * 3.2;
         }
         //giảm dame
         this.dame -= ((long) this.dame * tlSubSD / 100);
@@ -1185,9 +1196,9 @@ public class NPoint {
 
             if (!this.player.isPet && this.player.itemTime.isDuoikhi
                     || this.player.isPet && ((Pet) this.player).master.itemTime.isDuoikhi) {
-                tiemNang += tn * 5;            
+                tiemNang += tn * 5;
             }
-          
+
             if (this.intrinsic != null && this.intrinsic.id == 24) {
                 tiemNang += ((long) tiemNang * this.intrinsic.param1 / 100);
             }
@@ -1213,7 +1224,7 @@ public class NPoint {
     public long calSubTNSM(long tiemNang) {
         if (power >= 100000000000L) {
             tiemNang /= 2;
-        }else if (power >= 150000000000L) {
+        } else if (power >= 150000000000L) {
             tiemNang /= 4;
         } else if (power >= 180000000000L) {
             tiemNang /= 8;
@@ -1223,24 +1234,23 @@ public class NPoint {
         } else if (power >= 300000000000L) {
             tiemNang /= 15;
 //            tiemNang -= ((long) tiemNang * 90 / 100);
+        } else if (power >= 500000000000L) {
+            tiemNang /= 20;
+        } else if (power >= 600000000000L) {
+            tiemNang /= 30;
+        } else if (power >= 800000000000L) {
+            tiemNang /= 40;
+        } else if (power >= 1000000000000L) {
+            tiemNang /= 80;
+        } else if (power >= 2000000000000L) {
+            tiemNang /= 120;
+        } else if (power >= 4000000000000L) {
+            tiemNang /= 150;
+        } else if (power >= 5000000000000L) {
+            tiemNang /= 200;
         }
-        else if (power >= 500000000000L) {
-            tiemNang /= 20;}
-        else if (power >= 600000000000L) {
-            tiemNang /= 30;}
-        else if (power >= 800000000000L) {
-            tiemNang /= 40;}
-         else if (power >= 1000000000000L) {
-            tiemNang /= 80;}
-         else if (power >= 2000000000000L) {
-            tiemNang /= 120;}
-         else if (power >= 4000000000000L) {
-            tiemNang /= 150;}
-         else if (power >= 5000000000000L) {
-            tiemNang /= 200;}
         return tiemNang;
-        }
-
+    }
 
     public short getTileHutHp(boolean isMob) {
         if (isMob) {
@@ -1531,7 +1541,7 @@ public class NPoint {
         if (limitPower == 17) {
             return 1800;
         }
-        
+
         return 0;
     }
 

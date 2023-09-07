@@ -153,7 +153,7 @@ public class BossID {
     public static final int BossNamecPhanDien = -281;
     public static final int BROLY_SUPER = -282;
     public static final int BROLYDETU = -283;
-     
+    public static final int MABUNOEL = -284;
       public static final byte SOI_HEC_QUYN = -77;
     public static final byte O_DO = -78;
     public static final byte XINBATO = -79;

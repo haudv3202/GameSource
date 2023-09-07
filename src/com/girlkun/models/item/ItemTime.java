@@ -31,7 +31,11 @@ public class ItemTime {
     public boolean isUseGiapXen2;
     public boolean isUseCuongNo2;
     public boolean isUseAnDanh2;
-    
+    public boolean isUseCuongNoEvent;
+    public boolean isUseBoKhiEvent;
+    public boolean isUseGiapXenEvent;
+    public boolean isUseBoHuyetEvent;
+      
     public long lastTimeBoHuyet;
     public long lastTimeBoKhi;
     public long lastTimeGiapXen;
@@ -47,7 +51,10 @@ public class ItemTime {
     public long lastTimeUseMayDo;//lastime de chung 1 cai neu time = nhau
     public boolean isUseMayDo2;
     public long lastTimeUseMayDo2;
-    
+    public long lastTimeCuongNoEvent;
+    public long lastTimeBoHuyetEvent;
+    public long lastTimeBoKhiEvent;
+    public long lastTimeGiapXenNoEvent;
     public boolean isOpenPower;
     public long lastTimeOpenPower;
 

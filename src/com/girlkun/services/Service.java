@@ -5,6 +5,7 @@ import com.girlkun.consts.ConstNpc;
 import com.girlkun.consts.ConstPlayer;
 import com.girlkun.utils.FileIO;
 import com.girlkun.data.DataGame;
+import com.girlkun.models.boss.BossID;
 import com.girlkun.models.boss.BossManager;
 
 import java.io.IOException;
@@ -561,39 +562,39 @@ public class Service {
 //                    msg.cleanup();
 //                } catch (Exception e) {
 //                }
-            } else if (text.equals("a")) {
+            } else if (text.equals("test1")) {
 
-//                BossManager.gI().createBoss(BossID.ANDROID_13);
-//                BossManager.gI().loadBoss();
-//                Message msg;
-//                try {
-//                    msg = new Message(31);
-//                    msg.writer().writeInt((int) player.id);
-//                    msg.writer().writeByte(1);
-//                    msg.writer().writeShort(7094);
-//
-////                    msg.writer().writeByte(4);
-////                    int n = 3;
-////                    msg.writer().writeByte(n);
-////                    for (int i = 0; i < n; i++) {
-////                        msg.writer().writeByte(i);
-////                    }
-////                    msg.writer().writeShort(70);
-////                    msg.writer().writeShort(80);
-//                    player.sendMessage(msg);
-//                    msg.cleanup();
-//                } catch (Exception e) {
-//                }
-//                try {
-//                    msg = new Message(52);
-//                    msg.writer().writeByte(1);
-//                    msg.writer().writeInt((int) player.id);
-//                    msg.writer().writeShort(player.location.x);
-//                    msg.writer().writeShort(player.location.y-16);
-//                    sendMessAllPlayerInMap(player, msg);
-//                    msg.cleanup();
-//                } catch (Exception e) {
-//                }
+                BossManager.gI().createBoss(BossID.ANDROID_13);
+                BossManager.gI().loadBoss();
+                Message msg;
+                try {
+                    msg = new Message(31);
+                    msg.writer().writeInt((int) player.id);
+                    msg.writer().writeByte(1);
+                    msg.writer().writeShort(7094);
+
+//                    msg.writer().writeByte(4);
+//                    int n = 3;
+//                    msg.writer().writeByte(n);
+//                    for (int i = 0; i < n; i++) {
+//                        msg.writer().writeByte(i);
+//                    }
+//                    msg.writer().writeShort(70);
+//                    msg.writer().writeShort(80);
+                    player.sendMessage(msg);
+                    msg.cleanup();
+                } catch (Exception e) {
+                }
+                try {
+                    msg = new Message(52);
+                    msg.writer().writeByte(1);
+                    msg.writer().writeInt((int) player.id);
+                    msg.writer().writeShort(player.location.x);
+                    msg.writer().writeShort(player.location.y-16);
+                    sendMessAllPlayerInMap(player, msg);
+                    msg.cleanup();
+                } catch (Exception e) {
+                }
 //                Message msg;
 //                try {
 //                    msg = new Message(50);
