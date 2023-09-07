@@ -1665,7 +1665,6 @@ public class CombineServiceNew {
                             caitrang = item;
                         } else if (item.template.id == 674) {
                             dangusac = item;
-
                         }
                     }
                     int level = 0;

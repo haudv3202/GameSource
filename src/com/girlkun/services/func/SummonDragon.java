@@ -61,9 +61,10 @@ public class SummonDragon {
             = new String[]{"Giàu có\n+20 Tỷ\nVàng", "Găng tay\nđang mang\nlên 1 cấp", "Chí mạng\nGốc +2%",
                 "Thay\nChiêu 2-3\nĐệ tử", "Điều ước\nkhác"};
     public static final String[] SHENRON_1_STAR_WISHES_2
-            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Giàu có\n+150K\nNgọc hồng", "+20 Tỷ\nSức mạnh\nvà tiềm\nnăng",
+            = new String[]{"Đẹp trai\nnhất\nVũ trụ", "Giàu có\n+150K\nNgọc hồng",
                 "Găng tay đệ\nđang mang\nlên 1 cấp",
                 "Điều ước\nkhác"};
+//        , "+2 Tỷ\nSức mạnh\nvà tiềm\nnăng",
     public static final String[] SHENRON_2_STARS_WHISHES
             = new String[]{"Giàu có\n+50K\nHồng Ngọc", "+10 Tỷ\nSức mạnh\nvà tiềm năng", "Giàu có\n+10 Tỷ\nVàng","Thay\nChiêu 2\nĐệ tử"};
     public static final String[] SHENRON_3_STARS_WHISHES
@@ -390,16 +391,16 @@ public class SummonDragon {
                         this.playerSummonShenron.inventory.ruby += 150000;
                         PlayerService.gI().sendInfoHpMpMoney(this.playerSummonShenron);
                         break;
-                    case 2: //+20 Tỷ TNSM
-                        if ((this.playerSummonShenron.nPoint.power >= 1000) && (this.playerSummonShenron.nPoint.power <= 179000000000L)) {
-                            Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 20000000000L, false);
-                        } else {
-                            Service.getInstance().sendThongBao(playerSummonShenron, "Xin lỗi, điều ước này khó quá, ta không thể thực hiện.");
-                            reOpenShenronWishes(playerSummonShenron);
-                            return;
-                        }
-                        break;
-                    case 3: //găng tay đệ lên 1 cấp
+//                    case 2: //+20 Tỷ TNSM
+//                        if ((this.playerSummonShenron.nPoint.power >= 1000) && (this.playerSummonShenron.nPoint.power <= 179000000000L)) {
+//                            Service.getInstance().addSMTN(this.playerSummonShenron, (byte) 2, 2000000000L, false);
+//                        } else {
+//                            Service.getInstance().sendThongBao(playerSummonShenron, "Xin lỗi, điều ước này khó quá, ta không thể thực hiện.");
+//                            reOpenShenronWishes(playerSummonShenron);
+//                            return;
+//                        }
+//                        break;
+                    case 2: //găng tay đệ lên 1 cấp
                         if (this.playerSummonShenron.pet != null) {
                             Item item = this.playerSummonShenron.pet.inventory.itemsBody.get(2);
                             if (item.isNotNullItem()) {

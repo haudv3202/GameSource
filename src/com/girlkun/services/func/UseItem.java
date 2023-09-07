@@ -28,6 +28,7 @@ import com.girlkun.services.RewardService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.TimeUtil;
 import java.util.Date;
+import java.util.Random;
 
 public class UseItem {
 
@@ -44,11 +45,11 @@ public class UseItem {
     private static final byte ACCEPT_THROW_ITEM = 2;
     private static final byte ACCEPT_USE_ITEM = 3;
     public static final int[][][] LIST_ITEM_CLOTHES = {
-            // áo , quần , găng ,giày,rada
-            //td -> nm -> xd
-            {{0, 33, 3, 34, 136, 137, 138, 139, 230, 231, 232, 233, 555}, {6, 35, 9, 36, 140, 141, 142, 143, 242, 243, 244, 245, 556}, {21, 24, 37, 38, 144, 145, 146, 147, 254, 255, 256, 257, 562}, {27, 30, 39, 40, 148, 149, 150, 151, 266, 267, 268, 269, 563}, {12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561}},
-            {{1, 41, 4, 42, 152, 153, 154, 155, 234, 235, 236, 237, 557}, {7, 43, 10, 44, 156, 157, 158, 159, 246, 247, 248, 249, 558}, {22, 46, 25, 45, 160, 161, 162, 163, 258, 259, 260, 261, 564}, {28, 47, 31, 48, 164, 165, 166, 167, 270, 271, 272, 273, 565}, {12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561}},
-            {{2, 49, 5, 50, 168, 169, 170, 171, 238, 239, 240, 241, 559}, {8, 51, 11, 52, 172, 173, 174, 175, 250, 251, 252, 253, 560}, {23, 53, 26, 54, 176, 177, 178, 179, 262, 263, 264, 265, 566}, {29, 55, 32, 56, 180, 181, 182, 183, 274, 275, 276, 277, 567}, {12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561}}
+        // áo , quần , găng ,giày,rada
+        //td -> nm -> xd
+        {{0, 33, 3, 34, 136, 137, 138, 139, 230, 231, 232, 233, 555}, {6, 35, 9, 36, 140, 141, 142, 143, 242, 243, 244, 245, 556}, {21, 24, 37, 38, 144, 145, 146, 147, 254, 255, 256, 257, 562}, {27, 30, 39, 40, 148, 149, 150, 151, 266, 267, 268, 269, 563}, {12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561}},
+        {{1, 41, 4, 42, 152, 153, 154, 155, 234, 235, 236, 237, 557}, {7, 43, 10, 44, 156, 157, 158, 159, 246, 247, 248, 249, 558}, {22, 46, 25, 45, 160, 161, 162, 163, 258, 259, 260, 261, 564}, {28, 47, 31, 48, 164, 165, 166, 167, 270, 271, 272, 273, 565}, {12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561}},
+        {{2, 49, 5, 50, 168, 169, 170, 171, 238, 239, 240, 241, 559}, {8, 51, 11, 52, 172, 173, 174, 175, 250, 251, 252, 253, 560}, {23, 53, 26, 54, 176, 177, 178, 179, 262, 263, 264, 265, 566}, {29, 55, 32, 56, 180, 181, 182, 183, 274, 275, 276, 277, 567}, {12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561}}
     };
 
     private static UseItem instance;
@@ -232,7 +233,7 @@ public class UseItem {
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     Service.getInstance().sendFlagBag(pl);
                     break;
-                case 75: 
+                case 75:
                     InventoryServiceNew.gI().itemBagToBody(pl, indexBag);
                     Service.getInstance().sendchienlinh(pl, (short) (item.template.iconID - 1));
                     break;
@@ -244,34 +245,34 @@ public class UseItem {
                 default:
                     switch (item.template.id) {
                         case 457:
-                            pl.inventory.gold+=500000000;
+                            pl.inventory.gold += 500000000;
                             Service.getInstance().sendMoney(pl);
-                              InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                             InventoryServiceNew.gI().sendItemBags(pl);
                             break;
                         case 1244:
-                            if ( pl.inventory.gold >= LIMIT_GOLD )
-                            {
-                            Service.getInstance().sendThongBao(pl, "Đã đạt giới hạn vàng");
+                            if (pl.inventory.gold >= LIMIT_GOLD) {
+                                Service.getInstance().sendThongBao(pl, "Đã đạt giới hạn vàng");
                                 return;
-                            }else{
-                            pl.inventory.gold+=2000000000L;
-                            Service.getInstance().sendMoney(pl);
-                              InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
-                            InventoryServiceNew.gI().sendItemBags(pl);
-                            break;}
+                            } else {
+                                pl.inventory.gold += 2000000000L;
+                                Service.getInstance().sendMoney(pl);
+                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                                InventoryServiceNew.gI().sendItemBags(pl);
+                                break;
+                            }
                         case 1245:
-                            pl.nPoint.power+=10000000000L;                                       
-                            pl.nPoint.tiemNang+=10000000000L;
+                            pl.nPoint.power += 10000000000L;
+                            pl.nPoint.tiemNang += 10000000000L;
                             Service.getInstance().sendMoney(pl);
                             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                             InventoryServiceNew.gI().sendItemBags(pl);
                             break;
                         case 1132:
-                            pl.inventory.ruby+=10000;
-                            pl.inventory.gem+=10000;
+                            pl.inventory.ruby += 10000;
+                            pl.inventory.gem += 10000;
                             Service.getInstance().sendMoney(pl);
-                              InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
                             InventoryServiceNew.gI().sendItemBags(pl);
                             break;
                         case 992:
@@ -351,7 +352,7 @@ public class UseItem {
                             break;
                         case 823:
                             openTuiqua(pl, item);
-                        
+
                         case 1247:
                             openQuadenbu(pl, item);
 
@@ -375,6 +376,9 @@ public class UseItem {
                             break;
                         case 380: //cskb
                             openCSKB(pl, item);
+                            break;
+                        case 1334: //hopqua Noel
+                            openHopQua(pl, item);
                             break;
                         case 722: //cskb
                             openCSH(pl, item);
@@ -402,6 +406,13 @@ public class UseItem {
                         case 1103:
                             useItemTime(pl, item);
                             break;
+
+                        case 1335:
+                        case 1336:
+                        case 1337:
+                        case 1338:
+                            useItemTime(pl, item);
+                            break;
                         case 521: //tdlt
                             useTDLT(pl, item);
                             break;
@@ -426,7 +437,7 @@ public class UseItem {
                             changePetBerus(pl, item);
                             break;
                         case 543: //đổi đệ tử
-                            {
+                        {
                             if (InventoryServiceNew.gI().getCountEmptyBag(pl) == 0) {
                                 Service.getInstance().sendThongBao(pl, "Hành trang không đủ chỗ trống");
                             } else {
@@ -447,21 +458,19 @@ public class UseItem {
                         case 2050: //đổi đệ tử
                             changePetPic(pl, item);
                             break;
-                        
+
                         case 402: //sách nâng chiêu 1 đệ tử
                         case 403: //sách nâng chiêu 2 đệ tử
                         case 404: //sách nâng chiêu 3 đệ tử
                         case 759: //sách nâng chiêu 4 đệ tử
                             upSkillPet(pl, item);
                             break;
-                        
+
                         case 2000://hop qua skh, item 2000 td
                         case 2001://hop qua skh, item 2001 nm
                         case 2002://hop qua skh, item 2002 xd
                             UseItem.gI().ItemSKH(pl, item);
                             break;
-                          
-
 
                         case 2003://hop qua skh, item 2003 td
                         case 2004://hop qua skh, item 2004 nm
@@ -565,7 +574,7 @@ public class UseItem {
 
     private void changePetBerus(Player player, Item item) {
         if (player.pet != null) {
-            int gender = player.pet.gender ;
+            int gender = player.pet.gender;
 //            if (gender > 2) {
 //                gender = 0;
 //            }
@@ -575,6 +584,7 @@ public class UseItem {
             Service.getInstance().sendThongBao(player, "Không thể thực hiện");
         }
     }
+
     private void changePetMabu(Player player, Item item) {
         if (player.pet != null) {
             int gender = player.pet.gender;
@@ -587,9 +597,10 @@ public class UseItem {
             Service.getInstance().sendThongBao(player, "Không thể thực hiện");
         }
     }
+
     private void changePetPic(Player player, Item item) {
         if (player.pet != null) {
-            int gender = player.pet.gender ;
+            int gender = player.pet.gender;
 //            if (gender > 2) {
 //                gender = 0;
 //            }
@@ -666,7 +677,63 @@ public class UseItem {
             Service.getInstance().sendThongBao(pl, "Hàng trang đã đầy");
         }
     }
-     private void openCSH(Player pl, Item item) {
+
+    private void openHopQua(Player pl, Item item) {
+        if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 0) {
+            short[] temp = {76, 188, 189, 190, 1335, 1336, 1338,1339,1339,1214};
+            int[][] gold = {{500000000, 2000000000}};
+            byte index = (byte) Util.nextInt(0, temp.length - 1);
+            short[] icon = new short[2];
+            icon[0] = item.template.iconID;
+            if (index <= 3) {
+                pl.inventory.gold += Util.nextInt(gold[0][0], gold[0][1]);
+                if (pl.inventory.gold > Inventory.LIMIT_GOLD) {
+                    pl.inventory.gold = Inventory.LIMIT_GOLD;
+                }
+                PlayerService.gI().sendInfoHpMpMoney(pl);
+                icon[1] = 930;
+                Service.getInstance().sendThongBao(pl, "Bạn Nhận được " + pl.inventory.gold + "Vàng");
+            } else if (index <= 6) {
+                Item it = ItemService.gI().createNewItem(temp[index]);
+                it.itemOptions.add(new ItemOption(73, 0));
+                InventoryServiceNew.gI().addItemBag(pl, it);
+                icon[1] = it.template.iconID;
+                 Service.getInstance().sendThongBao(pl, "Chúc mừng bạn vừa nhận vật phẩm cường hóa cấp cao");
+            } else if (index <= 8) { 
+             Item mv = ItemService.gI().createNewItem(temp[index]);
+                mv.itemOptions.add(new ItemOption(73, 0));
+                InventoryServiceNew.gI().addItemBag(pl, mv);
+                icon[1] = mv.template.iconID;
+                Service.getInstance().sendThongBao(pl, "Chúc mừng bạn vừa nhận được vật phẩm mảnh vỡ ngọc rồng");
+            }else {
+                Item caitrangEvent = ItemService.gI().createNewItem(temp[index]);
+                Random random = new Random();
+                int sd = random.nextInt(41) + 40;
+                int hp = random.nextInt(41) + 40;
+                int ki = random.nextInt(41) + 40;
+                caitrangEvent.itemOptions.add(new Item.ItemOption(49, sd));
+                caitrangEvent.itemOptions.add(new Item.ItemOption(77, hp));
+                caitrangEvent.itemOptions.add(new Item.ItemOption(103, ki));
+                if (Util.isTrue(80, 100)) {
+                    int randomMoth = random.nextInt(30) + 1;
+//               randomMoth
+                    caitrangEvent.itemOptions.add(new Item.ItemOption(93, randomMoth));
+                }
+                caitrangEvent.itemOptions.add(new Item.ItemOption(207, 0));
+                caitrangEvent.itemOptions.add(new Item.ItemOption(33, 0));
+                InventoryServiceNew.gI().addItemBag(pl, caitrangEvent);
+                Service.getInstance().sendThongBao(pl, "Chúc mừng bạn vừa nhận được vật phẩm sự kiện");
+            }
+            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+            InventoryServiceNew.gI().sendItemBags(pl);
+
+            CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
+        } else {
+            Service.getInstance().sendThongBao(pl, "Hàng trang đã đầy");
+        }
+    }
+
+    private void openCSH(Player pl, Item item) {
         if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 0) {
             short[] temp = {861, 861};
             int[][] gold = {{70, 150}};
@@ -680,7 +747,7 @@ public class UseItem {
                 }
                 PlayerService.gI().sendInfoHpMpMoney(pl);
                 icon[1] = 7743;
-            } 
+            }
             InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
             InventoryServiceNew.gI().sendItemBags(pl);
             Service.getInstance().sendMoney(pl);
@@ -690,12 +757,13 @@ public class UseItem {
             Service.getInstance().sendThongBao(pl, "Hàng trang đã đầy");
         }
     }
+
     private void openWoodChest(Player pl, Item item) {
-            int time = (int) TimeUtil.diffDate(new Date(), new Date(item.createTime), TimeUtil.DAY);
+        int time = (int) TimeUtil.diffDate(new Date(), new Date(item.createTime), TimeUtil.DAY);
         if (time != 0) {
             Item itemReward = null;
             int param = pl.inventory.getParam(item, 72);
-        short[] temp = {1079, 722};
+            short[] temp = {1079, 722};
             int[][] gold = {{1000, 2000}};
             byte index = (byte) Util.nextInt(0, temp.length - 1);
             short[] icon = new short[2];
@@ -707,34 +775,34 @@ public class UseItem {
                 }
                 PlayerService.gI().sendInfoHpMpMoney(pl);
                 icon[1] = 7743;
-            } else if (param == 9 || param == 10){
+            } else if (param == 9 || param == 10) {
                 itemReward = ItemService.gI().createNewItem((short) 861);
-            itemReward.quantity = Util.nextInt(2000, 5000);
-            InventoryServiceNew.gI().addItemBag(pl, itemReward);
-            icon[1] = itemReward.template.iconID;
+                itemReward.quantity = Util.nextInt(2000, 5000);
+                InventoryServiceNew.gI().addItemBag(pl, itemReward);
+                icon[1] = itemReward.template.iconID;
             }
-        if (param == 11){
-            Item it = ItemService.gI().createNewItem(temp[index]);
+            if (param == 11) {
+                Item it = ItemService.gI().createNewItem(temp[index]);
                 it.quantity = Util.nextInt(50, 100);
                 it.itemOptions.add(new ItemOption(73, 0));
                 InventoryServiceNew.gI().addItemBag(pl, it);
                 icon[1] = it.template.iconID;
-        }
-        InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+            }
+            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
 //        pl.inventory.addGold(gold);
 //        InventoryServiceNew.gI().sendItemBags(pl);
-        PlayerService.gI().sendInfoHpMpMoney(pl);
-        CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
-            
-            
+            PlayerService.gI().sendInfoHpMpMoney(pl);
+            CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
+
         } else {
             Service.getInstance().sendThongBao(pl, "Vui lòng đợi 24h");
         }
     }
+
     private int randClothes(int level) {
         return LIST_ITEM_CLOTHES[Util.nextInt(0, 2)][Util.nextInt(0, 4)][level - 1];
     }
-    
+
     private void useItemTime(Player pl, Item item) {
         switch (item.template.id) {
             case 382: //bổ huyết
@@ -762,20 +830,42 @@ public class UseItem {
                 pl.itemTime.lastTimeUseMayDo = System.currentTimeMillis();
                 pl.itemTime.isUseMayDo = true;
                 break;
-            
-            case 1099:// cn
-                pl.itemTime.lastTimeCuongNo2 = System.currentTimeMillis();
-                pl.itemTime.isUseCuongNo2 = true;
+            case 1335:
+                if (pl.itemTime.isUseCuongNoEvent != true && pl.itemTime.isUseCuongNo2 != true) {
+                    pl.itemTime.lastTimeCuongNoEvent = System.currentTimeMillis();
+                    pl.itemTime.isUseCuongNoEvent = true;
+                } else {
+                    Service.gI().sendThongBao(pl, "Bạn chỉ được sử dụng 1 item");
+                }
                 Service.getInstance().point(pl);
+                break;
+            case 1099:// cn
+                if (pl.itemTime.isUseCuongNo2 != true && pl.itemTime.isUseCuongNoEvent != true) {
+                    pl.itemTime.lastTimeCuongNo2 = System.currentTimeMillis();
+                    pl.itemTime.isUseCuongNo2 = true;
 
+                } else {
+                    Service.gI().sendThongBao(pl, "Bạn chỉ được sử dụng 1 item");
+                }
+                Service.getInstance().point(pl);
                 break;
             case 1100:// bo huyet
-                pl.itemTime.lastTimeBoHuyet2 = System.currentTimeMillis();
-                pl.itemTime.isUseBoHuyet2 = true;
+                if (pl.itemTime.isUseBoHuyet2 != true && pl.itemTime.isUseBoHuyetEvent != true) {
+                    pl.itemTime.lastTimeBoHuyet2 = System.currentTimeMillis();
+                    pl.itemTime.isUseBoHuyet2 = true;
+                } else {
+                    Service.gI().sendThongBao(pl, "Bạn chỉ được sử dụng 1 item");
+                }
+
                 break;
             case 1101://bo khi
-                pl.itemTime.lastTimeBoKhi2 = System.currentTimeMillis();
-                pl.itemTime.isUseBoKhi2 = true;
+                if (pl.itemTime.isUseBoKhi2 != true && pl.itemTime.isUseBoKhiEvent != true) {
+                    pl.itemTime.lastTimeBoKhi2 = System.currentTimeMillis();
+                    pl.itemTime.isUseBoKhi2 = true;
+                } else {
+                    Service.gI().sendThongBao(pl, "Bạn chỉ được sử dụng 1 item");
+                }
+
                 break;
             case 1102://xbh
                 pl.itemTime.lastTimeGiapXen2 = System.currentTimeMillis();
@@ -785,7 +875,30 @@ public class UseItem {
                 pl.itemTime.lastTimeAnDanh2 = System.currentTimeMillis();
                 pl.itemTime.isUseAnDanh2 = true;
                 break;
-            
+
+            case 1336:// bo huyet
+                if (pl.itemTime.isUseBoHuyetEvent != true && pl.itemTime.isUseBoHuyet2 != true) {
+                    pl.itemTime.lastTimeBoHuyetEvent = System.currentTimeMillis();
+                    pl.itemTime.isUseBoHuyetEvent = true;
+                } else {
+                    Service.gI().sendThongBao(pl, "Bạn chỉ được sử dụng 1 item");
+                }
+
+                break;
+            case 1338://bo khi
+                if (pl.itemTime.isUseBoKhiEvent != true && pl.itemTime.isUseBoKhi2 != true) {
+                    pl.itemTime.lastTimeBoKhiEvent = System.currentTimeMillis();
+                    pl.itemTime.isUseBoKhiEvent = true;
+                } else {
+                    Service.gI().sendThongBao(pl, "Bạn chỉ được sử dụng 1 item");
+                }
+
+                break;
+            case 1337://xbh
+                pl.itemTime.lastTimeGiapXenNoEvent = System.currentTimeMillis();
+                pl.itemTime.isUseGiapXenEvent = true;
+                break;
+
 //            case 663: //bánh pudding
 //            case 664: //xúc xíc
 //            case 665: //kem dâu
@@ -878,8 +991,8 @@ public class UseItem {
             ItemTimeService.gI().turnOnTDLT(pl, item);
         }
     }
-    
-      private void usePorata2(Player pl) {
+
+    private void usePorata2(Player pl) {
         if (pl.pet == null || pl.fusion.typeFusion == 4) {
             Service.getInstance().sendThongBao(pl, "Không thể thực hiện");
         } else {
@@ -890,7 +1003,8 @@ public class UseItem {
             }
         }
     }
-      private void usePorata3(Player pl) {
+
+    private void usePorata3(Player pl) {
         if (pl.pet == null || pl.fusion.typeFusion == 4) {
             Service.getInstance().sendThongBao(pl, "Không thể thực hiện");
         } else {
@@ -915,229 +1029,224 @@ public class UseItem {
     }
 
     private void openQuadenbu(Player pl, Item item) {
-    if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+        if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
             Service.gI().sendThongBao(pl, "Bạn phải có ít nhất 1 ô trống hành trang");
             return;
         }
-         InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1); 
+        InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
         if (Util.isTrue(100, 100)) {
-        Item caitrang = ItemService.gI().createNewItem((short) 1248,1); //Găng thiên sứ
-        if (caitrang.template.id == 1248){
-        caitrang.itemOptions.add(new Item.ItemOption(77, 40));
-        caitrang.itemOptions.add(new Item.ItemOption(103, 40));
-        caitrang.itemOptions.add(new Item.ItemOption(50, 40));
-        caitrang.itemOptions.add(new Item.ItemOption(5,20));
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }}}            
-    
-    private void openTuiqua(Player pl, Item item) {
-    if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
-            Service.gI().sendThongBao(pl, "Bạn phải có ít nhất 1 ô trống hành trang");
-            return;
-        }
-         InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1); 
-        if (Util.isTrue(100, 100)) {
-            int rd = Util.nextInt(0,9);
-            if (rd == 0 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1055,1); //Găng thiên sứ
-        if (caitrang.template.id == 1055){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));            
-        }            
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }
-              if (rd == 1 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1052,1); //Quần thiên sứ
-        if (caitrang.template.id == 1052){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-        }           
-        
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }  
-              
-               if (rd == 2 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1058,1); //Giày thiên sứ
-        if (caitrang.template.id == 1058){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-        }           
-        
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }  
-               if (rd == 3 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1049,1); //Áo thiên sứ
-        if (caitrang.template.id == 1049){
-           caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-        }
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }  
-                  if (rd == 4 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1061,1); //Nhẫn thiên sứ
-        if (caitrang.template.id == 1061){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-        }           
+            Item caitrang = ItemService.gI().createNewItem((short) 1248, 1); //Găng thiên sứ
+            if (caitrang.template.id == 1248) {
+                caitrang.itemOptions.add(new Item.ItemOption(77, 40));
+                caitrang.itemOptions.add(new Item.ItemOption(103, 40));
+                caitrang.itemOptions.add(new Item.ItemOption(50, 40));
+                caitrang.itemOptions.add(new Item.ItemOption(5, 20));
 
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }   
-                        if (rd == 5 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1107,1); //Pet
-        if (caitrang.template.id == 1107){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-
-        }           
-     
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }   
-        if (rd == 6 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1130,1); //Cải trang
-        if (caitrang.template.id == 1130){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-        }           
-        
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
         }
-        if (rd == 7 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1239,1); //Danh hiệu
-        if (caitrang.template.id == 1242){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1)); 
-        }           
-        
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }
-        if (rd == 8 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1225,1); //Danh hiệu
-        if (caitrang.template.id == 1225){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-        }           
-        
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }
-        if (rd == 9 ){
-        Item caitrang = ItemService.gI().createNewItem((short) 1143,1); //Danh hiệu
-        if (caitrang.template.id == 1143){
-            caitrang.itemOptions.add(new ItemOption(50, 1000)); 
-            caitrang.itemOptions.add(new ItemOption(77, 1000));
-            caitrang.itemOptions.add(new ItemOption(103, 1000));
-            caitrang.itemOptions.add(new ItemOption(218, 1000));
-            caitrang.itemOptions.add(new ItemOption(5, 100));
-            caitrang.itemOptions.add(new ItemOption(14, 25));
-            caitrang.itemOptions.add(new ItemOption(101, 150));
-            caitrang.itemOptions.add(new ItemOption(107, 16));
-            caitrang.itemOptions.add(new ItemOption(131, 1));
-            caitrang.itemOptions.add(new ItemOption(143, 1));
-        }           
-        
-        
-        InventoryServiceNew.gI().addItemBag(pl, caitrang);
-        InventoryServiceNew.gI().sendItemBags(pl);
-        }
-            
-        short[] icon = new short[1];
-        icon[1] = item.template.iconID;
-        Service.gI().sendThongBao(pl, "Bạn đã nhận được " + item.template.name);
-        CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
-        
-        }
-        
     }
+
+    private void openTuiqua(Player pl, Item item) {
+        if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+            Service.gI().sendThongBao(pl, "Bạn phải có ít nhất 1 ô trống hành trang");
+            return;
+        }
+        InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+        if (Util.isTrue(100, 100)) {
+            int rd = Util.nextInt(0, 9);
+            if (rd == 0) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1055, 1); //Găng thiên sứ
+                if (caitrang.template.id == 1055) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 1) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1052, 1); //Quần thiên sứ
+                if (caitrang.template.id == 1052) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+
+            if (rd == 2) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1058, 1); //Giày thiên sứ
+                if (caitrang.template.id == 1058) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 3) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1049, 1); //Áo thiên sứ
+                if (caitrang.template.id == 1049) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 4) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1061, 1); //Nhẫn thiên sứ
+                if (caitrang.template.id == 1061) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 5) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1107, 1); //Pet
+                if (caitrang.template.id == 1107) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 6) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1130, 1); //Cải trang
+                if (caitrang.template.id == 1130) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 7) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1239, 1); //Danh hiệu
+                if (caitrang.template.id == 1242) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 8) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1225, 1); //Danh hiệu
+                if (caitrang.template.id == 1225) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+            if (rd == 9) {
+                Item caitrang = ItemService.gI().createNewItem((short) 1143, 1); //Danh hiệu
+                if (caitrang.template.id == 1143) {
+                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+                    caitrang.itemOptions.add(new ItemOption(5, 100));
+                    caitrang.itemOptions.add(new ItemOption(14, 25));
+                    caitrang.itemOptions.add(new ItemOption(101, 150));
+                    caitrang.itemOptions.add(new ItemOption(107, 16));
+                    caitrang.itemOptions.add(new ItemOption(131, 1));
+                    caitrang.itemOptions.add(new ItemOption(143, 1));
+                }
+
+                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+                InventoryServiceNew.gI().sendItemBags(pl);
+            }
+
+            short[] icon = new short[1];
+            icon[1] = item.template.iconID;
+            Service.gI().sendThongBao(pl, "Bạn đã nhận được " + item.template.name);
+            CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
+
+        }
+
+    }
+
     private void openCapsuleUI(Player pl) {
         pl.iDMark.setTypeChangeMap(ConstMap.CHANGE_CAPSULE);
         ChangeMapService.gI().openChangeMapTab(pl);
