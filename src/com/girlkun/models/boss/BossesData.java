@@ -1331,14 +1331,14 @@ public class BossesData {
             "Bư Thích Kẹo",
             ConstPlayer.XAYDA,
             new short[]{950, 951, 952, -1, -1, -1},
-            20000,//dame
+            10000000,//dame
             new long[]{200000000000L}, //hp
 //            29,13,20,
             new int[]{37},//map join
             new int[][]{
-                {Skill.KAMEJOKO, 3, 5000},
+                {Skill.KAMEJOKO, 3, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
-                {Skill.KHIEN_NANG_LUONG, 7, 20000},
+                {Skill.KHIEN_NANG_LUONG, 7, 50000},
                 {Skill.THAI_DUONG_HA_SAN, 7, 13000},
                 {Skill.SOCOLA, 7, 10000}},
             //skill
