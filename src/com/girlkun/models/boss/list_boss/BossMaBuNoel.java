@@ -54,7 +54,7 @@ public class BossMaBuNoel extends Boss {
         int randomDo = new Random().nextInt(Manager.itemIds_TL.length);
         int randomNR = new Random().nextInt(NRs.length);
         if (Util.isTrue(2, 10)) {
-            if (Util.isTrue(3, 10)) {
+            if (Util.isTrue(5, 10)) {
                 ItemMap it = new ItemMap(this.zone, 937, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
                         this.location.y - 24), plKill.id);
 
@@ -65,7 +65,7 @@ public class BossMaBuNoel extends Boss {
                 it.options.add(new Item.ItemOption(103, Util.nextInt(40,82)));
                 it.options.add(new Item.ItemOption(5, Util.nextInt(5, 20)));
 
-                if (Util.isTrue(95, 100)) {
+                if (Util.isTrue(99, 100)) {
                     int randomMoth = random.nextInt(30) + 1;
 //               randomMoth
                     it.options.add(new Item.ItemOption(93, randomMoth));
