@@ -1334,7 +1334,7 @@ public class BossesData {
             10000000,//dame
             new long[]{200000000000L}, //hp
 //            29,13,20,
-            new int[]{37},//map join
+            new int[]{37,29,20,33},//map join
             new int[][]{
                 {Skill.KAMEJOKO, 3, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
