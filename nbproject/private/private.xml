@@ -4,7 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/fide/Fide.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/BossesData.java</file>
             <file>file:/C:/xampp/htdocs/GameSource/data/girlkun/girlkun.properties</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/BossMaBuNoel.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/BLACK/BlackGokuBase.java</file>
         </group>
     </open-files>
 </project-private>
