@@ -1167,7 +1167,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{550, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             800000, //dame
-            new long[]{150000000000L}, //hp
+            new long[]{15000000000L}, //hp
             new int[]{92, 93, 94, 96, 97, 98, 99, 100}, //map join
             (int[][]) Util.addArray(FULL_GALICK, FULL_KAMEJOKO), //skill
             new String[]{"|-1|Ta là Sôn Gô Ku",
@@ -1192,7 +1192,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{553, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             1580000, //dame
-            new long[]{100000000000L}, //hp
+            new long[]{10000000000L}, //hp
             new int[]{108, 106, 107}, //map join
             new int[][]{
                 {Skill.THAI_DUONG_HA_SAN, 7, 10000},
@@ -1219,7 +1219,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{553, 880, 881, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             1900000, //dame
-            new long[]{130000000000L}, //hp
+            new long[]{13000000000L}, //hp
             new int[]{108, 106, 107, 109, 110}, //map join
             //            new int[]{14}, //map join
             new int[][]{
@@ -1248,7 +1248,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{433, 904, 905, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             455000, //dame
-            new long[]{175000000000L}, //hp
+            new long[]{20000000000L}, //hp
             new int[]{92, 93, 94, 96, 97, 98, 99, 100}, //map join
             //            new int[]{14}, //map join
 
@@ -1286,7 +1286,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{903, 904, 905, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             1000000, //dame
-            new long[]{170000000000L}, //hp
+            new long[]{5000000000L}, //hp
             new int[]{92, 93, 94, 96, 97, 98, 99, 100}, //map join
             new int[][]{
                 {Skill.DICH_CHUYEN_TUC_THOI, 7, 15000},
@@ -1331,14 +1331,14 @@ public class BossesData {
             "Bư Thích Kẹo",
             ConstPlayer.XAYDA,
             new short[]{950, 951, 952, -1, -1, -1},
-            10000000,//dame
-            new long[]{200000000000L}, //hp
+            300000,//dame
+            new long[]{40000000000L}, //hp
 //            29,13,20,
             new int[]{37,29,20,33},//map join
             new int[][]{
                 {Skill.KAMEJOKO, 3, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
-                {Skill.KHIEN_NANG_LUONG, 7, 50000},
+                {Skill.KHIEN_NANG_LUONG, 4, 20000},
                 {Skill.THAI_DUONG_HA_SAN, 7, 13000},
                 {Skill.SOCOLA, 7, 10000}},
             //skill
@@ -1353,21 +1353,21 @@ public class BossesData {
             "Goku vô cực",
             ConstPlayer.XAYDA,
             new short[]{1231, 1232, 1233, -1, -1, -1},//outfit {head, body, leg, bag, aura, eff}
-            1000000,//dame
+            500000,//dame
             new long[]{2000000000L}, //hp
             new int[]{92,93,94,96,97,98,99,100},//map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
                  {Skill.QUA_CAU_KENH_KHI, 7, 50000},
-                {Skill.KHIEN_NANG_LUONG, 7, 100000},
+                {Skill.KHIEN_NANG_LUONG, 5, 100000},
                 },
             //skill
             new String[]{"|-2|Hahaha Anh đến rồi đây"}, //text chat 1
             new String[]{"|-1|Thấy ảo chưa nè!","|-1|Ta chính là công lí","|-1|Mày là con tép"},//text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                 "|-1|Tobe continue.."}, //text chat 3
-            REST_5_M
+            REST_1_S
     );
      
      public static final BossData BROLY_CLONE = new BossData(
@@ -2060,7 +2060,7 @@ public class BossesData {
             ConstPlayer.TRAI_DAT, //gender
             new short[]{1258, 1259, 1260, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             3000000, //dame
-            new long[]{1000000000000L}, //hp
+            new long[]{5000000000L}, //hp
             new int[]{169}, //map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 1000},

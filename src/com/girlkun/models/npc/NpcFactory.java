@@ -3056,7 +3056,7 @@ public class NpcFactory {
                                     break;
                                 case 7:
                                     createOtherMenu(player, ConstNpc.MENU_CAI_TRANG,
-                                            "Ngươi muốn Tiến Hóa Cải Trang nào hãy chọn bên dưới!","ĐANG ĐIỀU\nCHỈNH LẠI\nNHÉ"
+                                            "Ngươi muốn Tiến Hóa Cải Trang nào hãy chọn bên dưới!","Tiến Hóa\n Cải Trang\n Broly"
                                             , "Đóng");
 //                                    "Nâng Cấp\n Cải Trang", "Cải Trang V2\nBaby Vegeta"
 //                                    , "Cải Trang V3\nBlack Goku", "Cải Trang V4\nBill", "Cải Trang V5\nHearts Gold",
@@ -3075,6 +3075,9 @@ public class NpcFactory {
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_CAI_TRANG) {
                             switch (select) {
+                                  case 0:
+                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CAP_CAI_TRANG_BROLY);
+                                    break;
 //                                case 0:
 //                                    CombineServiceNew.gI().openTabCombine(player, CombineServiceNew.NANG_CAP_CAI_TRANG_SSJ);
 //                                    break;

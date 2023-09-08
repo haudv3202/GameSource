@@ -31,7 +31,7 @@ public class BossNamecPhanDien extends Boss {
 
     @Override
     public void reward(Player plKill) {
-         int[] itemRewardTs = {1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062};
+       int[] itemRewardTs = {1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062};
 
        Random random = new Random();
        int sd = random.nextInt(5000) + 15000;

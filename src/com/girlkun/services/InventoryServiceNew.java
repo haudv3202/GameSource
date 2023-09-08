@@ -349,7 +349,7 @@ public class InventoryServiceNew {
                 index = 6;
                 break;
             case 23:
-               index = 7;
+                index = 7;
                 break;
             case 24:
                 index = 9;
@@ -736,17 +736,16 @@ public class InventoryServiceNew {
             }
         }
 // Gộp vật phẩm x9999
-      if (itemAdd.template.isUpToUp) {
+        if (itemAdd.template.isUpToUp) {
             for (Item it : items) {
                 if (!it.isNotNullItem() || it.template.id != itemAdd.template.id) {
                     continue;
                 }
                 //457-thỏi vàng; 590-bí kiếp
                 if (itemAdd.template.id == 457
-                        ||itemAdd.template.type == 14
-                        ||itemAdd.template.type == 12
-                        ||itemAdd.template.type == 30
-                        
+                        || itemAdd.template.type == 14
+                        || itemAdd.template.type == 12
+                        || itemAdd.template.type == 30
                         || itemAdd.template.id == 380
                         || itemAdd.template.id == 381
                         || itemAdd.template.id == 382
@@ -758,7 +757,6 @@ public class InventoryServiceNew {
                         || itemAdd.template.id == 539
                         || itemAdd.template.id == 540
                         || itemAdd.template.id == 541
-                        
                         || itemAdd.template.id == 579
                         || itemAdd.template.id == 590
                         || itemAdd.template.id == 610
@@ -766,17 +764,17 @@ public class InventoryServiceNew {
                         || itemAdd.template.id == 695
                         || itemAdd.template.id == 696
                         || itemAdd.template.id == 697
-                        || itemAdd.template.id == 698                     
+                        || itemAdd.template.id == 698
                         || itemAdd.template.id == 720
                         || itemAdd.template.id == 722
                         || itemAdd.template.id == 933
                         || itemAdd.template.id == 934
                         || itemAdd.template.id == 935
                         || itemAdd.template.id == 987
-                        || itemAdd.template.id == 1066 
-                        || itemAdd.template.id == 1067 
-                        || itemAdd.template.id == 1068 
-                        || itemAdd.template.id == 1069 
+                        || itemAdd.template.id == 1066
+                        || itemAdd.template.id == 1067
+                        || itemAdd.template.id == 1068
+                        || itemAdd.template.id == 1069
                         || itemAdd.template.id == 1070
                         || itemAdd.template.id == 1071
                         || itemAdd.template.id == 1072
@@ -816,7 +814,16 @@ public class InventoryServiceNew {
                         || itemAdd.template.id == 2047
                         || itemAdd.template.id == 2048
                         || itemAdd.template.id == 2049
-
+                        || itemAdd.template.id == 1329
+                        || itemAdd.template.id == 1330
+                        || itemAdd.template.id == 1331
+                        || itemAdd.template.id == 1332
+                        || itemAdd.template.id == 1333
+                        || itemAdd.template.id == 1334
+                        || itemAdd.template.id == 1335
+                        || itemAdd.template.id == 1336
+                        || itemAdd.template.id == 1338
+                        || itemAdd.template.id == 1339
                         || itemAdd.template.id == 541) {
                     it.quantity += itemAdd.quantity;
                     itemAdd.quantity = 0;
@@ -887,6 +894,7 @@ public class InventoryServiceNew {
         }
         return count;
     }
+
     public byte getIndexBag(Player pl, Item it) {
         for (byte i = 0; i < pl.inventory.itemsBag.size(); ++i) {
             Item item = pl.inventory.itemsBag.get(i);
@@ -896,6 +904,7 @@ public class InventoryServiceNew {
         }
         return -1;
     }
+
     public boolean finditemWoodChest(Player player) {
         for (Item item : player.inventory.itemsBag) {
             if (item.isNotNullItem() && item.template.id == 570) {

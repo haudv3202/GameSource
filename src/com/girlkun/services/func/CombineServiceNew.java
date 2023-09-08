@@ -70,6 +70,7 @@ public class CombineServiceNew {
 //    public static final int DOI_KIEM_THAN = 508;
 //    public static final int OPTION_PORATA = 508;
 
+    public static final int NANG_CAP_CAI_TRANG_BROLY = 2153;
     public static final int PS_HOA_TRANG_BI = 2150;
     public static final int TAY_PS_HOA_TRANG_BI = 2151;
     public static final int NANG_CAP_CAI_TRANG_SSJ = 2149;
@@ -1654,6 +1655,61 @@ public class CombineServiceNew {
                 }
                 break;
                 
+            case NANG_CAP_CAI_TRANG_BROLY:
+                if (player.combineNew.itemsCombine.size() == 2) {
+                    Item caitrang = null;
+                    Item dangusac = null;
+
+                    for (Item item : player.combineNew.itemsCombine) {
+                        if (item.template.id == 1214) {
+                            caitrang = item;
+                        } else if (item.template.id == 674) {
+                            dangusac = item;
+                        }
+                    }
+                    int level = 0;
+                Item.ItemOption optionLevel = null;
+                for (Item.ItemOption io : caitrang.itemOptions) {
+                    if (io.optionTemplate.id == 72) {
+                        level = io.param;
+                        optionLevel = io;
+                        break;
+                    }
+                }
+                    if (caitrang != null && dangusac != null && level < 10) {
+
+                        player.combineNew.goldCombine = getGoldNCCaiTrang(level);
+                        player.combineNew.gemCombine = getGemNangCaiTrang(level);;
+                        player.combineNew.ratioCombine = getRatioNCCaiTrang(level);
+                        player.combineNew.ratioCombine2 = getRatioNCCaiTrang2(level);
+                        player.combineNew.ratioCombine3 = getRatioNCCaiTrang3(level);
+                        player.combineNew.ratioCombine4 = getRatioNCCaiTrang4(level);
+                        player.combineNew.ratioCombine5 = getRatioNCCaiTrang5(level);
+                        
+
+                        String npcSay = "Nâng Cấp Cải Trang" + "\n|2|";
+                        for (Item.ItemOption io : caitrang.itemOptions) {
+                            npcSay += io.getOptionString() + "\n";
+                        }
+                        npcSay += "|7|Tỉ lệ thành công: " + player.combineNew.ratioCombine + "%" + "\n";
+                        if (player.combineNew.goldCombine <= player.inventory.gold) {
+                            npcSay += "|1|Cần " + getDaNangCap(level) + " Đá ngũ sắc";
+                            baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE, npcSay,
+                                    "Nâng cấp\ncần " + player.combineNew.gemCombine + " ngọc");
+                        } else {
+                            npcSay += "Cần " + getDaNangCap(level) + " Đá ngũ sắc ";
+                            baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, npcSay, "Đóng");
+                        }
+                    } else if ( level >= 10) {
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                                "Đã Nâng Cấp Tối Đa Cải Trang", "Đóng");
+                    }
+                } else {
+                    this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU,
+                             "Cần 1 Cải Trang, Đá Ngũ Sắc", "Đóng");
+                }
+                break;
+                
                 
             case TIEN_HOA_CAI_TRANG_BABY_VEGETA:
                 if (player.combineNew.itemsCombine.size() == 2) {
@@ -1674,6 +1730,7 @@ public class CombineServiceNew {
                         level = io.param;
                         optionLevel = io;
                         break;
+                        
                     }
                 }
                     if (caitrang != null && dangusac != null && level == 10) {
@@ -1908,6 +1965,10 @@ public class CombineServiceNew {
                 break;
             case NANG_CAP_CAI_TRANG_SSJ:
                 NangCapCaiTrangSSJ(player);
+                break;
+                
+            case NANG_CAP_CAI_TRANG_BROLY:
+                NangCapCaiTrangBroly(player);
                 break;
             case TIEN_HOA_CAI_TRANG_BABY_VEGETA:
                 Tienhoacaitrangbaby(player);
@@ -4944,7 +5005,218 @@ public class CombineServiceNew {
             }
         
     }}
+    private void NangCapCaiTrangBroly(Player player) {
+            if (player.combineNew.itemsCombine.size() == 2) {
+                int gold = player.combineNew.goldCombine;
+                if (player.inventory.gold < gold) {
+                    Service.gI().sendThongBao(player, "Không đủ vàng để thực hiện");
+                    return;
+                }
+                int gem = player.combineNew.gemCombine;
+                if (player.inventory.gem < gem) {
+                    Service.gI().sendThongBao(player, "Không đủ ngọc để thực hiện");
+                    return;
+                }
+                Item caitrang = null;
+                Item dangusac = null;
 
+                for (Item item : player.combineNew.itemsCombine) {
+                    if (item.template.id == 1214) {
+                        caitrang = item;
+                    } else if (item.template.id == 674) {
+                        dangusac = item;
+                    }
+                }
+                int level = 0;
+                    Item.ItemOption optionLevel = null;
+                    for (Item.ItemOption io : caitrang.itemOptions) {
+                        if (io.optionTemplate.id == 72) {
+                            level = io.param;
+                            optionLevel = io;
+                            break;
+                        }
+                    }
+                int hp = 0;
+                    Item.ItemOption optionhp = null;
+                    for (Item.ItemOption io : caitrang.itemOptions) {
+                        if (io.optionTemplate.id == 77) {
+                            hp = io.param;
+                            optionhp = io;
+                            break;
+                        }
+                    }
+                int ki = 0;
+                    Item.ItemOption optionki = null;
+                    for (Item.ItemOption io : caitrang.itemOptions) {
+                        if (io.optionTemplate.id == 103) {
+                            ki = io.param;
+                            optionki = io;
+                            break;
+                        }
+                    }
+                int sd = 0;
+                    Item.ItemOption optionsd = null;
+                    for (Item.ItemOption io : caitrang.itemOptions) {
+                        if (io.optionTemplate.id == 50) {
+                            sd = io.param;
+                            optionsd = io;
+                            break;
+                        }
+                    }
+                 int crit = 0;
+                    Item.ItemOption optioncrit = null;
+                    for (Item.ItemOption io : caitrang.itemOptions) {
+                        if (io.optionTemplate.id == 14) {
+                            crit = io.param;
+                            optioncrit = io;
+                            break;
+                        }
+                    }
+                int sdcrit = 0;
+                    Item.ItemOption optionsdcrit = null;
+                    for (Item.ItemOption io : caitrang.itemOptions) {
+                        if (io.optionTemplate.id == 5) {
+                            sdcrit = io.param;
+                            optionsdcrit = io;
+                            break;
+                        }
+                    }
+                if (caitrang.template.id == 1214 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+                    player.inventory.gold -= gold;
+                    player.inventory.gem -= gem;
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+                    if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
+
+                        if (optionLevel == null) {
+                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
+                       } else  {
+                           optionLevel.param++;
+                       }
+                            optionhp.param += Util.nextInt(10, 11);
+                            optionki.param += Util.nextInt(10, 11);
+                            optionsd.param += Util.nextInt(10, 11);
+                            optioncrit.param += 2;
+                            optionsdcrit.param += Util.nextInt(6, 7);                  
+                        sendEffectSuccessCombine(player);
+                    }                   
+                    else {
+                        sendEffectFailCombine(player);
+                    }
+                    InventoryServiceNew.gI().sendItemBags(player);
+                    Service.gI().sendMoney(player);
+                    reOpenItemCombine(player);
+
+                }
+                else if (caitrang.template.id == 1216 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+                    player.inventory.gold -= gold;
+                    player.inventory.gem -= gem;
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+                    if (Util.isTrue(player.combineNew.ratioCombine2, 100)) {
+
+                        if (optionLevel == null) {
+                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
+                       } else  {
+                           optionLevel.param++;
+                       }
+                            optionhp.param += Util.nextInt(12, 14);
+                            optionki.param += Util.nextInt(12, 14);
+                            optionsd.param += Util.nextInt(12, 14);
+                            optioncrit.param += 3;
+                            optionsdcrit.param += Util.nextInt(8, 10);                  
+                        sendEffectSuccessCombine(player);
+                    }                   
+                    else {
+                        sendEffectFailCombine(player);
+                    }
+                    InventoryServiceNew.gI().sendItemBags(player);
+                    Service.gI().sendMoney(player);
+                    reOpenItemCombine(player);
+
+                }
+                else if (caitrang.template.id == 1280 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+                    player.inventory.gold -= gold;
+                    player.inventory.gem -= gem;
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+                    if (Util.isTrue(player.combineNew.ratioCombine3, 100)) {
+
+                        if (optionLevel == null) {
+                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
+                       } else  {
+                           optionLevel.param++;
+                       }
+                            optionhp.param += Util.nextInt(15, 18);
+                            optionki.param += Util.nextInt(15, 18);
+                            optionsd.param += Util.nextInt(15, 18);
+                            optioncrit.param += 4;
+                            optionsdcrit.param += Util.nextInt(11, 14);                   
+                        sendEffectSuccessCombine(player);
+                    }                   
+                    else {
+                        sendEffectFailCombine(player);
+                    }
+                    InventoryServiceNew.gI().sendItemBags(player);
+                    Service.gI().sendMoney(player);
+                    reOpenItemCombine(player);
+
+                }
+                else if (caitrang.template.id == 2008 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+                    player.inventory.gold -= gold;
+                    player.inventory.gem -= gem;
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+                    if (Util.isTrue(player.combineNew.ratioCombine4, 100)) {
+
+                        if (optionLevel == null) {
+                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
+                       } else  {
+                           optionLevel.param++;
+                       }
+                            optionhp.param += Util.nextInt(19, 23);
+                            optionki.param += Util.nextInt(19, 23);
+                            optionsd.param += Util.nextInt(19, 23);
+                            optioncrit.param += 5;
+                            optionsdcrit.param += Util.nextInt(15, 19);                  
+                        sendEffectSuccessCombine(player);
+                    }                   
+                    else {
+                        sendEffectFailCombine(player);
+                    }
+                    InventoryServiceNew.gI().sendItemBags(player);
+                    Service.gI().sendMoney(player);
+                    reOpenItemCombine(player);
+
+                }
+                else if (caitrang.template.id == 1208 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+                    player.inventory.gold -= gold;
+                    player.inventory.gem -= gem;
+                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+                    if (Util.isTrue(player.combineNew.ratioCombine5, 100)) {
+
+                        if (optionLevel == null) {
+                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
+                       } else  {
+                           optionLevel.param++;
+                       }
+                            optionhp.param += Util.nextInt(25, 30);
+                            optionki.param += Util.nextInt(25, 30);
+                            optionsd.param += Util.nextInt(25, 30);
+                            optioncrit.param += 5;
+                            optionsdcrit.param += Util.nextInt(20, 25);                   
+                        sendEffectSuccessCombine(player);
+                    }                   
+                    else {
+                        sendEffectFailCombine(player);
+                    }
+                    InventoryServiceNew.gI().sendItemBags(player);
+                    Service.gI().sendMoney(player);
+                    reOpenItemCombine(player);
+
+                }
+                else{
+                    Service.gI().sendThongBao(player, "Không đủ đá ngũ sắc");
+                    return;
+                }
+
+        }}
     //--------------------------------------------------------------------------
 
     /**r
@@ -6214,7 +6486,8 @@ private int getGoldNCCaiTrang(int level) {
                 return "Ta sẽ phù phép\ncho Cải Trang của ngươi\nthêm sức mạnh";
             case TIEN_HOA_CAI_TRANG_BABY_VEGETA:
                 return "Ta sẽ phù phép\nTiến Hóa cải trang của ngươi mạnh hơn";
-                
+            case NANG_CAP_CAI_TRANG_BROLY:
+                return "Ta sẽ phù phép\ncho Cải Trang của ngươi\nthêm sức mạnh";
             case CHE_TAO_TRANG_BI_TS:
                 return "Chế tạo\ntrang bị thiên sứ";
             case DOI_SKH_THANH_DNS:
@@ -6278,7 +6551,8 @@ private int getGoldNCCaiTrang(int level) {
                 return "Vào hành trang\nChọn Cải Trang GoHan SSJ5\nSau đó chọn 'Nâng cấp'"; 
             case TIEN_HOA_CAI_TRANG_BABY_VEGETA:
                 return "Vào hành trang\nChọn Cải Trang GoHan SSJ5 +10\n Chọn tiếp 500 Đá Ngũ Sắc\nSau đó chọn 'Tiến Hóa'"; 
-           
+           case NANG_CAP_CAI_TRANG_BROLY:
+                 return "Vào hành trang\nChọn Cải Trang Broly\nSau đó chọn 'Nâng cấp'"; 
             case DOI_SKH_THANH_DNS:
                 return "Cần 2 món sét kích hoạt bất kỳ"
                         + "Sau đó chọn 'Nâng cấp'";

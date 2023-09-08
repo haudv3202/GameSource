@@ -53,7 +53,7 @@ public class BossMaBuNoel extends Boss {
         int[] NRs = new int[]{15, 16};
         int randomDo = new Random().nextInt(Manager.itemIds_TL.length);
         int randomNR = new Random().nextInt(NRs.length);
-        if (Util.isTrue(2, 10)) {
+        if (Util.isTrue(5, 10)) {
             if (Util.isTrue(5, 10)) {
                 ItemMap it = new ItemMap(this.zone, 937, 1, this.location.x, this.zone.map.yPhysicInTop(this.location.x,
                         this.location.y - 24), plKill.id);

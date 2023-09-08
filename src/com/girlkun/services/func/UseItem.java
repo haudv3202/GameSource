@@ -245,10 +245,12 @@ public class UseItem {
                 default:
                     switch (item.template.id) {
                         case 457:
-                            pl.inventory.gold += 500000000;
-                            Service.getInstance().sendMoney(pl);
-                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
-                            InventoryServiceNew.gI().sendItemBags(pl);
+                             pl.inventory.gold += 500000000;
+                                Service.getInstance().sendMoney(pl);
+                                InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                                InventoryServiceNew.gI().sendItemBags(pl);
+                            
+
                             break;
                         case 1244:
                             if (pl.inventory.gold >= LIMIT_GOLD) {
@@ -262,11 +264,17 @@ public class UseItem {
                                 break;
                             }
                         case 1245:
-                            pl.nPoint.power += 10000000000L;
-                            pl.nPoint.tiemNang += 10000000000L;
-                            Service.getInstance().sendMoney(pl);
-                            InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
-                            InventoryServiceNew.gI().sendItemBags(pl);
+                            long sucmanh = pl.nPoint.power;
+                            if (sucmanh >= 100000000000L) {
+                                   pl.nPoint.power += 10000000000L;
+                                    pl.nPoint.tiemNang += 10000000000L;
+                                    Service.getInstance().sendMoney(pl);
+                                    InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+                                    InventoryServiceNew.gI().sendItemBags(pl);
+                            } else {
+                                Service.getInstance().sendThongBao(pl, "Yêu cầu sức mạnh trên 100 tỉ");
+                            }
+                        
                             break;
                         case 1132:
                             pl.inventory.ruby += 10000;
@@ -680,7 +688,7 @@ public class UseItem {
 
     private void openHopQua(Player pl, Item item) {
         if (InventoryServiceNew.gI().getCountEmptyBag(pl) > 0) {
-            short[] temp = {76, 188, 189, 190, 1335, 1336, 1338,1339,1339,1214};
+            short[] temp = {76, 188, 189, 190, 1335, 1336, 1338, 1339, 1339, 1214};
             int[][] gold = {{500000000, 2000000000}};
             byte index = (byte) Util.nextInt(0, temp.length - 1);
             short[] icon = new short[2];
@@ -698,14 +706,14 @@ public class UseItem {
                 it.itemOptions.add(new ItemOption(73, 0));
                 InventoryServiceNew.gI().addItemBag(pl, it);
                 icon[1] = it.template.iconID;
-                 Service.getInstance().sendThongBao(pl, "Chúc mừng bạn vừa nhận vật phẩm cường hóa cấp cao");
-            } else if (index <= 8) { 
-             Item mv = ItemService.gI().createNewItem(temp[index]);
+                Service.getInstance().sendThongBao(pl, "Chúc mừng bạn vừa nhận vật phẩm cường hóa cấp cao");
+            } else if (index <= 8) {
+                Item mv = ItemService.gI().createNewItem(temp[index]);
                 mv.itemOptions.add(new ItemOption(73, 0));
                 InventoryServiceNew.gI().addItemBag(pl, mv);
                 icon[1] = mv.template.iconID;
                 Service.getInstance().sendThongBao(pl, "Chúc mừng bạn vừa nhận được vật phẩm mảnh vỡ ngọc rồng");
-            }else {
+            } else {
                 Item caitrangEvent = ItemService.gI().createNewItem(temp[index]);
                 Random random = new Random();
                 int sd = random.nextInt(41) + 40;

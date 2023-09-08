@@ -21,7 +21,7 @@ public class Spider extends Boss {
     @Override
     public void reward(Player plKill) {
         int[] NL = new int[]{1250,1232};
-        int[] VPRen = new int[]{1259,1266};
+        int[] VPRen = new int[]{1259,1266,1252};
         int randomNL = new Random().nextInt(NL.length);
         int randomVPRen = new Random().nextInt(VPRen.length);
         if (Util.isTrue(30, 100)) {
