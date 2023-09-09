@@ -34,13 +34,13 @@ public class Mabu extends Boss {
         int[] itemDos = new int[]{2028};
         int randomDo = new Random().nextInt(itemDos.length);
         int randomNR = new Random().nextInt(Manager.itemIds_NR_SB.length);
-        if (Util.isTrue(100, 100)) {
-            if (Util.isTrue(50, 50)) {
+        if (Util.isTrue(5, 10)) {
+            if (Util.isTrue(5, 10)) {
                 Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, 1132, 1, this.location.x, this.location.y, plKill.id));
                 return;
             }
             Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, itemDos[randomDo], 1, this.location.x, this.location.y, plKill.id));
-        } else  if (Util.isTrue(0, 100)){
+        } else  if (Util.isTrue(50, 100)){
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, Manager.itemIds_NR_SB[randomNR], 1, this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         }
         TaskService.gI().checkDoneTaskKillBoss(plKill, this);
