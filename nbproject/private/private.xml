@@ -4,10 +4,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/fide/Fide.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/BossesData.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/data/girlkun/girlkun.properties</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/player/EffectFlagBag.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/consts/ConstNpc.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/InventoryServiceNew.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/func/Trade.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/android/SuperAndroid17.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/mob/Mob.java</file>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/BossMaBuNoel.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/Service.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/func/UseItem.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/RewardService.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/PlayerService.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/PetService.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/player/Pet.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/utils/Util.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/data/girlkun/girlkun.properties</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/GoJo.java</file>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/BLACK/BlackGokuBase.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/map/Zone.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/player/CPoint.java</file>
         </group>
     </open-files>
 </project-private>

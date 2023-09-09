@@ -61,7 +61,7 @@ public class gokuvocuc extends Boss {
                     it.options.add(new Item.ItemOption(5, sdcm));
                     it.options.add(new Item.ItemOption(209, 0));
                 } else if (selectedNumber >= 1054 && selectedNumber <= 1056) {
-                    it.options.add(new Item.ItemOption(0, hp));
+                    it.options.add(new Item.ItemOption(0, sd));
                     it.options.add(new Item.ItemOption(5, sdcm));
                     it.options.add(new Item.ItemOption(209, 0));
                 } else if (selectedNumber >= 1057 && selectedNumber <= 1059) {
@@ -69,7 +69,7 @@ public class gokuvocuc extends Boss {
                     it.options.add(new Item.ItemOption(5, sdcm));
                     it.options.add(new Item.ItemOption(209, 0));
                 } else if (selectedNumber >= 1060 && selectedNumber <= 1062) {
-                    it.options.add(new Item.ItemOption(14, ki));
+                    it.options.add(new Item.ItemOption(14, cm));
                     it.options.add(new Item.ItemOption(5, sdcm));
                     it.options.add(new Item.ItemOption(209, 0));
                 }
