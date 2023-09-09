@@ -1367,7 +1367,7 @@ public class BossesData {
             new String[]{"|-1|Thấy ảo chưa nè!","|-1|Ta chính là công lí","|-1|Mày là con tép"},//text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                 "|-1|Tobe continue.."}, //text chat 3
-            REST_1_S
+            REST_2_M
     );
      
      public static final BossData BROLY_CLONE = new BossData(
