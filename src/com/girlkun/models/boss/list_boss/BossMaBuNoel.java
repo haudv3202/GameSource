@@ -60,9 +60,9 @@ public class BossMaBuNoel extends Boss {
 
                 Random random = new Random();
 
-                it.options.add(new Item.ItemOption(49, Util.nextInt(40,82)));
-                it.options.add(new Item.ItemOption(77, Util.nextInt(40,82)));
-                it.options.add(new Item.ItemOption(103, Util.nextInt(40,82)));
+                it.options.add(new Item.ItemOption(49, Util.nextInt(20,42)));
+                it.options.add(new Item.ItemOption(77, Util.nextInt(20,42)));
+                it.options.add(new Item.ItemOption(103, Util.nextInt(20,42)));
                 it.options.add(new Item.ItemOption(5, Util.nextInt(5, 20)));
 
                 if (Util.isTrue(99, 100)) {

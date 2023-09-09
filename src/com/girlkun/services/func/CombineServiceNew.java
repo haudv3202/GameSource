@@ -36,9 +36,9 @@ public class CombineServiceNew {
 
     private static final int TIME_COMBINE = 1500;
 
-    private static final byte MAX_STAR_ITEM = 16;
-    private static final byte MAX_STAR_ITEM_TC1 = 17;
-    private static final byte MAX_LEVEL_ITEM = 16;
+    private static final byte MAX_STAR_ITEM = 8;
+    private static final byte MAX_STAR_ITEM_TC1 = 9;
+    private static final byte MAX_LEVEL_ITEM = 8;
 
     private static final byte OPEN_TAB_COMBINE = 0;
     private static final byte REOPEN_TAB_COMBINE = 1;
@@ -811,7 +811,7 @@ public class CombineServiceNew {
                             }
                         }
                         npcSay += "|2|Sau khi nâng cấp sẽ xoá hết các chỉ số pháp sư ngẫu nhiên \n|7|"
-                                + "\n|7|Tỉ lệ thành công: " + player.combineNew.ratioCombine + "%\n"
+                                +  "\n"
                                 + "Cần " + Util.numberToMoney(COST) + " vàng";
 
                         this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
@@ -847,7 +847,7 @@ public class CombineServiceNew {
                         if (itemHacHoa != null) {
                             for (ItemOption itopt : itemHacHoa.itemOptions) {
                                 if (itopt.optionTemplate.id == 223) {
-                                    if (itopt.param >= 8) {
+                                    if (itopt.param >= 7) {
                                         Service.getInstance().sendThongBao(player, "Trang bị đã đạt tới giới hạn pháp sư");
                                         return;
                                     }
@@ -861,8 +861,8 @@ public class CombineServiceNew {
                             }
                         }
                         npcSay += "|2|Sau khi nâng cấp sẽ cộng 1 chỉ số pháp sư ngẫu nhiên \n|7|"
-                                + "\n|7|Tỉ lệ thành công: " + player.combineNew.ratioCombine + "%\n"
-                                + "Cần " + Util.numberToMoney(COST) + " vàng " + "\nCần" + Util.numberToMoney(RUBY) + "Hồng ngọc" ;
+                                + "\n|7|Tỉ lệ thành công: " + 30 + "%\n"
+                                + "Cần " + Util.numberToMoney(COST) + " vàng " + "\nCần" + Util.numberToMoney(RUBY) + " Hồng ngọc" ;
 
                         this.baHatMit.createOtherMenu(player, ConstNpc.MENU_START_COMBINE,
                                 npcSay, "Nâng cấp", "Từ chối");
@@ -1599,13 +1599,15 @@ public class CombineServiceNew {
                 if (player.combineNew.itemsCombine.size() == 2) {
                     Item caitrang = null;
                     Item dangusac = null;
-
+// ||item.template.id == 1216
+//                          ||item.template.id == 1280
+//                          ||item.template.id == 1208
+//                          ||item.template.id == 2008
+//         item.template.id == 1192
+//                                ||
                     for (Item item : player.combineNew.itemsCombine) {
-                        if (item.template.id == 1192
-                          ||item.template.id == 1216
-                          ||item.template.id == 1280
-                          ||item.template.id == 1208
-                          ||item.template.id == 2008) {
+                        if ( item.template.id == 1214
+                         ) {
                             caitrang = item;
                         } else if (item.template.id == 674) {
                             dangusac = item;
@@ -2274,7 +2276,7 @@ public class CombineServiceNew {
                         break;
                     }
                 }
-                if (Util.isTrue(100, 100)) {
+                if (Util.isTrue(50, 100)) {
                     if (player.inventory.ruby < 100000){
                         Service.getInstance().sendThongBao(player, "Điêu Khắc Chỉ Số vào Đá tốn 100K Hồng Ngọc");
                         return;
@@ -2865,10 +2867,10 @@ public class CombineServiceNew {
                         InventoryServiceNew.gI().subQuantityItemsBag(player, ngocboi1, 1);
                         
                         Item item = ItemService.gI().createNewItem((short) 1253);
-                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 20));
-                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 20));
-                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 20));
-                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 10));
+                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 3));
+                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 3));
+                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 3));
+                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 1));
                         item.itemOptions.add(new Item.ItemOption(107, level1_107));
                         item.itemOptions.add(new Item.ItemOption(102, level1_102));
                         
@@ -2900,10 +2902,10 @@ public class CombineServiceNew {
                         InventoryServiceNew.gI().subQuantityItemsBag(player, ngocboi1, 1);
                         
                         Item item = ItemService.gI().createNewItem((short) 1254);
-                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 30));
-                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 30));
-                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 30));
-                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 15));
+                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 4));
+                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 4));
+                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 4));
+                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 2));
                         item.itemOptions.add(new Item.ItemOption(107, level1_107));
                         item.itemOptions.add(new Item.ItemOption(102, level1_102));
                         
@@ -2934,10 +2936,10 @@ public class CombineServiceNew {
                         InventoryServiceNew.gI().subQuantityItemsBag(player, ngocboi1, 1);
                         
                         Item item = ItemService.gI().createNewItem((short) 1255);
-                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 45));
-                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 45));
-                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 45));
-                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 20));
+                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 5));
+                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 5));
+                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 5));
+                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 4));
                         item.itemOptions.add(new Item.ItemOption(107, level1_107));
                         item.itemOptions.add(new Item.ItemOption(102, level1_102));
                         
@@ -2967,10 +2969,10 @@ public class CombineServiceNew {
                         InventoryServiceNew.gI().subQuantityItemsBag(player, ngocboi1, 1);
                         
                         Item item = ItemService.gI().createNewItem((short) 1256);
-                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 70));
-                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 70));
-                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 70));
-                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 35));
+                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 6));
+                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 6));
+                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 6));
+                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 4));
                         item.itemOptions.add(new Item.ItemOption(107, level1_107));
                         item.itemOptions.add(new Item.ItemOption(102, level1_102));
                         
@@ -3001,10 +3003,10 @@ public class CombineServiceNew {
                         InventoryServiceNew.gI().subQuantityItemsBag(player, ngocboi1, 1);
                         
                         Item item = ItemService.gI().createNewItem((short) 1257);
-                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 100));
-                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 100));
-                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 100));
-                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 50));
+                        item.itemOptions.add(new Item.ItemOption(50, level1_1 + 7));
+                        item.itemOptions.add(new Item.ItemOption(77, level1_2 + 7));
+                        item.itemOptions.add(new Item.ItemOption(103, level1_3 + 7));
+                        item.itemOptions.add(new Item.ItemOption(5, level1_4 + 5));
                         item.itemOptions.add(new Item.ItemOption(107, level1_107));
                         item.itemOptions.add(new Item.ItemOption(102, level1_102));
                         
@@ -3114,13 +3116,13 @@ public class CombineServiceNew {
                             Trangbi.itemOptions.add(new ItemOption(198, 5));                        
                         } else if (Util.isTrue(30, 100)){
                             Trangbi.itemOptions.add(new ItemOption(195, 1));
-                            Trangbi.itemOptions.add(new ItemOption(199, 10));                        
+                            Trangbi.itemOptions.add(new ItemOption(199, 7));                        
                         } else if (Util.isTrue(20, 100)){
                             Trangbi.itemOptions.add(new ItemOption(196, 1));
-                            Trangbi.itemOptions.add(new ItemOption(200, 15));                        
+                            Trangbi.itemOptions.add(new ItemOption(200, 10));                        
                         } else {
                             Trangbi.itemOptions.add(new ItemOption(197, 1));
-                            Trangbi.itemOptions.add(new ItemOption(201, 20));                        
+                            Trangbi.itemOptions.add(new ItemOption(201, 12));                        
                         }
                         InventoryServiceNew.gI().subQuantityItemsBag(player, DaBV, 100);
                         InventoryServiceNew.gI().subQuantityItemsBag(player, LuaThan, 100);
@@ -3176,7 +3178,7 @@ public class CombineServiceNew {
             if (trangBiHacHoa != null) {
                 for (ItemOption itopt : trangBiHacHoa.itemOptions) {
                     if (itopt.optionTemplate.id == 223) {
-                        if (itopt.param >= 8) {
+                        if (itopt.param >= 7) {
                             Service.getInstance().sendThongBao(player, "Trang bị đã đạt tới giới hạn pháp sư");
                             return;
                         }
@@ -3184,7 +3186,7 @@ public class CombineServiceNew {
                 }
             }
 
-            if (Util.isTrue(100, 100)) {
+            if (Util.isTrue(30, 100)) {
                 sendEffectSuccessCombine(player);
                 List<Integer> idOptionHacHoa = Arrays.asList(219, 220, 221, 222);
                 int randomOption = idOptionHacHoa.get(Util.nextInt(0, 3));
@@ -3199,11 +3201,11 @@ public class CombineServiceNew {
                     }
                 }
                 if (!trangBiHacHoa.haveOption(randomOption)) {
-                    trangBiHacHoa.itemOptions.add(new ItemOption(randomOption, Util.nextInt(5,10)));
+                    trangBiHacHoa.itemOptions.add(new ItemOption(randomOption, Util.nextInt(1,3)));
                 } else {
                     for (ItemOption itopt : trangBiHacHoa.itemOptions) {
                         if (itopt.optionTemplate.id == randomOption) {
-                            itopt.param += Util.nextInt(5,10);
+                            itopt.param += Util.nextInt(1,3);
                             break;
                         }
                     }
@@ -3213,7 +3215,7 @@ public class CombineServiceNew {
             } else {
                 sendEffectFailCombine(player);
             }
-            InventoryServiceNew.gI().subQuantityItemsBag(player, daHacHoa, 1);
+            InventoryServiceNew.gI().subQuantityItemsBag(player, daHacHoa, 20);
             InventoryServiceNew.gI().sendItemBags(player);
             Service.getInstance().sendMoney(player);
             player.combineNew.itemsCombine.clear();
@@ -3289,7 +3291,7 @@ public class CombineServiceNew {
                     }
                 }
         
-                    if (level_203 >= 10) {
+                    if (level_203 >= 7) {
                         Service.getInstance().sendThongBao(player, "Trang Bị Đã Tinh Luyện Tối Đa");
                         return;                  
                     }
@@ -3305,7 +3307,7 @@ public class CombineServiceNew {
                     }
 
                     
-                    if (Util.isTrue(100, 100)) {                
+                    if (Util.isTrue(30, 100)) {                
                         if ( TBTinhAn != null && optionLevel_34 != null ){
                                 if (ManhTinhAn.quantity >=10 && LuaThan.quantity >=100 && VinhDu.quantity >=20 && DaTinhLuyen.quantity >=1) {
 //                                        sendEffectFailCombine(player);
@@ -4803,9 +4805,253 @@ public class CombineServiceNew {
             }
             Item caitrang = null;
             Item dangusac = null;
+//            item.template.id == 1192
+// ||item.template.id == 1216
+//                          ||item.template.id == 1280
+//                          ||item.template.id == 1208
+//                          ||item.template.id == 2008
+            for (Item item : player.combineNew.itemsCombine) {
+                if (item.template.id == 1214) {
+                    caitrang = item;
+                } else if (item.template.id == 674) {
+                    dangusac = item;
+                }
+            }
+            int level = 0;
+                Item.ItemOption optionLevel = null;
+                for (Item.ItemOption io : caitrang.itemOptions) {
+                    if (io.optionTemplate.id == 72) {
+                        level = io.param;
+                        optionLevel = io;
+                        break;
+                    }
+                }
+            int hp = 0;
+                Item.ItemOption optionhp = null;
+                for (Item.ItemOption io : caitrang.itemOptions) {
+                    if (io.optionTemplate.id == 77) {
+                        hp = io.param;
+                        optionhp = io;
+                        break;
+                    }
+                }
+            int ki = 0;
+                Item.ItemOption optionki = null;
+                for (Item.ItemOption io : caitrang.itemOptions) {
+                    if (io.optionTemplate.id == 103) {
+                        ki = io.param;
+                        optionki = io;
+                        break;
+                    }
+                }
+            int sd = 0;
+                Item.ItemOption optionsd = null;
+                for (Item.ItemOption io : caitrang.itemOptions) {
+                    if (io.optionTemplate.id == 49) {
+                        sd = io.param;
+                        optionsd = io;
+                        break;
+                    }
+                }
+//             int crit = 0;
+//                Item.ItemOption optioncrit = null;
+//                for (Item.ItemOption io : caitrang.itemOptions) {
+//                    if (io.optionTemplate.id == 14) {
+//                        crit = io.param;
+//                        optioncrit = io;
+//                        break;
+//                    }
+//                }
+//            int sdcrit = 0;
+//                Item.ItemOption optionsdcrit = null;
+//                for (Item.ItemOption io : caitrang.itemOptions) {
+//                    if (io.optionTemplate.id == 5) {
+//                        sdcrit = io.param;
+//                        optionsdcrit = io;
+//                        break;
+//                    }
+//                }
+                
+                if (caitrang.template.id == 1214 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+                player.inventory.gold -= gold;
+                player.inventory.gem -= gem;
+                InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+                if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
+ 
+                    if (optionLevel == null) {
+                       caitrang.itemOptions.add(new Item.ItemOption(72,1));
+                   } else  {
+                       optionLevel.param++;
+                   }
+                        optionhp.param += Util.nextInt(1, 4);
+                        optionki.param += Util.nextInt(1, 4);
+                        optionsd.param += Util.nextInt(1, 4);
+//                        optioncrit.param += 2;
+//                        optionsdcrit.param += Util.nextInt(6, 7);                  
+                    sendEffectSuccessCombine(player);
+                }                   
+                else {
+                    sendEffectFailCombine(player);
+                }
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendMoney(player);
+                reOpenItemCombine(player);
+                 
+            }
+//                else if (caitrang.template.id == 1192 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+//                player.inventory.gold -= gold;
+//                player.inventory.gem -= gem;
+//                InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+//                if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
+// 
+//                    if (optionLevel == null) {
+//                       caitrang.itemOptions.add(new Item.ItemOption(72,1));
+//                   } else  {
+//                       optionLevel.param++;
+//                   }
+//                        optionhp.param += Util.nextInt(10, 11);
+//                        optionki.param += Util.nextInt(10, 11);
+//                        optionsd.param += Util.nextInt(10, 11);
+//                        optioncrit.param += 2;
+//                        optionsdcrit.param += Util.nextInt(6, 7);                  
+//                    sendEffectSuccessCombine(player);
+//                }                   
+//                else {
+//                    sendEffectFailCombine(player);
+//                }
+//                InventoryServiceNew.gI().sendItemBags(player);
+//                Service.gI().sendMoney(player);
+//                reOpenItemCombine(player);
+//                 
+//            }
+//            else if (caitrang.template.id == 1216 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+//                player.inventory.gold -= gold;
+//                player.inventory.gem -= gem;
+//                InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+//                if (Util.isTrue(player.combineNew.ratioCombine2, 100)) {
+// 
+//                    if (optionLevel == null) {
+//                       caitrang.itemOptions.add(new Item.ItemOption(72,1));
+//                   } else  {
+//                       optionLevel.param++;
+//                   }
+//                        optionhp.param += Util.nextInt(12, 14);
+//                        optionki.param += Util.nextInt(12, 14);
+//                        optionsd.param += Util.nextInt(12, 14);
+////                        optioncrit.param += 3;
+////                        optionsdcrit.param += Util.nextInt(8, 10);                  
+//                    sendEffectSuccessCombine(player);
+//                }                   
+//                else {
+//                    sendEffectFailCombine(player);
+//                }
+//                InventoryServiceNew.gI().sendItemBags(player);
+//                Service.gI().sendMoney(player);
+//                reOpenItemCombine(player);
+//                 
+//            }
+//            else if (caitrang.template.id == 1280 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+//                player.inventory.gold -= gold;
+//                player.inventory.gem -= gem;
+//                InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+//                if (Util.isTrue(player.combineNew.ratioCombine3, 100)) {
+// 
+//                    if (optionLevel == null) {
+//                       caitrang.itemOptions.add(new Item.ItemOption(72,1));
+//                   } else  {
+//                       optionLevel.param++;
+//                   }
+//                        optionhp.param += Util.nextInt(15, 18);
+//                        optionki.param += Util.nextInt(15, 18);
+//                        optionsd.param += Util.nextInt(15, 18);
+////                        optioncrit.param += 4;
+////                        optionsdcrit.param += Util.nextInt(11, 14);                   
+//                    sendEffectSuccessCombine(player);
+//                }                   
+//                else {
+//                    sendEffectFailCombine(player);
+//                }
+//                InventoryServiceNew.gI().sendItemBags(player);
+//                Service.gI().sendMoney(player);
+//                reOpenItemCombine(player);
+//                 
+//            }
+//            else if (caitrang.template.id == 2008 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+//                player.inventory.gold -= gold;
+//                player.inventory.gem -= gem;
+//                InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+//                if (Util.isTrue(player.combineNew.ratioCombine4, 100)) {
+// 
+//                    if (optionLevel == null) {
+//                       caitrang.itemOptions.add(new Item.ItemOption(72,1));
+//                   } else  {
+//                       optionLevel.param++;
+//                   }
+//                        optionhp.param += Util.nextInt(19, 23);
+//                        optionki.param += Util.nextInt(19, 23);
+//                        optionsd.param += Util.nextInt(19, 23);
+////                        optioncrit.param += 5;
+////                        optionsdcrit.param += Util.nextInt(15, 19);                  
+//                    sendEffectSuccessCombine(player);
+//                }                   
+//                else {
+//                    sendEffectFailCombine(player);
+//                }
+//                InventoryServiceNew.gI().sendItemBags(player);
+//                Service.gI().sendMoney(player);
+//                reOpenItemCombine(player);
+//                 
+//            }
+//            else if (caitrang.template.id == 1208 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+//                player.inventory.gold -= gold;
+//                player.inventory.gem -= gem;
+//                InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+//                if (Util.isTrue(player.combineNew.ratioCombine5, 100)) {
+// 
+//                    if (optionLevel == null) {
+//                       caitrang.itemOptions.add(new Item.ItemOption(72,1));
+//                   } else  {
+//                       optionLevel.param++;
+//                   }
+//                        optionhp.param += Util.nextInt(25, 30);
+//                        optionki.param += Util.nextInt(25, 30);
+//                        optionsd.param += Util.nextInt(25, 30);
+////                        optioncrit.param += 5;
+////                        optionsdcrit.param += Util.nextInt(20, 25);                   
+//                    sendEffectSuccessCombine(player);
+//                }                   
+//                else {
+//                    sendEffectFailCombine(player);
+//                }
+//                InventoryServiceNew.gI().sendItemBags(player);
+//                Service.gI().sendMoney(player);
+//                reOpenItemCombine(player);
+//                 
+//            }
+            else{
+                Service.gI().sendThongBao(player, "Không đủ đá ngũ sắc");
+                return;
+            }
+        
+    }}
+    private void NangCapCaiTrangBroly(Player player) {
+           if (player.combineNew.itemsCombine.size() == 2) {
+            int gold = player.combineNew.goldCombine;
+            if (player.inventory.gold < gold) {
+                Service.gI().sendThongBao(player, "Không đủ vàng để thực hiện");
+                return;
+            }
+            int gem = player.combineNew.gemCombine;
+            if (player.inventory.gem < gem) {
+                Service.gI().sendThongBao(player, "Không đủ ngọc để thực hiện");
+                return;
+            }
+            Item caitrang = null;
+            Item dangusac = null;
  
             for (Item item : player.combineNew.itemsCombine) {
                 if (item.template.id == 1192
+                        || item.template.id == 1214
                           ||item.template.id == 1216
                           ||item.template.id == 1280
                           ||item.template.id == 1208
@@ -4869,7 +5115,32 @@ public class CombineServiceNew {
                         break;
                     }
                 }
-            if (caitrang.template.id == 1192 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+             if (caitrang.template.id == 1214 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
+                player.inventory.gold -= gold;
+                player.inventory.gem -= gem;
+                InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
+                if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
+ 
+                    if (optionLevel == null) {
+                       caitrang.itemOptions.add(new Item.ItemOption(72,1));
+                   } else  {
+                       optionLevel.param++;
+                   }
+                        optionhp.param += Util.nextInt(10, 11);
+                        optionki.param += Util.nextInt(10, 11);
+                        optionsd.param += Util.nextInt(10, 11);
+                        optioncrit.param += 2;
+                        optionsdcrit.param += Util.nextInt(6, 7);                  
+                    sendEffectSuccessCombine(player);
+                }                   
+                else {
+                    sendEffectFailCombine(player);
+                }
+                InventoryServiceNew.gI().sendItemBags(player);
+                Service.gI().sendMoney(player);
+                reOpenItemCombine(player);
+                 
+            }else if (caitrang.template.id == 1192 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
                 player.inventory.gold -= gold;
                 player.inventory.gem -= gem;
                 InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
@@ -5005,218 +5276,6 @@ public class CombineServiceNew {
             }
         
     }}
-    private void NangCapCaiTrangBroly(Player player) {
-            if (player.combineNew.itemsCombine.size() == 2) {
-                int gold = player.combineNew.goldCombine;
-                if (player.inventory.gold < gold) {
-                    Service.gI().sendThongBao(player, "Không đủ vàng để thực hiện");
-                    return;
-                }
-                int gem = player.combineNew.gemCombine;
-                if (player.inventory.gem < gem) {
-                    Service.gI().sendThongBao(player, "Không đủ ngọc để thực hiện");
-                    return;
-                }
-                Item caitrang = null;
-                Item dangusac = null;
-
-                for (Item item : player.combineNew.itemsCombine) {
-                    if (item.template.id == 1214) {
-                        caitrang = item;
-                    } else if (item.template.id == 674) {
-                        dangusac = item;
-                    }
-                }
-                int level = 0;
-                    Item.ItemOption optionLevel = null;
-                    for (Item.ItemOption io : caitrang.itemOptions) {
-                        if (io.optionTemplate.id == 72) {
-                            level = io.param;
-                            optionLevel = io;
-                            break;
-                        }
-                    }
-                int hp = 0;
-                    Item.ItemOption optionhp = null;
-                    for (Item.ItemOption io : caitrang.itemOptions) {
-                        if (io.optionTemplate.id == 77) {
-                            hp = io.param;
-                            optionhp = io;
-                            break;
-                        }
-                    }
-                int ki = 0;
-                    Item.ItemOption optionki = null;
-                    for (Item.ItemOption io : caitrang.itemOptions) {
-                        if (io.optionTemplate.id == 103) {
-                            ki = io.param;
-                            optionki = io;
-                            break;
-                        }
-                    }
-                int sd = 0;
-                    Item.ItemOption optionsd = null;
-                    for (Item.ItemOption io : caitrang.itemOptions) {
-                        if (io.optionTemplate.id == 50) {
-                            sd = io.param;
-                            optionsd = io;
-                            break;
-                        }
-                    }
-                 int crit = 0;
-                    Item.ItemOption optioncrit = null;
-                    for (Item.ItemOption io : caitrang.itemOptions) {
-                        if (io.optionTemplate.id == 14) {
-                            crit = io.param;
-                            optioncrit = io;
-                            break;
-                        }
-                    }
-                int sdcrit = 0;
-                    Item.ItemOption optionsdcrit = null;
-                    for (Item.ItemOption io : caitrang.itemOptions) {
-                        if (io.optionTemplate.id == 5) {
-                            sdcrit = io.param;
-                            optionsdcrit = io;
-                            break;
-                        }
-                    }
-                if (caitrang.template.id == 1214 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
-                    player.inventory.gold -= gold;
-                    player.inventory.gem -= gem;
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
-                    if (Util.isTrue(player.combineNew.ratioCombine, 100)) {
-
-                        if (optionLevel == null) {
-                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
-                       } else  {
-                           optionLevel.param++;
-                       }
-                            optionhp.param += Util.nextInt(10, 11);
-                            optionki.param += Util.nextInt(10, 11);
-                            optionsd.param += Util.nextInt(10, 11);
-                            optioncrit.param += 2;
-                            optionsdcrit.param += Util.nextInt(6, 7);                  
-                        sendEffectSuccessCombine(player);
-                    }                   
-                    else {
-                        sendEffectFailCombine(player);
-                    }
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    Service.gI().sendMoney(player);
-                    reOpenItemCombine(player);
-
-                }
-                else if (caitrang.template.id == 1216 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
-                    player.inventory.gold -= gold;
-                    player.inventory.gem -= gem;
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
-                    if (Util.isTrue(player.combineNew.ratioCombine2, 100)) {
-
-                        if (optionLevel == null) {
-                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
-                       } else  {
-                           optionLevel.param++;
-                       }
-                            optionhp.param += Util.nextInt(12, 14);
-                            optionki.param += Util.nextInt(12, 14);
-                            optionsd.param += Util.nextInt(12, 14);
-                            optioncrit.param += 3;
-                            optionsdcrit.param += Util.nextInt(8, 10);                  
-                        sendEffectSuccessCombine(player);
-                    }                   
-                    else {
-                        sendEffectFailCombine(player);
-                    }
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    Service.gI().sendMoney(player);
-                    reOpenItemCombine(player);
-
-                }
-                else if (caitrang.template.id == 1280 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
-                    player.inventory.gold -= gold;
-                    player.inventory.gem -= gem;
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
-                    if (Util.isTrue(player.combineNew.ratioCombine3, 100)) {
-
-                        if (optionLevel == null) {
-                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
-                       } else  {
-                           optionLevel.param++;
-                       }
-                            optionhp.param += Util.nextInt(15, 18);
-                            optionki.param += Util.nextInt(15, 18);
-                            optionsd.param += Util.nextInt(15, 18);
-                            optioncrit.param += 4;
-                            optionsdcrit.param += Util.nextInt(11, 14);                   
-                        sendEffectSuccessCombine(player);
-                    }                   
-                    else {
-                        sendEffectFailCombine(player);
-                    }
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    Service.gI().sendMoney(player);
-                    reOpenItemCombine(player);
-
-                }
-                else if (caitrang.template.id == 2008 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
-                    player.inventory.gold -= gold;
-                    player.inventory.gem -= gem;
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
-                    if (Util.isTrue(player.combineNew.ratioCombine4, 100)) {
-
-                        if (optionLevel == null) {
-                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
-                       } else  {
-                           optionLevel.param++;
-                       }
-                            optionhp.param += Util.nextInt(19, 23);
-                            optionki.param += Util.nextInt(19, 23);
-                            optionsd.param += Util.nextInt(19, 23);
-                            optioncrit.param += 5;
-                            optionsdcrit.param += Util.nextInt(15, 19);                  
-                        sendEffectSuccessCombine(player);
-                    }                   
-                    else {
-                        sendEffectFailCombine(player);
-                    }
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    Service.gI().sendMoney(player);
-                    reOpenItemCombine(player);
-
-                }
-                else if (caitrang.template.id == 1208 && dangusac != null && level < 10 && dangusac.quantity >= getDaNangCap(level) ) {
-                    player.inventory.gold -= gold;
-                    player.inventory.gem -= gem;
-                    InventoryServiceNew.gI().subQuantityItemsBag(player, dangusac, getDaNangCap(level));
-                    if (Util.isTrue(player.combineNew.ratioCombine5, 100)) {
-
-                        if (optionLevel == null) {
-                           caitrang.itemOptions.add(new Item.ItemOption(72,1));
-                       } else  {
-                           optionLevel.param++;
-                       }
-                            optionhp.param += Util.nextInt(25, 30);
-                            optionki.param += Util.nextInt(25, 30);
-                            optionsd.param += Util.nextInt(25, 30);
-                            optioncrit.param += 5;
-                            optionsdcrit.param += Util.nextInt(20, 25);                   
-                        sendEffectSuccessCombine(player);
-                    }                   
-                    else {
-                        sendEffectFailCombine(player);
-                    }
-                    InventoryServiceNew.gI().sendItemBags(player);
-                    Service.gI().sendMoney(player);
-                    reOpenItemCombine(player);
-
-                }
-                else{
-                    Service.gI().sendThongBao(player, "Không đủ đá ngũ sắc");
-                    return;
-                }
-
-        }}
     //--------------------------------------------------------------------------
 
     /**r
@@ -5317,35 +5376,35 @@ public class CombineServiceNew {
             case 0:
                 return 50000000;
             case 1:
-                return 60000000;
-            case 2:
-                return 70000000;
-            case 3:
                 return 80000000;
-            case 4:
-                return 90000000;
-            case 5:
-                return 100000000;
-            case 6:
-                return 110000000;
-            case 7:
+            case 2:
                 return 120000000;
-            case 8:
-                return 130000000;
-            case 9:
-                return 140000000;
-            case 10:
+            case 3:
                 return 150000000;
-            case 11:
-                return 160000000;
-            case 12:
-                return 170000000;
-            case 13:
-                return 180000000;
-            case 14:
-                return 190000000;
-            case 15:
-                return 200000000;
+            case 4:
+                return 250000000;
+            case 5:
+                return 290000000;
+            case 6:
+                return 350000000;
+            case 7:
+                return 400000000;
+//            case 8:
+//                return 130000000;
+//            case 9:
+//                return 140000000;
+//            case 10:
+//                return 150000000;
+//            case 11:
+//                return 160000000;
+//            case 12:
+//                return 170000000;
+//            case 13:
+//                return 180000000;
+//            case 14:
+//                return 190000000;
+//            case 15:
+//                return 200000000;
         }
         return 0;
     }
@@ -5355,111 +5414,111 @@ public class CombineServiceNew {
             case 0:
                 return 100000000;
             case 1:
-                return 120000000;
-            case 2:
-                return 140000000;
-            case 3:
-                return 160000000;
-            case 4:
-                return 180000000;
-            case 5:
                 return 200000000;
-            case 6:
-                return 220000000;
-            case 7:
-                return 240000000;
-            case 8:
-                return 260000000;
-            case 9:
-                return 280000000;
-            case 10:
+            case 2:
                 return 300000000;
-            case 11:
-                return 320000000;
-            case 12:
-                return 340000000;
-            case 13:
-                return 360000000;
-            case 14:
-                return 380000000;
-            case 15:
+            case 3:
                 return 400000000;
-            case 16:
-                return 420000000;
+            case 4:
+                return 600000000;
+            case 5:
+                return 800000000;
+            case 6:
+                return 1500000000;
+            case 7:
+                return 1700000000;
+            case 8:
+                return 1900000000;
+//            case 9:
+//                return 280000000;
+//            case 10:
+//                return 300000000;
+//            case 11:
+//                return 320000000;
+//            case 12:
+//                return 340000000;
+//            case 13:
+//                return 360000000;
+//            case 14:
+//                return 380000000;
+//            case 15:
+//                return 400000000;
+//            case 16:
+//                return 420000000;
         }
         return 0;
     }
 private int getGoldNCCaiTrang(int level) {
         switch (level) {
             case 0:
-                return 50000000;
-            case 1:
-                return 60000000;
-            case 2:
-                return 70000000;
-            case 3:
-                return 80000000;
-            case 4:
-                return 90000000;
-            case 5:
                 return 100000000;
-            case 6:
-                return 110000000;
-            case 7:
-                return 120000000;
-            case 8:
-                return 130000000;
-            case 9:
-                return 140000000;
-            case 10:
-                return 150000000;
-            case 11:
-                return 160000000;
-            case 12:
-                return 170000000;
-            case 13:
-                return 180000000;
-            case 14:
-                return 190000000;
-            case 15:
+            case 1:
                 return 200000000;
+            case 2:
+                return 300000000;
+            case 3:
+                return 400000000;
+            case 4:
+                return 500000000;
+            case 5:
+                return 700000000;
+            case 6:
+                return 900000000;
+            case 7:
+                return 1000000000;
+//            case 8:
+//                return 130000000;
+//            case 9:
+//                return 140000000;
+//            case 10:
+//                return 150000000;
+//            case 11:
+//                return 160000000;
+//            case 12:
+//                return 170000000;
+//            case 13:
+//                return 180000000;
+//            case 14:
+//                return 190000000;
+//            case 15:
+//                return 200000000;
         }
         return 0;
     }
     private float getRatioPhaLeHoa(int star) {
         switch (star) {
              case 0:
-                return 70f;
+                return 90f;
             case 1:
-                return 60f;
+                return 50f;
             case 2:
-                return 60f;
+                return 25f;
             case 3:
-                return 50f;
-            case 4:
-                return 50f;
-            case 5:
-                return 40f;
-            case 6:
-                return 35f;
-            case 7:
-                return 10f;
-            case 8:
-                return 50f;
-            case 9:
-                return 40f;    
-            case 10:
-                return 30f;
-            case 11:
                 return 20f;
-             case 12:
+            case 4:
+                return 15f;
+            case 5:
                 return 10f;
-             case 13:
-                return 8f;
-             case 14:
-                return 6f;
-             case 15:
+            case 6:
                 return 5f;
+            case 7:
+                return 0.5f;
+//            case 8:
+//                return 50f;
+//            case 9:
+//                return 40f;    
+//            case 10:
+//                return 30f;
+//            case 11:
+//                return 20f;
+//             case 12:
+//                return 10f;
+//             case 13:
+//                return 8f;
+//             case 14:
+//                return 6f;
+//             case 15:
+//                return 5f;
         }
         
         
@@ -5469,39 +5528,39 @@ private int getGoldNCCaiTrang(int level) {
     private float getRatioPhaLeHoaTC1(int star) {
         switch (star) {
              case 0:
-                return 40f;
-            case 1:
-                return 35f;
-            case 2:
                 return 30f;
-            case 3:
-                return 25f;
-            case 4:
-                return 24f;
-            case 5:
-                return 20f;
-            case 6:
+            case 1:
+                return 15f;
+            case 2:
                 return 10f;
+            case 3:
+                return 5f;
+            case 4:
+                return 2f;
+            case 5:
+                return 1f;
+            case 6:
+                return 1f;
             case 7:
-                return 5f;
-            case 8:
-                return 5f;
-            case 9:
-                return 2f;    
-            case 10:
-                return 1f;
-            case 11:
-                return 1f;
-             case 12:
-                return 0.9f;
-             case 13:
-                return 0.8f;
-             case 14:
-                return 0.7f;
-             case 15:
-                return 0.6f;
-            case 16:
                 return 0.5f;
+            case 8:
+             return 0.25f;
+//            case 9:
+//                return 2f;    
+//            case 10:
+//                return 1f;
+//            case 11:
+//                return 1f;
+//             case 12:
+//                return 0.9f;
+//             case 13:
+//                return 0.8f;
+//             case 14:
+//                return 0.7f;
+//             case 15:
+//                return 0.6f;
+//            case 16:
+//                return 0.5f;
         }
         
         
@@ -5526,22 +5585,22 @@ private int getGoldNCCaiTrang(int level) {
                 return 35;
             case 7:
                 return 40;
-            case 8:
-                return 50;    
-            case 9:
-                return 70;    
-            case 10:
-                return 80;
-            case 11:
-                return 90;
-             case 12:
-                return 100; 
-            case 13:
-                return 120;    
-            case 14:
-                return 140;    
-            case 15:
-                return 150;
+//            case 8:
+//                return 50;    
+//            case 9:
+//                return 70;    
+//            case 10:
+//                return 80;
+//            case 11:
+//                return 90;
+//             case 12:
+//                return 100; 
+//            case 13:
+//                return 120;    
+//            case 14:
+//                return 140;    
+//            case 15:
+//                return 150;
         }
         return 0;
     }
@@ -5549,39 +5608,39 @@ private int getGoldNCCaiTrang(int level) {
     private int getGemPhaLeHoaTC1(int star) {
         switch (star) {
             case 0:
-                return 20;
-            case 1:
-                return 30;
-            case 2:
-                return 40;
-            case 3:
                 return 50;
+            case 1:
+                return 100;
+            case 2:
+                return 200;
+            case 3:
+                return 300;
             case 4:
-                return 60;
+                return 400;
             case 5:
-                return 70;
+                return 500;
             case 6:
-                return 80;
+                return 600;
             case 7:
-                return 90;
+                return 700;
             case 8:
-                return 100;    
-            case 9:
-                return 110;    
-            case 10:
-                return 120;
-            case 11:
-                return 130;
-             case 12:
-                return 150; 
-            case 13:
-                return 180;    
-            case 14:
-                return 220;    
-            case 15:
-                return 270;
-            case 16:
-                return 350;
+                return 800;    
+//            case 9:
+//                return 110;    
+//            case 10:
+//                return 120;
+//            case 11:
+//                return 130;
+//             case 12:
+//                return 150; 
+//            case 13:
+//                return 180;    
+//            case 14:
+//                return 220;    
+//            case 15:
+//                return 270;
+//            case 16:
+//                return 350;
         }
         return 0;
     }
@@ -5604,22 +5663,22 @@ private int getGoldNCCaiTrang(int level) {
                 return 100;
             case 7:
                 return 110;
-            case 8:
-                return 120;
-            case 9:
-                return 130;
-            case 10:
-                return 140; 
-            case 11:
-                return 150; 
-            case 12:
-                return 160;
-            case 13:
-                return 140; 
-            case 14:
-                return 150; 
-            case 15:
-                return 160;
+//            case 8:
+//                return 120;
+//            case 9:
+//                return 130;
+//            case 10:
+//                return 140; 
+//            case 11:
+//                return 150; 
+//            case 12:
+//                return 160;
+//            case 13:
+//                return 140; 
+//            case 14:
+//                return 150; 
+//            case 15:
+//                return 160;
         }
         return 0;
     }
@@ -5627,37 +5686,37 @@ private int getGoldNCCaiTrang(int level) {
     private double getTileNangCapDo(int level) {
         switch (level) {
             case 0:
-                return 80;
+                return 90;
             case 1:
                 return 50;
             case 2:
-                return 50;
+                return 25;
             case 3:
-                return 50;
-            case 4:
-                return 30;
-            case 5:
                 return 20;
-            case 6:
+            case 4:
                 return 10;
-            case 7: // 7 sao
-                return 3;
-            case 8:
+            case 5:
                 return 5;
-            case 9:
+            case 6:
+                return 2;
+            case 7: // 7 sao
                 return 1;
-            case 10: // 7 sao
-                return 0.3;
-            case 11: // 7 sao
-                return 0.3; 
-            case 12: // 7 sao
-                return 0.3;
-            case 13: // 7 sao
-                return 0.3;
-            case 14: // 7 sao
-                return 0.3; 
-            case 15: // 7 sao
-                return 0.3;
+//            case 8:
+//                return 5;
+//            case 9:
+//                return 1;
+//            case 10: // 7 sao
+//                return 0.3;
+//            case 11: // 7 sao
+//                return 0.3; 
+//            case 12: // 7 sao
+//                return 0.3;
+//            case 13: // 7 sao
+//                return 0.3;
+//            case 14: // 7 sao
+//                return 0.3; 
+//            case 15: // 7 sao
+//                return 0.3;
         }
         return 0;
     }
@@ -5665,37 +5724,37 @@ private int getGoldNCCaiTrang(int level) {
     private int getCountDaNangCapDo(int level) {
         switch (level) {
             case 0:
-                return 3;
+                return 24;
             case 1:
-                return 7;
+                return 30;
             case 2:
-                return 11;
-            case 3:
-                return 17;
-            case 4:
-                return 23;
-            case 5:
                 return 35;
-            case 6:
-                return 50;
-            case 7:
-                return 60;
-            case 8:
-                return 70;    
-            case 9:
+            case 3:
+                return 40;
+            case 4:
                 return 70;
-            case 10:
-                return 70;
-            case 11:
-                return 80;
-            case 12:
-                return 90;    
-            case 13:
+            case 5:
                 return 90;
-            case 14:
-                return 90; 
-            case 15:
+            case 6:
+                return 90;
+            case 7:
                 return 99;
+//            case 8:
+//                return 70;    
+//            case 9:
+//                return 70;
+//            case 10:
+//                return 70;
+//            case 11:
+//                return 80;
+//            case 12:
+//                return 90;    
+//            case 13:
+//                return 90;
+//            case 14:
+//                return 90; 
+//            case 15:
+//                return 99;
                 
         }
         return 0;
@@ -5723,22 +5782,22 @@ private int getGoldNCCaiTrang(int level) {
                 return 100000000;
             case 7:
                 return 250000000;
-            case 8:
-                return 10000000;
-            case 9:
-                return 17000000;
-            case 10:
-                return 30000000;
-            case 11:
-                return 40000000;
-            case 12:
-                return 70000000;
-            case 13:
-                return 80000000;
-            case 14:
-                return 100000000;
-            case 15:
-                return 250000000;
+//            case 8:
+//                return 10000000;
+//            case 9:
+//                return 17000000;
+//            case 10:
+//                return 30000000;
+//            case 11:
+//                return 40000000;
+//            case 12:
+//                return 70000000;
+//            case 13:
+//                return 80000000;
+//            case 14:
+//                return 100000000;
+//            case 15:
+//                return 250000000;
 //                
         }
         return 0;
@@ -5750,71 +5809,71 @@ private int getGoldNCCaiTrang(int level) {
             case 1:
                 return 60f;
             case 2:
-                return 50f;
-            case 3:
-                return 50f;
-            case 4:
-                return 50f;
-            case 5:
-                return 40f;
-            case 6:
-                return 40f;
-            case 7:
-                return 30f;
-            case 8:
-                return 30f;    
-            case 9:
-                return 20f;    
-            case 10:
                 return 20f;
-            case 11:
+            case 3:
                 return 0.6f;
-             case 12:
+            case 4:
                 return 0.4f;
-             case 13:
+            case 5:
                 return 0.3f;
-             case 14:
+            case 6:
                 return 0.2f;
-             case 15:
+            case 7:
                 return 0.1f;
+//            case 8:
+//                return 30f;    
+//            case 9:
+//                return 20f;    
+//            case 10:
+//                return 20f;
+//            case 11:
+//                return 0.6f;
+//             case 12:
+//                return 0.4f;
+//             case 13:
+//                return 0.3f;
+//             case 14:
+//                return 0.2f;
+//             case 15:
+//                return 0.1f;
         }               
         return 0;
     }
         
     private float getRatioNCCaiTrang2(int level) { //Tỉ lệ nâng cấp cải trang
         switch (level) {
-            case 0:
+             case 0:
                 return 70f;
             case 1:
-                return 40f;
+                return 30f;
             case 2:
-                return 30f;
+                return 20f;
             case 3:
-                return 30f;
-            case 4:
-                return 30f;
-            case 5:
-                return 15f;
-            case 6:
-                return 15f;
-            case 7:
-                return 10f;
-            case 8:
-                return 10f;    
-            case 9:
-                return 5f;    
-            case 10:
-                return 3f;
-            case 11:
                 return 0.6f;
-             case 12:
+            case 4:
                 return 0.4f;
-             case 13:
+            case 5:
                 return 0.3f;
-             case 14:
+            case 6:
                 return 0.2f;
-             case 15:
+            case 7:
                 return 0.1f;
+//            case 8:
+//                return 10f;    
+//            case 9:
+//                return 5f;    
+//            case 10:
+//                return 3f;
+//            case 11:
+//                return 0.6f;
+//             case 12:
+//                return 0.4f;
+//             case 13:
+//                return 0.3f;
+//             case 14:
+//                return 0.2f;
+//             case 15:
+//                return 0.1f;
         }               
         return 0;
     }
@@ -5822,75 +5881,75 @@ private int getGoldNCCaiTrang(int level) {
         private float getRatioNCCaiTrang3(int level) { //Tỉ lệ nâng cấp cải trang
         switch (level) {
             case 0:
-                return 60f;
+                return 50f;
             case 1:
                 return 30f;
             case 2:
-                return 20f;
+                return 10f;
             case 3:
-                return 20f;
-            case 4:
-                return 20f;
-            case 5:
-                return 10f;
-            case 6:
-                return 10f;
-            case 7:
-                return 5f;
-            case 8:
-                return 5f;    
-            case 9:
-                return 2.5f;    
-            case 10:
-                return 1.5f;
-            case 11:
                 return 0.6f;
-             case 12:
+            case 4:
                 return 0.4f;
-             case 13:
+            case 5:
                 return 0.3f;
-             case 14:
+            case 6:
                 return 0.2f;
-             case 15:
+            case 7:
                 return 0.1f;
+//            case 8:
+//                return 5f;    
+//            case 9:
+//                return 2.5f;    
+//            case 10:
+//                return 1.5f;
+//            case 11:
+//                return 0.6f;
+//             case 12:
+//                return 0.4f;
+//             case 13:
+//                return 0.3f;
+//             case 14:
+//                return 0.2f;
+//             case 15:
+//                return 0.1f;
         }               
         return 0;
     }
         
         private float getRatioNCCaiTrang4(int level) { //Tỉ lệ nâng cấp cải trang
         switch (level) {
-           case 0:
-                return 50f;
+             case 0:
+                return 40f;
             case 1:
                 return 20f;
             case 2:
-                return 10f;
+                return 5f;
             case 3:
-                return 10f;
-            case 4:
-                return 10f;
-            case 5:
-                return 7f;
-            case 6:
-                return 7f;
-            case 7:
-                return 3f;
-            case 8:
-                return 3f;    
-            case 9:
-                return 2f;    
-            case 10:
-                return 1f;
-            case 11:
-                return 0.6f;
-             case 12:
-                return 0.4f;
-             case 13:
                 return 0.3f;
-             case 14:
+            case 4:
                 return 0.2f;
-             case 15:
+            case 5:
                 return 0.1f;
+            case 6:
+                return 0.1f;
+            case 7:
+                return 0.1f;
+//            case 8:
+//                return 3f;    
+//            case 9:
+//                return 2f;    
+//            case 10:
+//                return 1f;
+//            case 11:
+//                return 0.6f;
+//             case 12:
+//                return 0.4f;
+//             case 13:
+//                return 0.3f;
+//             case 14:
+//                return 0.2f;
+//             case 15:
+//                return 0.1f;
         }               
         return 0;
     }
@@ -5898,37 +5957,37 @@ private int getGoldNCCaiTrang(int level) {
         private float getRatioNCCaiTrang5(int level) { //Tỉ lệ nâng cấp cải trang
         switch (level) {
             case 0:
-                return 40f;
+                return 20f;
             case 1:
-                return 15f;
+                return 10f;
             case 2:
-                return 10f;
+                return 5f;
             case 3:
-                return 10f;
-            case 4:
-                return 10f;
-            case 5:
-                return 5f;
-            case 6:
-                return 5f;
-            case 7:
                 return 2f;
-            case 8:
-                return 2f;    
-            case 9:
-                return 1f;    
-            case 10:
-                return 0.5f;
-            case 11:
-                return 0.6f;
-             case 12:
-                return 0.4f;
-             case 13:
-                return 0.3f;
-             case 14:
-                return 0.2f;
-             case 15:
+            case 4:
+                return 1f;
+            case 5:
                 return 0.1f;
+            case 6:
+                return 0.1f;
+            case 7:
+                return 0.1f;
+//            case 8:
+//                return 2f;    
+//            case 9:
+//                return 1f;    
+//            case 10:
+//                return 0.5f;
+//            case 11:
+//                return 0.6f;
+//             case 12:
+//                return 0.4f;
+//             case 13:
+//                return 0.3f;
+//             case 14:
+//                return 0.2f;
+//             case 15:
+//                return 0.1f;
         }               
         return 0;
     }
@@ -5950,53 +6009,53 @@ private int getGoldNCCaiTrang(int level) {
                 return 150;
             case 7:
                 return 160;
-            case 8:
-                return 170;
-            case 9:
-                return 180;
-            case 10:
-                return 190;
-            case 11:
-                return 200;
-            case 12:
-                return 210;
+//            case 8:
+//                return 170;
+//            case 9:
+//                return 180;
+//            case 10:
+//                return 190;
+//            case 11:
+//                return 200;
+//            case 12:
+//                return 210;
         }
         return 0;
     }
     private int getGemNangCaiTrang(int level) {
         switch (level) {
             case 0:
-                return 10000;
+                return 1000;
             case 1:
-                return 20000;
+                return 5000;
             case 2:
-                return 30000;
+                return 10000;
             case 3:
-                return 40000;
+                return 12000;
             case 4:
-                return 50000;
+                return 14000;
             case 5:
-                return 60000;
+                return 15000;
             case 6:
-                return 70000;
+                return 16000;
             case 7:
-                return 80000;
-            case 8:
-                return 90000;    
-            case 9:
-                return 100000;    
-            case 10:
-                return 110000;
-            case 11:
-                return 120000;
-             case 12:
-                return 130000; 
-            case 13:
-                return 140000;    
-            case 14:
-                return 150000;    
-            case 15:
-                return 160000;
+                return 18000;
+//            case 8:
+//                return 90000;    
+//            case 9:
+//                return 100000;    
+//            case 10:
+//                return 110000;
+//            case 11:
+//                return 120000;
+//             case 12:
+//                return 130000; 
+//            case 13:
+//                return 140000;    
+//            case 14:
+//                return 150000;    
+//            case 15:
+//                return 160000;
         }
         return 0;
     }
@@ -6480,6 +6539,10 @@ private int getGoldNCCaiTrang(int level) {
                 return "Ta sẽ phù phép\ncho bông tai Porata cấp 2 của ngươi\ncó 1 chỉ số ngẫu nhiên";
             case PS_HOA_TRANG_BI:
                 return "Pháp sư hóa trang bị";
+            case TINH_LUYEN_TRANG_BI :
+                 return "Tinh Luyện Trang Bị";
+            case REN_TRANG_BI:
+                return "Rèn Trang bị";
             case TAY_PS_HOA_TRANG_BI:
                 return "Tẩy pháp sư";
             case NANG_CAP_CAI_TRANG_SSJ:
@@ -6532,10 +6595,17 @@ private int getGoldNCCaiTrang(int level) {
                 return "vào hành trang\nChọn 1 trang bị thiên sứ bất kì\nChọn tiếp ngẫu nhiên 2 món SKH thường \n " +
                         " đồ SKH VIP sẽ cùng loại \n với đồ thiên sứ!"
                         + "Chỉ cần chọn 'Nâng Cấp'";
-           
+            case REN_TRANG_BI : 
+                return "vào hành trang\nChọn 1 trang bị bất kì\n" +
+                        "cần mảnh tinh ấn,lửa thần,vinh dự samurai,đá tinh luyện \n số lượng theo thứ tự 10,100,20,1!"
+                        + "Chỉ cần chọn 'Nâng Cấp'";
+            case TINH_LUYEN_TRANG_BI:
+                  return "vào hành trang\nChọn 1 trang bị bất kì\n" +
+                        "cần mảnh tinh ấn,lửa thần,vinh dự samurai,đá tinh luyện \n số lượng theo thứ tự 10,100,20,1!"
+                        +"\nChỉ cần chọn 'Nâng Cấp'";
             case PS_HOA_TRANG_BI:
                 return "vào hành trang\nChọn 1 trang bị có thể hắc hóa ( danh hiệu cao thủ ) và đá pháp sư \n "
-                        + " để nâng cấp chỉ số pháp sư"
+                        + " để nâng cấp chỉ số pháp sư cần x20 đá pháp sư 1 lần"
                         + "Chỉ cần chọn 'Nâng Cấp'";
             case TAY_PS_HOA_TRANG_BI:
                 return "vào hành trang\nChọn 1 trang bị có thể hắc hóa ( phụ kiên,ngọc bội,pet,..) và bùa giải pháp sư \n "

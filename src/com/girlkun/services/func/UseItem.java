@@ -716,9 +716,9 @@ public class UseItem {
             } else {
                 Item caitrangEvent = ItemService.gI().createNewItem(temp[index]);
                 Random random = new Random();
-                int sd = random.nextInt(41) + 40;
-                int hp = random.nextInt(41) + 40;
-                int ki = random.nextInt(41) + 40;
+                int sd = random.nextInt(20,41);
+                int hp = random.nextInt(20,41);
+                int ki = random.nextInt(20,41);
                 caitrangEvent.itemOptions.add(new Item.ItemOption(49, sd));
                 caitrangEvent.itemOptions.add(new Item.ItemOption(77, hp));
                 caitrangEvent.itemOptions.add(new Item.ItemOption(103, ki));

@@ -35,8 +35,8 @@ public class BossNamecPhanDien extends Boss {
 
        Random random = new Random();
        int sd = random.nextInt(5000) + 15000;
-       int hp = random.nextInt(50000) + 200000;
-       int ki = random.nextInt(50000) + 200000;
+       int hp = random.nextInt(200,250);
+       int ki = random.nextInt(200,250);
        int sdcm = random.nextInt(10)+ 10;
        int giap = random.nextInt(500)+3000;
        int cm = random.nextInt(10)+30;
@@ -51,7 +51,7 @@ public class BossNamecPhanDien extends Boss {
             item.itemOptions.add(new Item.ItemOption(5,sdcm));
               item.itemOptions.add(new Item.ItemOption(209,0));
         } else if (selectedNumber >= 1051 && selectedNumber <= 1053) {
-             item.itemOptions.add(new Item.ItemOption(6,hp));
+             item.itemOptions.add(new Item.ItemOption(22,hp));
             item.itemOptions.add(new Item.ItemOption(5,sdcm));
             item.itemOptions.add(new Item.ItemOption(209,0));
         } else if (selectedNumber >= 1054 && selectedNumber <= 1056) {
@@ -59,7 +59,7 @@ public class BossNamecPhanDien extends Boss {
                item.itemOptions.add(new Item.ItemOption(5,sdcm));
                item.itemOptions.add(new Item.ItemOption(209,0));
         } else if (selectedNumber >= 1057 && selectedNumber <= 1059) {
-             item.itemOptions.add(new Item.ItemOption(7,ki));
+             item.itemOptions.add(new Item.ItemOption(23,ki));
               item.itemOptions.add(new Item.ItemOption(5,sdcm));
               item.itemOptions.add(new Item.ItemOption(209,0));
         } else if (selectedNumber >= 1060 && selectedNumber <= 1062) {
