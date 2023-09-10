@@ -41,6 +41,7 @@ public class MySession extends Session {
     
     public String ipAddress;
     public boolean isAdmin;
+    public boolean isStaff;
     public int userId;
     public String uu;
     public String pp;

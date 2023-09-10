@@ -615,6 +615,10 @@ public class Player {
     public boolean isAdmin() {
         return this.session.isAdmin;
     }
+    
+    public boolean isStaff(){
+        return this.session.isStaff;
+    }
 
     public void setJustRevivaled() {
         this.justRevived = true;

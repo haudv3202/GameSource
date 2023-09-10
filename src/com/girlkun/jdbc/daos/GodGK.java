@@ -59,6 +59,7 @@ public static Boolean baotri = false;
             if (rs.first()) {
                  session.userId = rs.getInt("account.id");
                 session.isAdmin = rs.getBoolean("is_admin");
+                session.isStaff = rs.getBoolean("is_staff");
                 session.lastTimeLogout = rs.getTimestamp("last_time_logout").getTime();
                 session.actived = rs.getBoolean("active");
                 session.goldBar = rs.getInt("account.thoi_vang");

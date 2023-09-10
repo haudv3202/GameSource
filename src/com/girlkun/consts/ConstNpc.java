@@ -172,6 +172,7 @@ public class ConstNpc {
     public static final int MENU_JOIN_DOANH_TRAI = 502;
 
     //index menu con meo
+    public static final int MENU_STAFF = 600;
     public static final int MAKE_MATCH_PVP = 502;
     public static final int MAKE_FRIEND = 503;
     public static final int REVENGE = 504;
@@ -187,6 +188,7 @@ public class ConstNpc {
     public static final int BUFF_PET = 514;
     public static final int CONFIRM_REMOVE_ALL_ITEM_LUCKY_ROUND = 515;
     public static final int MENU_FIND_PLAYER = 516;
+      public static final int MENU_FIND_PLAYER_STAFF = 602;
     public static final int CONFIRM_DISSOLUTION_CLAN = 517;
     public static final int CONFIRM_ACTIVE = 518;
     public static final int menutd = 519;

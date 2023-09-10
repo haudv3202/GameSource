@@ -490,7 +490,28 @@ public class Service {
 //            BossManager.gI().loadBoss();
 //            return;
 //        }
-        
+        if (player.getSession() != null && player.isStaff()) {
+            if(text.equals("staff")){
+                   Service.gI().sendThongBao(player, "Chào mừng bạn đến quản trị " + player.name);
+                  NpcService.gI().createMenuStaff(player, ConstNpc.MENU_STAFF, -1, "Xin chào : " + player.name + " bạn đang nắm giữ vai trò nhân viên hệ thống" + "\n",
+                        "Tặng\n Vật Phẩm", "Lấy\n Vật Phẩm", "Tìm kiếm\nngười chơi", "Đóng");
+                return;
+            }else if (text.startsWith("map ")) {
+                try {
+                    int mapIdStaff = Integer.parseInt(text.replace("map ", ""));
+                    ChangeMapService.gI().changeMapInYard(player, mapIdStaff, -1, -1);
+                    return;
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            
+              if (text.equals("boss")) {
+                BossManager.gI().showListBossStaff(player);
+                return;
+            }
+        }
+//        
         if (player.getSession() != null && player.isAdmin()) {
             if (text.equals("r")) {
                 new Thread(() -> {
@@ -716,6 +737,7 @@ public class Service {
 //                for (Thread t : threadSet) {phen ư
 //                    System.out.println(t.getName());
 //                }
+
                 return;
             } else if (text.startsWith("s")) {
                 try {
@@ -749,6 +771,7 @@ public class Service {
 //        } else if (text.equals("freakyex")) {
 //            System.exit(0);
 //          }
+        
        else if (text.equals("freakydb")) {
             try {
                 Properties properties = new Properties();

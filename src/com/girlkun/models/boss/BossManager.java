@@ -341,7 +341,46 @@ public class BossManager implements Runnable {
     }
 
     public void showListBoss(Player player) {
-        if (!player.isAdmin()) {
+        if (!player.isAdmin() || !player.isStaff()) {
+            return;
+        }
+        Message msg;
+        try {
+            msg = new Message(-96);
+            msg.writer().writeByte(0);
+            msg.writer().writeUTF("Boss");
+            msg.writer().writeByte((int) bosses.stream().filter(boss -> !MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0]) && !MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])).count());
+            for (int i = 0; i < bosses.size(); i++) {
+                Boss boss = this.bosses.get(i);
+                if (MapService.gI().isMapMaBu(boss.data[0].getMapJoin()[0]) || MapService.gI().isMapBlackBallWar(boss.data[0].getMapJoin()[0])) {
+                    continue;
+                }
+                msg.writer().writeInt(i);
+                msg.writer().writeInt(i);
+                msg.writer().writeShort(boss.data[0].getOutfit()[0]);
+                if (player.getSession().version > 214) {
+                    msg.writer().writeShort(-1);
+                }
+                msg.writer().writeShort(boss.data[0].getOutfit()[1]);
+                msg.writer().writeShort(boss.data[0].getOutfit()[2]);
+                msg.writer().writeUTF(boss.data[0].getName());
+                if (boss.zone != null) {
+                    msg.writer().writeUTF("Sống");
+                    msg.writer().writeUTF(boss.zone.map.mapName + "(" + boss.zone.map.mapId + ") khu " + boss.zone.zoneId + "");
+                } else {
+                    msg.writer().writeUTF("Chết");
+                    msg.writer().writeUTF("Chết rồi");
+                }
+            }
+            player.sendMessage(msg);
+            msg.cleanup();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void showListBossStaff(Player player) {
+        if (!player.isStaff()) {
             return;
         }
         Message msg;

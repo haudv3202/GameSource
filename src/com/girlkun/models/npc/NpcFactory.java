@@ -359,7 +359,7 @@ public class NpcFactory {
 //                                        throw new RuntimeException(e);
                                     }
                                     if (honLinhThu == null || honLinhThu1 == null || honLinhThu2 == null || honLinhThu3 == null || honLinhThu.quantity < 100 || honLinhThu1.quantity < 100 || honLinhThu2.quantity < 100 || honLinhThu3.quantity < 100) {
-                                               this.npcChat(player, "Bạn Cần x100 các loại sao biển,con cua,vỏ ốc,vỏ sò");
+                                        this.npcChat(player, "Bạn Cần x100 các loại sao biển,con cua,vỏ ốc,vỏ sò");
                                     } else {
 
                                         InventoryServiceNew.gI().subQuantityItemsBag(player, honLinhThu, 100);
@@ -1274,7 +1274,7 @@ public class NpcFactory {
                                         Item trungLinhThu = ItemService.gI().createNewItem((short) 1214);
                                         trungLinhThu.itemOptions.add(new Item.ItemOption(50, Util.nextInt(20, 35)));
                                         trungLinhThu.itemOptions.add(new Item.ItemOption(77, Util.nextInt(20, 35)));
-                                        trungLinhThu.itemOptions.add(new Item.ItemOption(103,Util.nextInt(20, 35)));
+                                        trungLinhThu.itemOptions.add(new Item.ItemOption(103, Util.nextInt(20, 35)));
                                         trungLinhThu.itemOptions.add(new Item.ItemOption(95, Util.nextInt(10, 20)));
                                         trungLinhThu.itemOptions.add(new Item.ItemOption(96, Util.nextInt(10, 20)));
                                         trungLinhThu.itemOptions.add(new Item.ItemOption(101, 100));
@@ -3056,8 +3056,8 @@ public class NpcFactory {
                                     break;
                                 case 7:
                                     createOtherMenu(player, ConstNpc.MENU_CAI_TRANG,
-                                            "Ngươi muốn Tiến Hóa Cải Trang nào hãy chọn bên dưới!","Tiến Hóa\n Cải Trang\n Broly"
-                                            , "Đóng");
+                                            "Ngươi muốn Tiến Hóa Cải Trang nào hãy chọn bên dưới!", "Tiến Hóa\n Cải Trang\n Broly",
+                                             "Đóng");
 //                                     "Cải Trang V2\nBaby Vegeta"
 //                                    "Nâng Cấp\n Cải Trang", "Cải Trang V2\nBaby Vegeta"
 //                                    , "Cải Trang V3\nBlack Goku", "Cải Trang V4\nBill", "Cải Trang V5\nHearts Gold",
@@ -7190,9 +7190,9 @@ public class NpcFactory {
                                     Service.getInstance().sendMoney(player);
                                     Item caitrangEvent = ItemService.gI().createNewItem((short) 1214);
                                     Random random = new Random();
-                                    int sd = random.nextInt(20,40);
-                                    int hp = random.nextInt(20,40);
-                                    int ki = random.nextInt(20,40);
+                                    int sd = random.nextInt(20, 40);
+                                    int hp = random.nextInt(20, 40);
+                                    int ki = random.nextInt(20, 40);
                                     caitrangEvent.itemOptions.add(new Item.ItemOption(49, sd));
                                     caitrangEvent.itemOptions.add(new Item.ItemOption(77, hp));
                                     caitrangEvent.itemOptions.add(new Item.ItemOption(103, ki));
@@ -7225,7 +7225,7 @@ public class NpcFactory {
                                 }
                                 break;
                                 case 2:
-                                     this.createOtherMenu(player, ConstNpc.MENU_DA_NANG_CAP,
+                                    this.createOtherMenu(player, ConstNpc.MENU_DA_NANG_CAP,
                                             "Đã Tìm được đủ mảnh vỡ rồi ư!!!Ngươi muốn đổi gì nào?\nTHÔNG TIN ĐỔI VẬT PHẨM\b|1|Đổi x99 mảnh vỡ ngọc rồng => x99 1 trong các loại đá dưới đây",
                                             "Đổi\nThach Anh\nTím", "Đổi\nTiTan", "Đổi\nRuby", "Đổi\nSaphia", "Đổi\nLục Bảo");
                                     break;
@@ -7254,9 +7254,9 @@ public class NpcFactory {
                                 break;
 
                             }
-                        }else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_DA_NANG_CAP){
-                           Item mv = null;
-                           switch (select) {
+                        } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_DA_NANG_CAP) {
+                            Item mv = null;
+                            switch (select) {
                                 case 0:
                                    try {
                                     mv = InventoryServiceNew.gI().findItemBag(player, 1339);
@@ -7277,7 +7277,7 @@ public class NpcFactory {
                                     Service.getInstance().sendThongBao(player, "Chúc mừng bạn nhận được x99 Đá Thạch Anh Tím");
                                 }
                                 break;
-                                
+
                                 case 1: 
                                        try {
                                     mv = InventoryServiceNew.gI().findItemBag(player, 1339);
@@ -7297,7 +7297,7 @@ public class NpcFactory {
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.getInstance().sendThongBao(player, "Chúc mừng bạn nhận được x99 Titan");
                                 }
-                                    break;
+                                break;
                                 case 2:
                                        try {
                                     mv = InventoryServiceNew.gI().findItemBag(player, 1339);
@@ -7317,7 +7317,7 @@ public class NpcFactory {
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.getInstance().sendThongBao(player, "Chúc mừng bạn nhận được x99 Ruby");
                                 }
-                                    break;
+                                break;
                                 case 3:
                                        try {
                                     mv = InventoryServiceNew.gI().findItemBag(player, 1339);
@@ -7337,7 +7337,7 @@ public class NpcFactory {
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.getInstance().sendThongBao(player, "Chúc mừng bạn nhận được x99 Saphia");
                                 }
-                                    break;
+                                break;
                                 case 4:
                                        try {
                                     mv = InventoryServiceNew.gI().findItemBag(player, 1339);
@@ -7357,10 +7357,9 @@ public class NpcFactory {
                                     InventoryServiceNew.gI().sendItemBags(player);
                                     Service.getInstance().sendThongBao(player, "Chúc mừng bạn nhận được x99 Lục bảo");
                                 }
-                                    break;
-                           }
-                        
-                        
+                                break;
+                            }
+
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_START_COMBINE) {
                             switch (player.combineNew.typeCombine) {
                                 case CombineServiceNew.THANG_CAP_TRANG_BI:
@@ -7997,6 +7996,21 @@ public class NpcFactory {
                         }
                         break;
 
+                    case ConstNpc.MENU_STAFF:
+                        switch (select) {
+                            case 0:
+                                Input.gI().createFormGiveItem(player);
+                                break;
+                            case 1:
+                                Input.gI().createFormGETItem(player);
+                                break;
+                            case 2:
+                                Input.gI().createFormFindPlayerStaff(player);
+                                break;
+                           
+                        }
+                        break;
+
                     case ConstNpc.menutd:
                         switch (select) {
                             case 0:
@@ -8131,6 +8145,24 @@ public class NpcFactory {
                                     Service.getInstance().sendThongBao(player, "Kik người chơi " + p.name + " thành công");
                                     Client.gI().getPlayers().remove(p);
                                     Client.gI().kickSession(p.getSession());
+                                    break;
+                            }
+                        }
+                        break;
+
+                    case ConstNpc.MENU_FIND_PLAYER_STAFF:
+                        Player person = (Player) PLAYERID_OBJECT.get(player.id);
+                        if (person != null) {
+                            switch (select) {
+                                case 0:
+                                    if (person.zone != null) {
+                                        ChangeMapService.gI().changeMapYardrat(player, person.zone, person.location.x, person.location.y);
+                                    }
+                                    break;
+                                case 1:
+                                    if (person.zone != null) {
+                                        ChangeMapService.gI().changeMap(person, player.zone, player.location.x, player.location.y);
+                                    }
                                     break;
                             }
                         }
