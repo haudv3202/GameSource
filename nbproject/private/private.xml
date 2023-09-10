@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/player/Player.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/BossesData.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/Service.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/jdbc/daos/GodGK.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/boss/list_boss/gokuvocuc.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/server/io/MySession.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
