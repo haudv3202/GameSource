@@ -2024,7 +2024,7 @@ public class NpcFactory {
                                                 player.gender,
                                                 new short[]{player.getHead(), player.getBody(), player.getLeg(), player.getFlagBag(), player.getAura(), player.getEffFront()},
                                                 player.nPoint.dame / 10L,
-                                                new long[]{player.nPoint.hpMax * 500L},
+                                                new long[]{player.nPoint.hpMax * 300L},
                                                 new int[]{140},
                                                 skillTemp,
                                                 new String[]{"|-2|Boss Tâm Ma đã xuất hiện rồi"}, //text chat 1

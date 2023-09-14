@@ -17,6 +17,7 @@ public class MabuBoss extends Boss {
     public MabuBoss() throws Exception {
         super(Util.randomBossId(), BossesData.MABU_12H);
     }
+   
 
     @Override
     public void reward(Player plKill) {

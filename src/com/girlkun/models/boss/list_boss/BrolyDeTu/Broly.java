@@ -92,7 +92,7 @@ private void HoiPhuc() throws Exception {
             }
             this.nPoint.subHP(damage);
         
-            if (this.LasthpBoss >=40000000 && !this.calledNinja) {
+            if (50000000 >=40000000 && !this.calledNinja) {
                 try {
                     new BrolySuper(this.zone, 200000, Util.nextInt(10000000, 100000000), BossID.BROLY_SUPER);
                 } catch (Exception ex) {

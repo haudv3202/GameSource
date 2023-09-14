@@ -17,6 +17,7 @@ import com.girlkun.models.boss.list_boss.BossDetuBroly;
 import com.girlkun.models.boss.list_boss.BossGoHanSSJ;
 import com.girlkun.models.boss.list_boss.BossMaBuNoel;
 import com.girlkun.models.boss.list_boss.BossNamecPhanDien;
+import com.girlkun.models.boss.list_boss.BossNew;
 import com.girlkun.models.boss.list_boss.BossTienBip;
 import com.girlkun.models.boss.list_boss.BossZeno;
 import com.girlkun.models.boss.list_boss.BossVang;
@@ -168,6 +169,7 @@ public class BossManager implements Runnable {
             this.createBoss(BossID.BossNamecPhanDien);
             this.createBoss(BossID.BROLYDETU);
             this.createBoss(BossID.MABUNOEL);
+             this.createBoss(BossID.BOSSNEW);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -328,6 +330,8 @@ public class BossManager implements Runnable {
                     return new com.girlkun.models.boss.list_boss.BrolyDeTu.Broly();
                 case BossID.MABUNOEL:
                     return new BossMaBuNoel();
+                case BossID.BOSSNEW:
+                    return new BossNew();
                 default:
                     return null;
             }
