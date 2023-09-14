@@ -37,7 +37,7 @@ public class gokuvocuc extends Boss {
         int randomDo = new Random().nextInt(itemDos.length);
         int randomNR = new Random().nextInt(NRs.length);
         int[] itemRewardTs = {1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062};
-        if (Util.isTrue(100, 100)) {
+        if (Util.isTrue(1, 100)) {
             if (Util.isTrue(10, 10)) {
                 Random random = new Random();
                 int sd = random.nextInt(15000,20000) ;
@@ -82,7 +82,7 @@ public class gokuvocuc extends Boss {
                 return;
             }
             Service.gI().dropItemMap(this.zone, Util.ratiItem(zone, itemDos[randomDo], Util.nextInt(5, 30), this.location.x, this.location.y, plKill.id));
-        } else if (Util.isTrue(70, 100)) {
+        } else if (Util.isTrue(80, 100)) {
             Service.gI().dropItemMap(this.zone, new ItemMap(zone, NRs[randomNR], Util.nextInt(5, 30), this.location.x, zone.map.yPhysicInTop(this.location.x, this.location.y - 24), plKill.id));
         }
         TaskService.gI().checkDoneTaskKillBoss(plKill, this);
