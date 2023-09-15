@@ -31,6 +31,7 @@ public class SatThu extends Boss {
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{123, 124, 125, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
                 1000000, //dame
+                100000,
                 new long[]{100000000000L}, //hp
                 new int[]{169}, //map join
                 new int[][]{

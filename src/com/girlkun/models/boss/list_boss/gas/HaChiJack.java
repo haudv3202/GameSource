@@ -65,6 +65,7 @@ public class HaChiJack extends Boss {
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{639, 640, 641, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
                 ((5000 * level)), //dame
+                 100000,
                 new long[]{((500000000L * level))}, //hp
                 new int[]{148}, //map join
                 new int[][]{

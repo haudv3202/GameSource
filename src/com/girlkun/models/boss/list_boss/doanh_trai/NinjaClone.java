@@ -31,6 +31,7 @@ public class NinjaClone extends Boss {
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{123, 124, 125, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
                 ((1000) ), //dame
+                 100000,
                 new long[]{((10000) )}, //hp
                 new int[]{49}, //map join
                 new int[][]{

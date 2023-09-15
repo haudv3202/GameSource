@@ -18,7 +18,6 @@ import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.SkillUtil;
 import com.girlkun.utils.Util;
 
-
 public class Boss extends Player implements IBossNew, IBossOutfit {
 
     public int currentLevel = -1;
@@ -45,7 +44,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     protected long lastTimeTargetPlayer;
     protected int timeTargetPlayer;
     public Player playerTarger;
-    
+
     public int mapCongDuc;
 
     protected Boss parentBoss;
@@ -86,6 +85,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
         this.gender = data.getGender();
         this.nPoint.mpg = 7_5_2002;
         this.nPoint.dameg = data.getDame();
+        this.nPoint.defg = data.getDef();
         this.nPoint.hpg = data.getHp()[Util.nextInt(0, data.getHp().length - 1)];
         this.nPoint.hp = nPoint.hpg;
         this.nPoint.calPoint();
@@ -317,9 +317,12 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
     }
 
     protected void notifyJoinMap() {
-        if (this.id >= -22 && this.id <= -20) return;
-        if (this.zone.map.mapId == 140||MapService.gI().isMapMaBu(this.zone.map.mapId) ||MapService.gI().isMapDoanhTrai(this.zone.map.mapId) || MapService.gI().isMapBlackBallWar(this.zone.map.mapId))
+        if (this.id >= -22 && this.id <= -20) {
             return;
+        }
+        if (this.zone.map.mapId == 140 || MapService.gI().isMapMaBu(this.zone.map.mapId) || MapService.gI().isMapDoanhTrai(this.zone.map.mapId) || MapService.gI().isMapBlackBallWar(this.zone.map.mapId)) {
+            return;
+        }
         ServerNotify.gI().notify("BOSS " + this.name + " vừa xuất hiện tại " + this.zone.map.mapName);
     }
 
@@ -585,6 +588,7 @@ public class Boss extends Player implements IBossNew, IBossOutfit {
             }
         }
     }
+
     @Override
     public void wakeupAnotherBossWhenDisappear() {
 //        System.out.println("wake up boss when disappear");

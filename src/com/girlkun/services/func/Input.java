@@ -31,7 +31,7 @@ public class Input {
     public static final int CHANGE_PASSWORD = 500;
     public static final int GIFT_CODE = 501;
     public static final int FIND_PLAYER = 502;
-        public static final int FIND_PLAYER_STAFF = 601;
+    public static final int FIND_PLAYER_STAFF = 601;
     public static final int CHANGE_NAME = 503;
     public static final int CHOOSE_LEVEL_BDKB = 504;
     public static final int NAP_THE = 505;
@@ -85,40 +85,43 @@ public class Input {
                     break;
                 case SEND_ITEM_OP:
                     if (player.isAdmin()) {
-                        int idItemBuff = Integer.parseInt(text[1]);
-                        int idOptionBuff = Integer.parseInt(text[2]);
-                        int slOptionBuff = Integer.parseInt(text[3]);
-                        int slItemBuff = Integer.parseInt(text[4]);
-                        Player pBuffItem = Client.gI().getPlayer(text[0]);
-                        if (pBuffItem != null) {
-                            String txtBuff = "Buff to player: " + pBuffItem.name + "\b";
-                            if (idItemBuff == -1) {
-//                                pBuffItem.inventory.gold = Math.min(pBuffItem.inventory.gold + (long)slItemBuff, (Inventory.LIMIT_GOLD + pBuffItem.limitgold));
-                                txtBuff += slItemBuff + " vàng\b";
-                                Service.getInstance().sendMoney(player);
-                            } else if (idItemBuff == -2) {
-                                pBuffItem.inventory.gem = Math.min(pBuffItem.inventory.gem + slItemBuff, 2000000000);
-                                txtBuff += slItemBuff + " ngọc\b";
-                                Service.getInstance().sendMoney(player);
-                            } else if (idItemBuff == -3) {
-                                pBuffItem.inventory.ruby = Math.min(pBuffItem.inventory.ruby + slItemBuff, 2000000000);
-                                txtBuff += slItemBuff + " ngọc khóa\b";
-                                Service.getInstance().sendMoney(player);
+                        String name1 = text[0];
+                        int id1 = Integer.valueOf(text[1]);
+                        int q1 = Integer.valueOf(text[2]);
+                        String option = text[3];
+                        String param = text[4];
+                        String[] option1 = option.split("-");
+                        String[] param1 = param.split("-");
+                        int length1 = option1.length;
+                        int length2 = param1.length;
+                        if (length1 == length2) {
+                            if (Client.gI().getPlayer(name1) != null) {
+                                Item item = ItemService.gI().createNewItem(((short) id1));
+                                item.quantity = q1;
+//                    InventoryServiceNew.gI().addItemBag(Client.gI().getPlayer(name1), item);
+//                    InventoryServiceNew.gI().sendItemBags(Client.gI().getPlayer(name1));
+                                for (int i = 0; i < length1; i++) {
+                                    String option2 = option1[i];
+                                    String param2 = param1[i];
+                                    int opt;
+                                    int par;
+                                    try {
+                                        opt = Integer.parseInt(option2);
+                                        par = Integer.parseInt(param2);
+                                        item.itemOptions.add(new Item.ItemOption(opt, par));
+                                    } catch (NumberFormatException e) {
+                                        break;
+                                    }
+
+                                }
+                                InventoryServiceNew.gI().addItemBag(Client.gI().getPlayer(name1), item);
+                                InventoryServiceNew.gI().sendItemBags(Client.gI().getPlayer(name1));
+                                Service.getInstance().sendThongBao(Client.gI().getPlayer(name1), "Nhận " + item.template.name + " từ " + player.name);
                             } else {
-                                //Item itemBuffTemplate = ItemBuff.getItem(idItemBuff);
-                                Item itemBuffTemplate = ItemService.gI().createNewItem((short) idItemBuff);
-                                itemBuffTemplate.itemOptions.add(new Item.ItemOption(idOptionBuff, slOptionBuff));
-                                itemBuffTemplate.quantity = slItemBuff;
-                                txtBuff += "x" + slItemBuff + " " + itemBuffTemplate.template.name + "\b";
-                                InventoryServiceNew.gI().addItemBag(pBuffItem, itemBuffTemplate);
-                                InventoryServiceNew.gI().sendItemBags(pBuffItem);
-                            }
-                            NpcService.gI().createTutorial(player, 24, txtBuff);
-                            if (player.id != pBuffItem.id) {
-                                NpcService.gI().createTutorial(player, 24, txtBuff);
+                                Service.getInstance().sendThongBao(player, "Không online");
                             }
                         } else {
-                            Service.getInstance().sendThongBao(player, "Player không online");
+                            Service.getInstance().sendThongBao(player, "Nhập dữ liệu không đúng");
                         }
                         break;
                     }
@@ -128,7 +131,7 @@ public class Input {
                     int idiTEM = Integer.valueOf(text[0]);
                     int SOLUONG = Integer.valueOf(text[1]);
 
-                    Item item = ItemService.gI().createNewItem(((short) idiTEM),SOLUONG);
+                    Item item = ItemService.gI().createNewItem(((short) idiTEM), SOLUONG);
                     ItemShop it = new Shop().getItemShop(idiTEM);
                     if (it != null && !it.options.isEmpty()) {
                         item.itemOptions.addAll(it.options);
@@ -136,7 +139,7 @@ public class Input {
                     InventoryServiceNew.gI().addItemBag(player, item);
                     InventoryServiceNew.gI().sendItemBags(player);
                     Service.getInstance().sendThongBao(player, "GET " + item.template.name + " [" + item.template.id + "] SUCCESS !");
-                   break;
+                    break;
 //                case NAP_THE:
 //                    NapThe.gI().napThe(player, text[0], text[1]);
 //                    break;
@@ -157,9 +160,9 @@ public class Input {
                         Service.getInstance().sendThongBao(player, "Người chơi không tồn tại hoặc đang offline");
                     }
                     break;
-                    
-                case FIND_PLAYER_STAFF: 
-                      Player person = Client.gI().getPlayer(text[0]);
+
+                case FIND_PLAYER_STAFF:
+                    Player person = Client.gI().getPlayer(text[0]);
                     if (person != null) {
                         NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_FIND_PLAYER_STAFF, -1, "Ngài muốn..?",
                                 new String[]{"Đi tới\n" + person.name, "Gọi " + person.name + "\ntới đây"},
@@ -355,11 +358,11 @@ public class Input {
 
     public void createFormSenditem1(Player pl) {
         createForm(pl, SEND_ITEM_OP, "SEND Vật Phẩm Option",
-                new SubInput("Tên người chơi", ANY),
-                new SubInput("ID Trang Bị", NUMERIC),
-                new SubInput("ID Option", NUMERIC),
-                new SubInput("Param", NUMERIC),
-                new SubInput("Số lượng", NUMERIC));
+                new SubInput("Tên", ANY), 
+                new SubInput("Id Item", ANY), 
+                new SubInput("Số lượng", ANY),
+                new SubInput("ID OPTION (Cách nhau bởi dấu '-')", ANY),
+                new SubInput("PARAM (Cách nhau bởi dấu '-')", ANY));
     }
 
     public void createFormGiftCode(Player pl) {
@@ -369,8 +372,8 @@ public class Input {
     public void createFormFindPlayer(Player pl) {
         createForm(pl, FIND_PLAYER, "Tìm kiếm người chơi", new SubInput("Tên người chơi", ANY));
     }
-    
-     public void createFormFindPlayerStaff(Player pl) {
+
+    public void createFormFindPlayerStaff(Player pl) {
         createForm(pl, FIND_PLAYER_STAFF, "Tìm kiếm người chơi", new SubInput("Tên người chơi", ANY));
     }
 

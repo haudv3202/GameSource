@@ -2024,6 +2024,7 @@ public class NpcFactory {
                                                 player.gender,
                                                 new short[]{player.getHead(), player.getBody(), player.getLeg(), player.getFlagBag(), player.getAura(), player.getEffFront()},
                                                 player.nPoint.dame / 10L,
+                                                 100000,
                                                 new long[]{player.nPoint.hpMax * 500L},
                                                 new int[]{140},
                                                 skillTemp,
@@ -3349,6 +3350,7 @@ public class NpcFactory {
                                                 (byte) 0,
                                                 new short[]{467, 468, 469, -1, -1, -1},
                                                 100000,
+                                                 100000,
                                                 new long[]{player.nPoint.hpMax * 2},
                                                 new int[]{103},
                                                 new int[][]{
@@ -3402,6 +3404,7 @@ public class NpcFactory {
                                                 (byte) 0,
                                                 new short[]{467, 468, 469, -1, -1, -1},
                                                 100000,
+                                                 100000,
                                                 new long[]{player.nPoint.hpMax * 2},
                                                 new int[]{103},
                                                 new int[][]{

@@ -32,6 +32,7 @@ public class BrolySuper extends Boss {
                 ConstPlayer.TRAI_DAT, //gender
                 new short[]{98, 99, 100, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
                 ((50000 + dame) ), //dame
+                100000,
                 new long[]{((400000000 + hp) )}, //hp
                 new int[]{29,33,20}, //map join
                 new int[][]{
