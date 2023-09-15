@@ -3091,8 +3091,8 @@ public class CombineServiceNew {
                     }
                 }
                 
-                    if ( level_102 < 16 ) {
-                        Service.getInstance().sendThongBao(player, "Ta Cần Trang Bị Pha Lê Hóa 16 Sao");
+                    if ( level_102 < 8 ) {
+                        Service.getInstance().sendThongBao(player, "Ta Cần Trang Bị Pha Lê Hóa 8 Sao");
                         return;                  
                     }
                     if (Util.isTrue(100, 100)) {

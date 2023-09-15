@@ -24,21 +24,21 @@ public class Strange extends Boss {
         int[] VPRen = new int[]{1259,1266,1252};
         int randomNL = new Random().nextInt(NL.length);
         int randomVPRen = new Random().nextInt(VPRen.length);
-        if (Util.isTrue(30, 100)) {
-            if (Util.isTrue(4, 5)) {
+        if (Util.isTrue(10, 100)) {
+            if (Util.isTrue(2, 5)) {
                 Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1265, (Util.nextInt(1,4)), this.location.x, this.location.y, plKill.id));
                 return;
             } else{
             Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, VPRen[randomVPRen], 1, this.location.x, this.location.y, plKill.id));
             }
-        }else if(Util.isTrue(40, 100)){
+        }else if(Util.isTrue(10, 100)){
              Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 674, (Util.nextInt(10,20)), this.location.x, this.location.y, plKill.id));
         }else {
-            if (Util.isTrue(4, 5)) {
-                Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1249, (Util.nextInt(150,250)), this.location.x, this.location.y, plKill.id));
+            if (Util.isTrue(1, 5)) {
+                Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1249, (Util.nextInt(10,20)), this.location.x, this.location.y, plKill.id));
                 return;
             } else{
-            Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1250, (Util.nextInt(150,250)), this.location.x, this.location.y, plKill.id));
+            Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1250, (Util.nextInt(10,20)), this.location.x, this.location.y, plKill.id));
             }
         }
     }

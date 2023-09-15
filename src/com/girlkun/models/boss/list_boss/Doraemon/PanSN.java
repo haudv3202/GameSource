@@ -32,11 +32,11 @@ public class PanSN extends Boss {
             Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, VPRen[randomVPRen], 1, this.location.x, this.location.y, plKill.id));
             }
         }else {
-            if (Util.isTrue(4, 5)) {
-                Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1249, (Util.nextInt(100,150)), this.location.x, this.location.y, plKill.id));
+            if (Util.isTrue(2, 5)) {
+                Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1249, (Util.nextInt(10,30)), this.location.x, this.location.y, plKill.id));
                 return;
             } else{
-            Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1250, (Util.nextInt(100,150)), this.location.x, this.location.y, plKill.id));
+            Service.getInstance().dropItemMap(this.zone, Util.ratiItem(zone, 1250, (Util.nextInt(10,30)), this.location.x, this.location.y, plKill.id));
             }
         }
     }

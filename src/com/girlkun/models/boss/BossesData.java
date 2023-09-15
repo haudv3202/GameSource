@@ -34,6 +34,7 @@ public class BossesData {
     private static final int REST_5_M = 300;
     private static final int REST_10_M = 600;
     private static final int REST_15_M = 900;
+     private static final int REST_20_M = 1200;
     private static final int REST_30_M = 1800;
     private static final int REST_1_H = 3600;
     private static final int REST_24_H = 86400000;
@@ -1059,7 +1060,7 @@ public class BossesData {
             new short[]{1270, 1271, 1272, -1, -1, -1},
             10000000,
                 100000,
-            new long[]{2_000_000_000L},
+            new long[]{10_000_000_000L},
             new int[]{174},
             //            new int[]{14},
             new int[][]{
@@ -1081,7 +1082,7 @@ public class BossesData {
             new short[]{1273, 1274, 1275, -1, -1, -1},
             7500000,
                 100000,
-            new long[]{1500000000L},
+            new long[]{10_000_000_000L},
             new int[]{174},
             //            new int[]{14},
             new int[][]{
@@ -1101,7 +1102,7 @@ public class BossesData {
             new short[]{1282, 1283, 1284, -1, -1, -1},
             7500000,
                     100000,
-            new long[]{1_000_000_000L},
+            new long[]{10_000_000_000L},
             new int[]{174},
             //            new int[]{14},
             new int[][]{
@@ -1122,7 +1123,7 @@ public class BossesData {
             new short[]{1053, 1054, 1055, -1, -1, -1},
             5000000,
                     100000,
-            new long[]{1_000_000_000L},
+            new long[]{4_000_000_000L},
             new int[]{174},
             //            new int[]{14},
             new int[][]{
@@ -1142,7 +1143,7 @@ public class BossesData {
             new short[]{1056, 1057, 1058, -1, -1, -1},
             5000000,
                     100000,
-            new long[]{1_000_000_000L},
+            new long[]{4_000_000_000L},
             new int[]{174},
             //            new int[]{14},
             new int[][]{
@@ -1162,7 +1163,7 @@ public class BossesData {
             new short[]{1059, 1060, 1061, -1, -1, -1},
             5000000,
                     100000,
-            new long[]{1_000_000_000L},
+            new long[]{10_000_000_000L},
             new int[]{174},
             //            new int[]{14},
             new int[][]{
@@ -1230,7 +1231,8 @@ public class BossesData {
                 "|-1|Được thôi, nếu muốn chết đến vậy, ta rất vui lòng!!"
             }, //text chat 2
             new String[]{"|-1|Biến hình! Super Sayan Rose"}, //text chat 3
-            REST_15_M //second rest
+            REST_20_M //second rest Sua cai nay la thoi gian hoi sinh boss sua thanh 20p la
+//            thanh 20_M
     );
 
     public static final BossData SUPER_BLACK_GOKU = new BossData(
@@ -1354,6 +1356,31 @@ public class BossesData {
             new String[]{}, //text chat 3
             REST_15_M
     );
+    
+       public static final BossData BOSSNEW = new BossData(
+            "Boss Yarirobe", //name
+            ConstPlayer.TRAI_DAT, //gender
+            new short[]{77, 78, 79, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
+            100000, //dame
+               100000,
+            new long[]{1000000000L}, //hp
+            new int[]{5}, //map join
+            new int[][]{
+                {Skill.LIEN_HOAN, 7, 100},
+                {Skill.KAMEJOKO, 5, 3000},
+                {Skill.KHIEN_NANG_LUONG, 7, 100000},
+                {Skill.QUA_CAU_KENH_KHI, 7, 120000}},
+            //skill
+            new String[]{}, //text chat 1
+            new String[]{"|-1|Ta chính là thế giới",
+                "|-1|Ta chính là công lí",
+                "|-1|Hãy chiêm ngưỡng vẻ đẹp của ta !Hỡi con người",
+                "|-1|Sức mạnh to lớn nằm trong cơ thể bất tử",
+                "|-1|Ta sẽ đem công lí tới toàn bộ vũ trụ này", "|-2|Ngươi cứ lải nhải hoài 2 chữ công lí vậy?", "|-1|Lũ các ngươi làm ta thấy đau rồi ấy haha"
+            }, //text chat 2
+            new String[]{}, //text chat 3
+            REST_10_M
+    );
 
     //**************************************************************************
     public static final BossData MABU = new BossData(
@@ -1407,13 +1434,13 @@ public class BossesData {
             new short[]{1231, 1232, 1233, -1, -1, -1},//outfit {head, body, leg, bag, aura, eff}
             500000,//dame
             50000000,
-            new long[]{70000000000L}, //hp
+            new long[]{30000000000L}, //hp
             new int[]{92,93,94,96,97,98,99,100},//map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
-                 {Skill.TAI_TAO_NANG_LUONG, 7, 50000},
-                {Skill.KHIEN_NANG_LUONG, 5, 100000},
+                 {Skill.TAI_TAO_NANG_LUONG, 2, 10000},
+                {Skill.KHIEN_NANG_LUONG, 7, 50000},
                 },
             //skill
             new String[]{"|-2|Hahaha Anh đến rồi đây"}, //text chat 1
@@ -1889,19 +1916,19 @@ public class BossesData {
             new short[]{297, 298, 299, -1, -1, -1},
             1000000,
             100000,
-            new long[]{2000000000L},
+            new long[]{4000000000L},
             new int[]{120},
             new int[][]{
 //                {Skill.TU_SAT, 7, 100000},
-                {Skill.KHIEN_NANG_LUONG, 7, 50000},
-                {Skill.DE_TRUNG, 7, 10000},
-                {Skill.SOCOLA, 7, 1000},
+                {Skill.KHIEN_NANG_LUONG, 3, 80000},
+                {Skill.DE_TRUNG, 3, 10000},
+                {Skill.LIEN_HOAN, 7, 100},
                 {Skill.DEMON, 7, 1000}},
             new String[]{"|-2|Ma nhân Bư đã xuất hiện rồi"}, //text chat 1
             new String[]{"|-1|Thấy ảo chưa nè!"}, //text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                 "|-1|Tobe continue.."}, //text chat 3
-            REST_20_S
+            REST_5_M
     );
     public static final BossData DRABURA = new BossData(
             "Ma Vương Dabura",
@@ -2038,7 +2065,7 @@ public class BossesData {
             new short[]{636, 637, 638, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             900000,
             100000,//dame
-            new long[]{3000000000L}, //hp
+            new long[]{20000000000L}, //hp
             new int[]{169}, //map join
             new int[][]{
                 {Skill.LIEN_HOAN, 7, 1000},
@@ -2078,7 +2105,7 @@ public class BossesData {
             new short[]{1258, 1259, 1260, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             300000, //dame
             100000,
-            new long[]{2000000000L}, //hp
+            new long[]{8000000000L}, //hp
             new int[]{104}, //map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 1000},
@@ -2145,7 +2172,7 @@ public class BossesData {
             new short[]{1258, 1259, 1260, -1, -1, -1}, //outfit {head, body, leg, bag, aura, eff}
             3000000, //dame
             100000,
-            new long[]{5000000000L}, //hp
+            new long[]{20000000000L}, //hp
             new int[]{169}, //map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 1000},

@@ -70,7 +70,7 @@ public class BossID {
     public static final int XUKA = -220;
     public static final int CHAIEN = -219;
     public static final int XEKO = -218;
-
+ 
     public static final int MABU = -214;
         public static final int CUMBER = -215;
      public static final int BLACK3 = -231;
@@ -154,6 +154,7 @@ public class BossID {
     public static final int BROLY_SUPER = -282;
     public static final int BROLYDETU = -283;
     public static final int MABUNOEL = -284;
+     public static final int BOSSNEW = -285;
       public static final byte SOI_HEC_QUYN = -77;
     public static final byte O_DO = -78;
     public static final byte XINBATO = -79;
