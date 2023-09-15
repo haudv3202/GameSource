@@ -1433,14 +1433,14 @@ public class BossesData {
             ConstPlayer.XAYDA,
             new short[]{1231, 1232, 1233, -1, -1, -1},//outfit {head, body, leg, bag, aura, eff}
             500000,//dame
-            50000000,
-            new long[]{30000000000L}, //hp
+            10000000,
+            new long[]{10000000000L}, //hp
             new int[]{92,93,94,96,97,98,99,100},//map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
                  {Skill.TAI_TAO_NANG_LUONG, 2, 10000},
-                {Skill.KHIEN_NANG_LUONG, 7, 50000},
+                {Skill.KHIEN_NANG_LUONG, 4, 50000},
                 },
             //skill
             new String[]{"|-2|Hahaha Anh đến rồi đây"}, //text chat 1
