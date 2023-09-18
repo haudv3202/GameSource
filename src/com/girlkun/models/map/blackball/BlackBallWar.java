@@ -67,7 +67,7 @@ public class BlackBallWar {
 
     private static BlackBallWar i;
 
-    public static long TIME_OPEN;
+    public static long  TIME_OPEN;
     public static long TIME_CAN_PICK_DB;
     public static long TIME_CLOSE;
     public static long TIME_RS;

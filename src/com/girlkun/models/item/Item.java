@@ -111,7 +111,7 @@ public class Item {
     public boolean isSKH() {
         for (ItemOption itemOption : itemOptions
         ) {
-            if (itemOption.optionTemplate.id >= 127 && itemOption.optionTemplate.id <= 135) {
+            if (itemOption.optionTemplate.id >= 127 && itemOption.optionTemplate.id <= 144) {
                 return true;
             }
         }
