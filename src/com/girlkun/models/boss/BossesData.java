@@ -1432,7 +1432,7 @@ public class BossesData {
             "Goku vô cực",
             ConstPlayer.XAYDA,
             new short[]{1231, 1232, 1233, -1, -1, -1},//outfit {head, body, leg, bag, aura, eff}
-            2000000,//dame
+            2800000,//dame
             30000000,
             new long[]{16000000000L}, //hp
             new int[]{92,93,94,96,97,98,99,100},//map join
