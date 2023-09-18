@@ -165,10 +165,11 @@ public class CombineServiceNew {
                             }
                         }
                     }
-                    if (dhd.isSKH() && dhd != null && dtl != null ){
+                    if (dhd.isSKH() && dhd != null && dtl.quantity < 100 ){
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta cần Trang Bị Thần Linh chưa có SKH và 100 viên Đá Ngũ Sắc", "Đóng");
                     }
-                    else if (dhd != null && dtl != null) {
+                    else if (dhd != null && dtl.quantity >= 100) {
+                        Service.gI().sendThongBao(player, "test " + dtl.quantity);
                         String npcSay = "|6|" + dhd.template.name + "\n";
                         for (Item.ItemOption io : dhd.itemOptions) {
                             npcSay += "|2|" + io.getOptionString() + "\n";
@@ -183,7 +184,7 @@ public class CombineServiceNew {
                             this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, npcSay, "Chuẩn bị đủ tiền rồi hãy gặp ta!!!");
                         }
                     } else {
-                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta cần Trang Bị Thần Linh và 100 viên Đá Ngũ Sắc", "Đóng");
+                        this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta cần Trang Bị Thần Linh và 150 viên Đá Ngũ Sắc", "Đóng");
                     }
                 }
                 break;
@@ -200,10 +201,10 @@ public class CombineServiceNew {
                             }
                         }
                     }
-                    if (dhd.isSKH() && dhd != null && dtl != null ){
+                    if (dhd.isSKH() && dhd != null && dtl.quantity < 150 ){
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta cần Trang Bị Hủy Diệt chưa có SKH và 150 viên Đá Ngũ Sắc", "Đóng");
                     }
-                    else if (dhd != null && dtl != null) {
+                    else if (dhd != null && dtl.quantity >= 150) {
                         String npcSay = "|6|" + dhd.template.name + "\n";
                         for (Item.ItemOption io : dhd.itemOptions) {
                             npcSay += "|2|" + io.getOptionString() + "\n";
@@ -234,10 +235,10 @@ public class CombineServiceNew {
                             }
                         }
                     }
-                    if (dhd.isSKH() && dhd != null && dtl != null ){
+                    if (dhd.isSKH() && dhd != null && dtl.quantity < 200 ){
                         this.baHatMit.createOtherMenu(player, ConstNpc.IGNORE_MENU, "Ta cần Trang Bị Thiên Sứ chưa có SKH và 200 viên Đá Ngũ Sắc", "Đóng");
                     }
-                    else if (dhd != null && dtl != null) {
+                    else if (dhd != null && dtl.quantity >= 200) {
                         String npcSay = "|6|" + dhd.template.name + "\n";
                         for (Item.ItemOption io : dhd.itemOptions) {
                             npcSay += "|2|" + io.getOptionString() + "\n";

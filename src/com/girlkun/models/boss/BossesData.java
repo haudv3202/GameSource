@@ -1072,7 +1072,7 @@ public class BossesData {
             new String[]{"|-2|Ta là Siêu Anh Hùng Captain America !!!!!"}, //text chat 1
             new String[]{}, //text chat 2
             new String[]{}, //text chat 3
-            REST_10_M, //second rest
+            REST_5_M, //second rest
             new int[]{BossID.BOSS_SPIDER, BossID.BOSS_GoHanSN, BossID.BOSS_ChiChiSN, BossID.BOSS_STRANGE, BossID.BOSS_PanSN} //boss join map together
     );
         
@@ -1432,22 +1432,22 @@ public class BossesData {
             "Goku vô cực",
             ConstPlayer.XAYDA,
             new short[]{1231, 1232, 1233, -1, -1, -1},//outfit {head, body, leg, bag, aura, eff}
-            500000,//dame
-            10000000,
-            new long[]{10000000000L}, //hp
+            2000000,//dame
+            30000000,
+            new long[]{16000000000L}, //hp
             new int[]{92,93,94,96,97,98,99,100},//map join
             new int[][]{
                 {Skill.KAMEJOKO, 7, 2000},
                 {Skill.LIEN_HOAN, 7, 100},
                  {Skill.TAI_TAO_NANG_LUONG, 2, 10000},
-                {Skill.KHIEN_NANG_LUONG, 4, 50000},
+                {Skill.KHIEN_NANG_LUONG, 3, 50000},
                 },
             //skill
             new String[]{"|-2|Hahaha Anh đến rồi đây"}, //text chat 1
             new String[]{"|-1|Thấy ảo chưa nè!","|-1|Ta chính là công lí","|-1|Mày là con tép"},//text chat 2
             new String[]{"|-1|Nhớ mặt tao đấy",
                 "|-1|Tobe continue.."}, //text chat 3
-            REST_1_S
+            REST_10_M
     );
      
      public static final BossData BROLY_CLONE = new BossData(

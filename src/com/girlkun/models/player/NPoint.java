@@ -561,43 +561,43 @@ public class NPoint {
 //            this.hpMax += ((long) this.hpMax * 50 / 100);
 //        }
         //Ma bư
-        if (this.player.isPet && ((Pet) this.player).typePet == 1// chi so lam sao bac tu cho dj
+       if (this.player.isPet && ((Pet) this.player).typePet == 1// chi so lam sao bac tu cho dj
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.hpMax += ((long) this.hpMax * 20 / 100);//chi so hp
+            this.hpMax += ((long) this.hpMax * 50 / 100);//chi so hp
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.hpMax += ((long) this.hpMax * 30 / 100);
+            this.hpMax += ((long) this.hpMax * 60 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 1
+                && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
+            this.hpMax += ((long) this.hpMax * 70 / 100);
+        }
+        //pet berus
+        if (this.player.isPet && ((Pet) this.player).typePet == 2
+                && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
+            this.hpMax += ((long) this.hpMax * 20 / 100);//chi so hp
+        }
+        if (this.player.isPet && ((Pet) this.player).typePet == 2
+                && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
+            this.hpMax += ((long) this.hpMax * 30 / 100);//chi so hp
+        }
+        if (this.player.isPet && ((Pet) this.player).typePet == 2
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
             this.hpMax += ((long) this.hpMax * 40 / 100);
         }
         //pet berus
-        if (this.player.isPet && ((Pet) this.player).typePet == 2
-                && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.hpMax += ((long) this.hpMax * 40 / 100);//chi so hp
-        }
-        if (this.player.isPet && ((Pet) this.player).typePet == 2
-                && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.hpMax += ((long) this.hpMax * 50 / 100);//chi so hp
-        }
-        if (this.player.isPet && ((Pet) this.player).typePet == 2
-                && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.hpMax += ((long) this.hpMax * 60 / 100);
-        }
-        //pet berus
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.hpMax += ((long) this.hpMax * 60 / 100);//chi so hp
+            this.hpMax += ((long) this.hpMax * 10 / 100);//chi so hp
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.hpMax += ((long) this.hpMax * 70 / 100);//chi so hp
+            this.hpMax += ((long) this.hpMax * 20 / 100);//chi so hp
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.hpMax += ((long) this.hpMax * 80 / 100);
+            this.hpMax += ((long) this.hpMax * 30 / 100);
         }
         // Pet thêm sau
         if (this.player.isPet && ((Pet) this.player).typePet >= 4
@@ -702,28 +702,28 @@ public class NPoint {
         //pet mabư
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.mpMax += ((long) this.mpMax * 20 / 100);
+            this.mpMax += ((long) this.mpMax * 50 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.mpMax += ((long) this.mpMax * 30 / 100);
+            this.mpMax += ((long) this.mpMax * 60 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.mpMax += ((long) this.mpMax * 40 / 100);
+            this.mpMax += ((long) this.mpMax * 70 / 100);
         }
         //pet br
         if (this.player.isPet && ((Pet) this.player).typePet == 2
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.mpMax += ((long) this.mpMax * 40 / 100);//MP berus
+            this.mpMax += ((long) this.mpMax * 20 / 100);//MP berus
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 2
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.mpMax += ((long) this.mpMax * 50 / 100);//MP berus
+            this.mpMax += ((long) this.mpMax * 30 / 100);//MP berus
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 2
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.mpMax += ((long) this.mpMax * 65 / 100);//MP berus
+            this.mpMax += ((long) this.mpMax * 40 / 100);//MP berus
         }
 
         //pet mabư
@@ -738,16 +738,16 @@ public class NPoint {
         //pet br
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.mpMax += ((long) this.mpMax * 70 / 100);//MP berus
+            this.mpMax += ((long) this.mpMax * 10 / 100);//MP berus
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.mpMax += ((long) this.mpMax * 85 / 100);//MP berus
+            this.mpMax += ((long) this.mpMax * 20 / 100);//MP berus
         }
         //đuôi khỉ
         if (!this.player.isPet && this.player.itemTime.isDuoikhi
                 || this.player.isPet && ((Pet) this.player).master.itemTime.isDuoikhi) {
-            this.mpMax += ((long) this.mpMax * 50 / 100);
+            this.mpMax += ((long) this.mpMax * 30 / 100);
         }
         if (!this.player.isPet && this.player.itemTime.isUseMayDo2
                 || this.player.isPet && ((Pet) this.player).master.itemTime.isUseMayDo2) {
@@ -797,29 +797,29 @@ public class NPoint {
         //pet mabư
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.dame += ((long) this.dame * 20 / 100);
+            this.dame += ((long) this.dame * 50 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.dame += ((long) this.dame * 30 / 100);
+            this.dame += ((long) this.dame * 60 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 1
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.dame += ((long) this.dame * 40 / 100);
+            this.dame += ((long) this.dame * 70 / 100);
         }
 
         //pet Berus
         if (this.player.isPet && ((Pet) this.player).typePet == 2
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.dame += ((long) this.dame * 40 / 100);
+            this.dame += ((long) this.dame * 20 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 2
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.dame += ((long) this.dame * 50 / 100);
+            this.dame += ((long) this.dame * 30 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 2
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.dame += ((long) this.dame * 60 / 100);
+            this.dame += ((long) this.dame * 40 / 100);
         }
         //pet mabư
 
@@ -831,16 +831,16 @@ public class NPoint {
 
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA) {
-            this.dame += ((long) this.dame * 60 / 100);
+            this.dame += ((long) this.dame * 10 / 100);
         }
         //pet mabư
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA2) {
-            this.dame += ((long) this.dame * 70 / 100);
+            this.dame += ((long) this.dame * 20 / 100);
         }
         if (this.player.isPet && ((Pet) this.player).typePet == 3
                 && ((Pet) this.player).master.fusion.typeFusion == ConstPlayer.HOP_THE_PORATA3) {
-            this.dame += ((long) this.dame * 85 / 100);
+            this.dame += ((long) this.dame * 30 / 100);
         }
         //đuôi khỉ
         if (!this.player.isPet && this.player.itemTime.isDuoikhi
