@@ -10,6 +10,7 @@ import com.girlkun.models.player.Player;
 import com.girlkun.models.skill.Skill;
 import com.girlkun.server.Manager;
 import com.girlkun.services.InventoryServiceNew;
+import com.girlkun.services.ItemService;
 import com.girlkun.services.ItemTimeService;
 import com.girlkun.services.MapService;
 import com.girlkun.utils.Logger;
@@ -19,7 +20,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.json.simple.JSONArray;
@@ -793,6 +796,70 @@ public class PlayerDAO {
             } catch (Exception e) {
             }
         }
+    }
+    
+    public static ScanResult GetDataScanItem(Player player, int idItem, int indexBag, String[] idOptions, String[] idParams) {
+        int totalBan = 0;
+        List<String[]> infoPlayers = new ArrayList<>();
+        try ( Connection con = GirlkunDB.getConnection();) {
+            PreparedStatement ps = con.prepareStatement("SELECT p.id, p.account_id, p.name, p.items_body FROM player p JOIN account a ON p.account_id = a.id WHERE a.ban = 0 AND a.is_admin = 0");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id_account = rs.getInt("account_id");
+                String name = rs.getString("name");
+                int id = rs.getInt("id");
+                String itemsBody = rs.getString("items_body");
+                int statusScan = 0;
+                int optionSql = 0;
+                // Thực hiện các hành động với itemsBody tại đây
+                JSONArray dataArray = (JSONArray) JSONValue.parse(itemsBody);
+                for (int i = 0; i < dataArray.size(); i++) {
+                    Item item = null;
+                    JSONArray dataItem = (JSONArray) JSONValue.parse(dataArray.get(i).toString());
+                    short tempId = Short.parseShort(String.valueOf(dataItem.get(0)));
+
+                    if (tempId != -1) {
+                        if (tempId == idItem) {
+                            item = ItemService.gI().createNewItem(tempId, Integer.parseInt(String.valueOf(dataItem.get(1))));
+                            JSONArray options = (JSONArray) JSONValue.parse(String.valueOf(dataItem.get(2)).replaceAll("\"", ""));
+                            optionSql = options.size();
+                            for (int j = 0; j < options.size(); j++) {
+                                JSONArray opt = (JSONArray) JSONValue.parse(String.valueOf(options.get(j)));
+//                            Integer.parseInt(String.valueOf(opt.get(0))) id option
+// Integer.parseInt(String.valueOf(opt.get(1))) param
+
+                                for (int n = 0; n < idOptions.length; n++) {
+                                    String option2Scan = idOptions[n];
+                                    String param2Scan = idParams[n];
+
+                                    int optScan = Integer.parseInt(option2Scan);
+                                    int parScan = Integer.parseInt(param2Scan);
+//                                    System.out.println("optScan: " + optScan + ", opt.get(0): " + Integer.parseInt(String.valueOf(opt.get(0))));
+//                                    System.out.println("parScan: " + parScan + ", opt.get(1): " + Integer.parseInt(String.valueOf(opt.get(1))));
+                                    if (optScan == Integer.parseInt(String.valueOf(opt.get(0))) && parScan <= Integer.parseInt(String.valueOf(opt.get(1)))) {
+                                        statusScan++;
+                                    }
+
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+//                System.out.println("statusScan: " + statusScan);
+//                System.out.println("optionSql: " + optionSql);
+                if (statusScan < optionSql && statusScan > 0) {
+                    totalBan++;
+                    infoPlayers.add(new String[]{Integer.toString(id_account), name, Integer.toString(id)});
+                }
+            }
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            Logger.logException(PlayerDAO.class, e, "Lỗi quét" + player.name);
+        }
+          return new ScanResult(totalBan, infoPlayers);
     }
 
     public static void updateItemReward(Player player) {

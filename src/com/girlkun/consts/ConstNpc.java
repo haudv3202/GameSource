@@ -139,7 +139,7 @@ public class ConstNpc {
     public static final int MENU_EVENT = 523;
     public static final int MENU_GIAO_BONG = 524;
     public static final int CONFIRM_DOI_THUONG_SU_KIEN = 525;
-     public static final int MENU_ACCPET_GO_TO_GAS = 538;
+    public static final int MENU_ACCPET_GO_TO_GAS = 538;
     public static final int MENU_OPEN_GAS = 539;
     public static final int MENU_OPENED_GAS = 540;
     //index than vu tru
@@ -167,7 +167,7 @@ public class ConstNpc {
     public static final int MENU_NANG_CAP_DO_TS = 505;
     public static final int MENU_NANG_DOI_SKH_VIP = 506;
     public static final int MENU_DOIQUA = 11000;
-        public static final int MENU_DA_NANG_CAP = 11001;
+    public static final int MENU_DA_NANG_CAP = 11001;
     //index menu linh canh
     public static final int MENU_JOIN_DOANH_TRAI = 502;
 
@@ -188,13 +188,14 @@ public class ConstNpc {
     public static final int BUFF_PET = 514;
     public static final int CONFIRM_REMOVE_ALL_ITEM_LUCKY_ROUND = 515;
     public static final int MENU_FIND_PLAYER = 516;
-      public static final int MENU_FIND_PLAYER_STAFF = 602;
+    public static final int MENU_FIND_PLAYER_STAFF = 602;
     public static final int CONFIRM_DISSOLUTION_CLAN = 517;
     public static final int CONFIRM_ACTIVE = 518;
     public static final int menutd = 519;
     public static final int menunm = 520;
     public static final int menuxd = 521;
     public static final int CONFIRM_TELE_NAMEC = 522;
+    public static final int MENU_TOOL_SCAN = 560;
 
     public static final int MENU_OPTION_USE_ITEM2000 = 2000;
     public static final int MENU_OPTION_USE_ITEM2001 = 2001;
@@ -281,7 +282,7 @@ public class ConstNpc {
     public static final int SIDE_BOX_LUCKY_ROUND = 509;
     public static final int SHOP_BUNMA_TL_0 = 510;
     public static final int SIDE_BOX_ITEM_REWARD = 511;
-    
+
     public static final int RUONG_GO = 512;
 
 }

@@ -2024,7 +2024,7 @@ public class NpcFactory {
                                                 player.gender,
                                                 new short[]{player.getHead(), player.getBody(), player.getLeg(), player.getFlagBag(), player.getAura(), player.getEffFront()},
                                                 player.nPoint.dame / 10L,
-                                                 100000,
+                                                100000,
                                                 new long[]{player.nPoint.hpMax * 500L},
                                                 new int[]{140},
                                                 skillTemp,
@@ -3058,7 +3058,7 @@ public class NpcFactory {
                                 case 7:
                                     createOtherMenu(player, ConstNpc.MENU_CAI_TRANG,
                                             "Ngươi muốn Tiến Hóa Cải Trang nào hãy chọn bên dưới!", "Tiến Hóa\n Cải Trang\n Broly",
-                                             "Đóng");
+                                            "Đóng");
 //                                     "Cải Trang V2\nBaby Vegeta"
 //                                    "Nâng Cấp\n Cải Trang", "Cải Trang V2\nBaby Vegeta"
 //                                    , "Cải Trang V3\nBlack Goku", "Cải Trang V4\nBill", "Cải Trang V5\nHearts Gold",
@@ -3350,7 +3350,7 @@ public class NpcFactory {
                                                 (byte) 0,
                                                 new short[]{467, 468, 469, -1, -1, -1},
                                                 100000,
-                                                 100000,
+                                                100000,
                                                 new long[]{player.nPoint.hpMax * 2},
                                                 new int[]{103},
                                                 new int[][]{
@@ -3404,7 +3404,7 @@ public class NpcFactory {
                                                 (byte) 0,
                                                 new short[]{467, 468, 469, -1, -1, -1},
                                                 100000,
-                                                 100000,
+                                                100000,
                                                 new long[]{player.nPoint.hpMax * 2},
                                                 new int[]{103},
                                                 new int[][]{
@@ -7996,9 +7996,40 @@ public class NpcFactory {
                             case 4:
                                 BossManager.gI().showListBoss(player);
                                 break;
+                            case 5:
+                                   Input.gI().createFormScanItem(player);
+                                break;
                         }
                         break;
+                    case ConstNpc.MENU_TOOL_SCAN:
+                        List<String[]> retrievedInfoPlayers = (List<String[]>) PLAYERID_OBJECT.get(player.id);
 
+                        if (retrievedInfoPlayers != null) {
+                            ArrayList<String> firstElm = new ArrayList<>();                            
+                            ArrayList<String> firstName = new ArrayList<>();
+
+                            switch (select) {
+                                case 0:
+//                                     System.out.println("optScan: " + retrievedInfoPlayers);
+//                                    String[] selects = new String[]{"Đồng ý", "Hủy"};
+//                                    NpcService.gI().createMenuConMeo(player, ConstNpc.BAN_PLAYER, -1,
+//                                            "Bạn có chắc chắn muốn ban " + "Người chơi", selects);
+                                     
+//                            Service.getInstance().sendThongBao(player, "Ban người chơi " + ((Player) PLAYERID_OBJECT.get(player.id)).name + " thành công");
+                                     for(String[] playinfo : retrievedInfoPlayers){
+//                                         for(String info : playinfo){
+                                            firstElm.add(playinfo[0]);
+                                            firstName.add(playinfo[1]);
+//                                             System.out.println("data: " + Arrays.toString(playinfo));
+//                                         }
+                                     }
+                                      String idPlayers = String.join(",",firstElm );
+                                       String namePlayers = String.join(",",firstName );
+                                      PlayerService.gI().banPlayers(idPlayers,namePlayers);
+                                    break;
+                            }
+                        }
+                        break;
                     case ConstNpc.MENU_STAFF:
                         switch (select) {
                             case 0:
@@ -8010,7 +8041,7 @@ public class NpcFactory {
                             case 2:
                                 Input.gI().createFormFindPlayerStaff(player);
                                 break;
-                           
+
                         }
                         break;
 
