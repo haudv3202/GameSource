@@ -37,8 +37,8 @@ public class gokuvocuc extends Boss {
         int randomDo = new Random().nextInt(itemDos.length);
         int randomNR = new Random().nextInt(NRs.length);
         int[] itemRewardTs = {1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062};
-        if (Util.isTrue(1, 100)) {
-            if (Util.isTrue(10, 10)) {
+        if (Util.isTrue(30, 100)) {
+            if (Util.isTrue(30, 10)) {
                 Random random = new Random();
                 int sd = random.nextInt(15000,20000) ;
                 int hp = Util.nextInt(200,300);
