@@ -212,7 +212,7 @@ public class ServerManager {
             while (true) {
                 String line = sc.nextLine();
                 if (line.equals("baotri")) {
-                    Maintenance.gI().start(60 * 2);
+                    Maintenance.gI().start(20);
                 } else if (line.equals("athread")) {
                     ServerNotify.gI().notify("BASIL debug server: " + Thread.activeCount());
                 } else if (line.equals("nplayer")) {
