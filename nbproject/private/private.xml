@@ -5,12 +5,12 @@
         <group>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/func/Input.java</file>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/PlayerService.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/NpcService.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/data/girlkun/girlkun.properties</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/services/Service.java</file>
-            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/jdbc/daos/ScanResult.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/player/Player.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/server/Client.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/jdbc/daos/GodGK.java</file>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/npc/NpcFactory.java</file>
             <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/jdbc/daos/PlayerDAO.java</file>
+            <file>file:/C:/xampp/htdocs/GameSource/src/com/girlkun/models/player/IDMark.java</file>
         </group>
     </open-files>
 </project-private>
