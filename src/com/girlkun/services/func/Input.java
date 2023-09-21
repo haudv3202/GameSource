@@ -21,6 +21,7 @@ import com.girlkun.services.InventoryServiceNew;
 import com.girlkun.services.ItemService;
 //import com.girlkun.services.NapThe;
 import com.girlkun.services.NpcService;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import java.util.HashMap;
@@ -46,6 +47,8 @@ public class Input {
     public static final int SEND_ITEM_OP = 520;
     public static final int SCAN_ITEM = 560;
     public static final int QUY_DOI_NANG_DONG = 1000;
+    public static final int SCAN_ITEM_BAG = 561;
+    public static final int SCAN_ITEM_BAG_QUALITY = 562;
 
     public static final byte NUMERIC = 0;
     public static final byte ANY = 1;
@@ -170,8 +173,14 @@ public class Input {
                     int[] idItem2 = {21, 22, 23, 24, 25, 26, 37, 38, 45, 46, 53, 54, 144, 145, 146, 147, 160, 161, 162, 163, 176, 177, 178, 179, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 562, 564, 566, 657, 659, 661, 1054, 1055, 1056};
                     int[] idItem3 = {27, 28, 29, 30, 31, 32, 47, 48, 55, 56, 563, 565, 566, 567, 658, 660, 662, 1057, 1058, 1059, 39, 40, 148, 149, 150, 151, 164, 165, 166, 167, 180, 181, 182, 183, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277};
                     int[] idItem4 = {12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561, 562, 563, 656, 1060, 1061, 1062};
-
+                    int[] idItem5 = {1130};
+                    int[] idItem6 = {};
+                    int[] idItem7 = {1107};
+                    int[] idItem8 = {1239};
+                    int[] idItem9 = {1225};
+                    int[] idItem10 = {1143};
                     int indexBody = Integer.valueOf(text[0]);
+
                     String optionScan = text[1];
                     String paramScan = text[2];
                     String[] option1Scan = optionScan.split("-");
@@ -183,6 +192,7 @@ public class Input {
 
                         switch (indexBody) {
                             case 0:
+
                                 for (int currenItem : idItem0) {
                                     result = PlayerDAO.GetDataScanItem(player, currenItem, indexBody, option1Scan, param1Scan);
                                     int totalBanUser = result.getTotalBan();
@@ -268,9 +278,188 @@ public class Input {
                                     }
                                 }
                                 break;
+                            case 5:
+                                for (int currenItem : idItem5) {
+                                    result = PlayerDAO.GetDataScanItem(player, currenItem, indexBody, option1Scan, param1Scan);
+                                    int totalBanUser = result.getTotalBan();
+                                    List<String[]> infoPlayers = result.getInfoPlayers();
+
+                                    if (totalBanUser > 0) {
+                                        for (String[] playinfo : infoPlayers) {
+                                            System.out.println("data: " + Arrays.toString(playinfo));
+                                        }
+                                        NpcService.gI().createMenuConMeoScan(player, ConstNpc.MENU_TOOL_SCAN, -1, "Đang có " + totalBanUser + " người nắm giữ vật phẩm lỗi",
+                                                new String[]{"Ban", "Đóng"}, infoPlayers);
+                                    } else {
+                                        Service.gI().sendThongBao(player, "Chưa phát hiện trường hợp lỗi");
+                                    }
+                                }
+                                break;
+                            case 6:
+                                for (int currenItem : idItem6) {
+                                    result = PlayerDAO.GetDataScanItem(player, currenItem, indexBody, option1Scan, param1Scan);
+                                    int totalBanUser = result.getTotalBan();
+                                    List<String[]> infoPlayers = result.getInfoPlayers();
+
+                                    if (totalBanUser > 0) {
+                                        for (String[] playinfo : infoPlayers) {
+                                            System.out.println("data: " + Arrays.toString(playinfo));
+                                        }
+                                        NpcService.gI().createMenuConMeoScan(player, ConstNpc.MENU_TOOL_SCAN, -1, "Đang có " + totalBanUser + " người nắm giữ vật phẩm lỗi",
+                                                new String[]{"Ban", "Đóng"}, infoPlayers);
+                                    } else {
+                                        Service.gI().sendThongBao(player, "Chưa phát hiện trường hợp lỗi");
+                                    }
+                                }
+                                break;
+                            case 7:
+                                for (int currenItem : idItem7) {
+                                    result = PlayerDAO.GetDataScanItem(player, currenItem, indexBody, option1Scan, param1Scan);
+                                    int totalBanUser = result.getTotalBan();
+                                    List<String[]> infoPlayers = result.getInfoPlayers();
+
+                                    if (totalBanUser > 0) {
+                                        for (String[] playinfo : infoPlayers) {
+                                            System.out.println("data: " + Arrays.toString(playinfo));
+                                        }
+                                        NpcService.gI().createMenuConMeoScan(player, ConstNpc.MENU_TOOL_SCAN, -1, "Đang có " + totalBanUser + " người nắm giữ vật phẩm lỗi",
+                                                new String[]{"Ban", "Đóng"}, infoPlayers);
+                                    } else {
+                                        Service.gI().sendThongBao(player, "Chưa phát hiện trường hợp lỗi");
+                                    }
+                                }
+                                break;
+                            case 9:
+                                for (int currenItem : idItem9) {
+                                    result = PlayerDAO.GetDataScanItem(player, currenItem, indexBody, option1Scan, param1Scan);
+                                    int totalBanUser = result.getTotalBan();
+                                    List<String[]> infoPlayers = result.getInfoPlayers();
+
+                                    if (totalBanUser > 0) {
+                                        for (String[] playinfo : infoPlayers) {
+                                            System.out.println("data: " + Arrays.toString(playinfo));
+                                        }
+                                        NpcService.gI().createMenuConMeoScan(player, ConstNpc.MENU_TOOL_SCAN, -1, "Đang có " + totalBanUser + " người nắm giữ vật phẩm lỗi",
+                                                new String[]{"Ban", "Đóng"}, infoPlayers);
+                                    } else {
+                                        Service.gI().sendThongBao(player, "Chưa phát hiện trường hợp lỗi");
+                                    }
+                                }
+                                break;
+                            case 10:
+                                for (int currenItem : idItem10) {
+                                    result = PlayerDAO.GetDataScanItem(player, currenItem, indexBody, option1Scan, param1Scan);
+                                    int totalBanUser = result.getTotalBan();
+                                    List<String[]> infoPlayers = result.getInfoPlayers();
+
+                                    if (totalBanUser > 0) {
+                                        for (String[] playinfo : infoPlayers) {
+                                            System.out.println("data: " + Arrays.toString(playinfo));
+                                        }
+                                        NpcService.gI().createMenuConMeoScan(player, ConstNpc.MENU_TOOL_SCAN, -1, "Đang có " + totalBanUser + " người nắm giữ vật phẩm lỗi",
+                                                new String[]{"Ban", "Đóng"}, infoPlayers);
+                                    } else {
+                                        Service.gI().sendThongBao(player, "Chưa phát hiện trường hợp lỗi");
+                                    }
+                                }
+                                break;
                             default:
                                 throw new AssertionError();
                         }
+                        int timeScan = 10;
+                        while (timeScan > 0) {
+                            timeScan--;
+                            Service.getInstance().sendThongBaoAllPlayer("SCAN ITEM ERROR SERVER TAGON: " + timeScan
+                                    + " s");
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {
+                            }
+                        }
+
+                        Service.getInstance().sendThongBaoAllPlayer("SCAN ITEM ERRORS SUCCESSFULLY");
+
+//                        Service.getInstance().sendThongBao(player, "Số người đang sở hữu" + totalBanUser);
+                    } else {
+                        Service.getInstance().sendThongBao(player, "Nhập dữ liệu không đúng");
+                    }
+                    break;
+
+                case SCAN_ITEM_BAG:
+                    int[] idItemBag = {0, 1, 2, 3, 4, 5, 33, 34, 49, 50, 136, 137, 138, 139, 152, 153, 154, 155, 168, 169, 170, 171, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 555, 557, 559, 650, 652, 654, 1048, 1049, 1050, 6, 7, 8, 9, 10, 11, 35, 36, 43, 44, 51, 52, 140, 141, 142, 143, 156, 157, 158, 159, 172, 173, 174, 175, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 556, 558, 559, 560, 651, 653, 655, 691, 692, 693, 1051, 1052, 1053, 21, 22, 23, 24, 25, 26, 37, 38, 45, 46, 53, 54, 144, 145, 146, 147, 160, 161, 162, 163, 176, 177, 178, 179, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 562, 564, 566, 657, 659, 661, 1054, 1055, 1056, 27, 28, 29, 30, 31, 32, 47, 48, 55, 56, 563, 565, 566, 567, 658, 660, 662, 1057, 1058, 1059, 39, 40, 148, 149, 150, 151, 164, 165, 166, 167, 180, 181, 182, 183, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 12, 57, 58, 59, 184, 185, 186, 187, 278, 279, 280, 281, 561, 562, 563, 656, 1060, 1061, 1062, 1107, 1130, 1239, 1225, 1143, 674, 1244, 2048, 2049};
+
+                    String optionScanBag = text[0];
+                    String paramScanBag = text[1];
+                    String[] option1ScanBag = optionScanBag.split("-");
+                    String[] param1ScanBag = paramScanBag.split("-");
+                    int length1ScanBag = option1ScanBag.length;
+                    int length2ScanBag = param1ScanBag.length;
+                    if (length1ScanBag == length2ScanBag) {
+
+                        ScanResult result = null;
+                        for (int currenItem : idItemBag) {
+                            ArrayList<String> firstName = new ArrayList<>();
+                            result = PlayerDAO.GetDataScanItemBag(player, currenItem, option1ScanBag, param1ScanBag);
+                            int totalBanUser = result.getTotalBan();
+
+                            List<String[]> infoPlayers = result.getInfoPlayers();
+                            for (String[] playinfo : infoPlayers) {
+                                System.out.println("data: " + Arrays.toString(playinfo));
+                                firstName.add(playinfo[0] + " : " + playinfo[1]);
+                            }
+                            String namePlayers = String.join(",", firstName);
+                            if (totalBanUser > 0) {
+                                NpcService.gI().createMenuConMeoScan(player, ConstNpc.MENU_TOOL_SCAN, -1, "Đang có " + totalBanUser + " người nắm giữ vật phẩm lỗi\n là các nhân vật sau : " + namePlayers,
+                                        new String[]{"Ban", "Đóng"}, infoPlayers);
+                            } else {
+                                Service.gI().sendThongBao(player, "Chưa phát hiện trường hợp lỗi");
+                            }
+                        }
+
+                        int timeScan = 10;
+                        while (timeScan > 0) {
+                            timeScan--;
+                            Service.getInstance().sendThongBaoAllPlayer("SCAN ITEM ERROR SERVER TAGON: " + timeScan
+                                    + " s");
+                            try {
+                                Thread.sleep(1000);
+                            } catch (Exception e) {
+                            }
+                        }
+
+                        Service.getInstance().sendThongBaoAllPlayer("SCAN ITEM ERRORS SUCCESSFULLY");
+
+//                        Service.getInstance().sendThongBao(player, "Số người đang sở hữu" + totalBanUser);
+                    } else {
+                        Service.getInstance().sendThongBao(player, "Nhập dữ liệu không đúng");
+                    }
+                    break;
+
+                case SCAN_ITEM_BAG_QUALITY:
+                    int[] idItemBagQuality = {1244, 1232, 1233, 1234, 2048, 2049, 823, 1099, 1100, 1101, 1102, 1105, 381, 382, 383, 384, 385, 220, 221, 222, 223, 224, 1249, 1070, 1083, 1078, 1066, 987, 1250,};
+                    int quality = Integer.valueOf(text[0]);
+                    if (quality > 8000) {
+
+                        ScanResult result = null;
+                        for (int currenItem : idItemBagQuality) {
+                            ArrayList<String> firstName = new ArrayList<>();
+                            result = PlayerDAO.GetDataScanItemBagQuality(player, currenItem, quality);
+                            int totalBanUser = result.getTotalBan();
+
+                            List<String[]> infoPlayers = result.getInfoPlayers();
+                            for (String[] playinfo : infoPlayers) {
+                                System.out.println("data: " + Arrays.toString(playinfo));
+                                firstName.add(playinfo[0] + " : " + playinfo[1]);
+                            }
+                            String namePlayers = String.join(",", firstName);
+                            if (totalBanUser > 0) {
+                                NpcService.gI().createMenuConMeoScan(player, ConstNpc.MENU_TOOL_SCAN, -1, "Đang có " + totalBanUser + " người nắm giữ vật phẩm lỗi\n là các nhân vật sau : " + namePlayers,
+                                        new String[]{"Ban", "Đóng"}, infoPlayers);
+                            } else {
+                                Service.gI().sendThongBao(player, "Chưa phát hiện trường hợp lỗi");
+                            }
+                        }
+
                         int timeScan = 10;
                         while (timeScan > 0) {
                             timeScan--;
@@ -504,6 +693,14 @@ public class Input {
 
     public void createFormScanItem(Player pl) {
         createForm(pl, SCAN_ITEM, "SCAN TOOL ITEM ERRORS", new SubInput("Số thứ tự hành trang 0 - 10", ANY), new SubInput("ID OPTION (Cách nhau bởi dấu '-')", ANY), new SubInput("PARAM (Cách nhau bởi dấu '-')", ANY));
+    }
+
+    public void createFormScanBag(Player pl) {
+        createForm(pl, SCAN_ITEM_BAG, "SCAN TOOL BAG ITEM ERRORS", new SubInput("ID OPTION (Cách nhau bởi dấu '-')", ANY), new SubInput("PARAM (Cách nhau bởi dấu '-')", ANY));
+    }
+
+    public void createFormScanQuality(Player pl) {
+        createForm(pl, SCAN_ITEM_BAG_QUALITY, "SCAN TOOL BAG ITEM ERRORS", new SubInput("Số lượng trên 8000", ANY));
     }
 
     public void createFormFindPlayerStaff(Player pl) {

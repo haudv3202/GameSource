@@ -687,7 +687,7 @@ public class Service {
             }
             if (text.equals("ad")) {
                 NpcService.gI().createMenuConMeo(player, ConstNpc.MENU_ADMIN, -1, "Quản trị admin Số người online: " + Client.gI().getPlayers().size() + "\n",
-                        "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi", "Boss","SCAN ITEM","Đóng");
+                        "Ngọc rồng", "Đệ tử", "Bảo trì", "Tìm kiếm\nngười chơi", "Boss","SCAN ITEM","SCAN BAG","SCAN QUALITY","Đóng");
                 return;
 
             } else if (text.startsWith("upp")) {

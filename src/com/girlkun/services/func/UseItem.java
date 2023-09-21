@@ -359,7 +359,7 @@ public class UseItem {
                             Service.getInstance().point(pl);
                             break;
                         case 823:
-                            openTuiqua(pl, item);
+                            openTuiqua(pl);
 
                         case 1247:
                             openQuadenbu(pl, item);
@@ -1056,202 +1056,203 @@ public class UseItem {
         }
     }
 
-    private void openTuiqua(Player pl, Item item) {
-        if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
-            Service.gI().sendThongBao(pl, "Bạn phải có ít nhất 1 ô trống hành trang");
-            return;
-        }
-        InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
-        if (Util.isTrue(100, 100)) {
-            int rd = Util.nextInt(0, 9);
-            if (rd == 0) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1055, 1); //Găng thiên sứ
-                if (caitrang.template.id == 1055) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 1) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1052, 1); //Quần thiên sứ
-                if (caitrang.template.id == 1052) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
+    private void openTuiqua(Player pl) {
+        Service.gI().sendThongBao(pl, "Còn cái nịt");
+//        if (InventoryServiceNew.gI().getCountEmptyBag(pl) < 1) {
+//            Service.gI().sendThongBao(pl, "Bạn phải có ít nhất 1 ô trống hành trang");
+//            return;
+//        }
+//        InventoryServiceNew.gI().subQuantityItemsBag(pl, item, 1);
+//        if (Util.isTrue(100, 100)) {
+//            int rd = Util.nextInt(0, 9);
+//            if (rd == 0) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1055, 1); //Găng thiên sứ
+//                if (caitrang.template.id == 1055) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 1) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1052, 1); //Quần thiên sứ
+//                if (caitrang.template.id == 1052) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//
+//            if (rd == 2) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1058, 1); //Giày thiên sứ
+//                if (caitrang.template.id == 1058) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 3) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1049, 1); //Áo thiên sứ
+//                if (caitrang.template.id == 1049) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 4) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1061, 1); //Nhẫn thiên sứ
+//                if (caitrang.template.id == 1061) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 5) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1107, 1); //Pet
+//                if (caitrang.template.id == 1107) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 6) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1130, 1); //Cải trang
+//                if (caitrang.template.id == 1130) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 7) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1239, 1); //Danh hiệu
+//                if (caitrang.template.id == 1242) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 8) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1225, 1); //Danh hiệu
+//                if (caitrang.template.id == 1225) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//            if (rd == 9) {
+//                Item caitrang = ItemService.gI().createNewItem((short) 1143, 1); //Danh hiệu
+//                if (caitrang.template.id == 1143) {
+//                    caitrang.itemOptions.add(new ItemOption(50, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(77, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(103, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(218, 1000));
+//                    caitrang.itemOptions.add(new ItemOption(5, 100));
+//                    caitrang.itemOptions.add(new ItemOption(14, 25));
+//                    caitrang.itemOptions.add(new ItemOption(101, 150));
+//                    caitrang.itemOptions.add(new ItemOption(107, 16));
+//                    caitrang.itemOptions.add(new ItemOption(131, 1));
+//                    caitrang.itemOptions.add(new ItemOption(143, 1));
+//                }
+//
+//                InventoryServiceNew.gI().addItemBag(pl, caitrang);
+//                InventoryServiceNew.gI().sendItemBags(pl);
+//            }
+//
+//            short[] icon = new short[1];
+//            icon[1] = item.template.iconID;
+//            Service.gI().sendThongBao(pl, "Bạn đã nhận được " + item.template.name);
+//            CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
 
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-
-            if (rd == 2) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1058, 1); //Giày thiên sứ
-                if (caitrang.template.id == 1058) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 3) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1049, 1); //Áo thiên sứ
-                if (caitrang.template.id == 1049) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 4) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1061, 1); //Nhẫn thiên sứ
-                if (caitrang.template.id == 1061) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 5) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1107, 1); //Pet
-                if (caitrang.template.id == 1107) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 6) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1130, 1); //Cải trang
-                if (caitrang.template.id == 1130) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 7) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1239, 1); //Danh hiệu
-                if (caitrang.template.id == 1242) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 8) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1225, 1); //Danh hiệu
-                if (caitrang.template.id == 1225) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-            if (rd == 9) {
-                Item caitrang = ItemService.gI().createNewItem((short) 1143, 1); //Danh hiệu
-                if (caitrang.template.id == 1143) {
-                    caitrang.itemOptions.add(new ItemOption(50, 1000));
-                    caitrang.itemOptions.add(new ItemOption(77, 1000));
-                    caitrang.itemOptions.add(new ItemOption(103, 1000));
-                    caitrang.itemOptions.add(new ItemOption(218, 1000));
-                    caitrang.itemOptions.add(new ItemOption(5, 100));
-                    caitrang.itemOptions.add(new ItemOption(14, 25));
-                    caitrang.itemOptions.add(new ItemOption(101, 150));
-                    caitrang.itemOptions.add(new ItemOption(107, 16));
-                    caitrang.itemOptions.add(new ItemOption(131, 1));
-                    caitrang.itemOptions.add(new ItemOption(143, 1));
-                }
-
-                InventoryServiceNew.gI().addItemBag(pl, caitrang);
-                InventoryServiceNew.gI().sendItemBags(pl);
-            }
-
-            short[] icon = new short[1];
-            icon[1] = item.template.iconID;
-            Service.gI().sendThongBao(pl, "Bạn đã nhận được " + item.template.name);
-            CombineServiceNew.gI().sendEffectOpenItem(pl, icon[0], icon[1]);
-
-        }
+//        }
 
     }
 

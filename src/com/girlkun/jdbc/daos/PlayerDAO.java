@@ -29,7 +29,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
-
 public class PlayerDAO {
 
     public static boolean createNewPlayer(int userId, String name, byte gender, int hair) {
@@ -126,15 +125,14 @@ public class PlayerDAO {
                     item.add(50); //số lượng
                     options.add(opt.toJSONString());
                     opt.clear();
-                }
-//                else if (i == 1) { //quần
-//                    opt.add(30); //id option
-//                    opt.add(1); //param option
-//                    item.add(1109); //id item
-//                    item.add(50); //số lượng
-//                    options.add(opt.toJSONString());
-//                    opt.clear();
-//                }
+                } //                else if (i == 1) { //quần
+                //                    opt.add(30); //id option
+                //                    opt.add(1); //param option
+                //                    item.add(1109); //id item
+                //                    item.add(50); //số lượng
+                //                    options.add(opt.toJSONString());
+                //                    opt.clear();
+                //                }
                 else {
                     item.add(-1); //id item
                     item.add(0); //số lượng
@@ -282,12 +280,12 @@ public class PlayerDAO {
             dataArray.clear();
 
             GirlkunDB.executeUpdate("insert into player"
-                            + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
-                            + "data_inventory, data_location, data_point, data_magic_tree, items_body, "
-                            + "items_bag, items_box, items_box_lucky_round, friends, enemies, data_intrinsic, data_item_time,"
-                            + "data_task, data_mabu_egg, data_dua, data_charm, skills, skills_shortcut, pet,"
-                            + "data_black_ball, data_side_task)"
-                            + "values ()", userId, name, hair, gender, 0, -1, inventory, location, point, magicTree,
+                    + "(account_id, name, head, gender, have_tennis_space_ship, clan_id_sv" + Manager.SERVER + ", "
+                    + "data_inventory, data_location, data_point, data_magic_tree, items_body, "
+                    + "items_bag, items_box, items_box_lucky_round, friends, enemies, data_intrinsic, data_item_time,"
+                    + "data_task, data_mabu_egg, data_dua, data_charm, skills, skills_shortcut, pet,"
+                    + "data_black_ball, data_side_task)"
+                    + "values ()", userId, name, hair, gender, 0, -1, inventory, location, point, magicTree,
                     itemsBody, itemsBag, itemsBox, itemsBoxLuckyRound, friends, enemies, intrinsic,
                     itemTime, task, mabuEgg, timedua, charms, skills, skillsShortcut, petData, dataBlackBall, dataSideTask);
             Logger.success("Tạo player mới thành công!");
@@ -725,7 +723,7 @@ public class PlayerDAO {
                         player.last_time_dd,
                         player.diemsk,
                         player.diemhotong,
-//                        player.diemchientruong,
+                        //                        player.diemchientruong,
                         player.id);
                 Logger.success("Total time save player " + player.name + " thành công! " + (System.currentTimeMillis() - st) + "\n");
             } catch (Exception e) {
@@ -736,7 +734,7 @@ public class PlayerDAO {
 
     public static boolean subGoldBar(Player player, int num) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {
+        try ( Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set thoi_vang = (thoi_vang - ?), active = ? where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().actived ? 1 : 0);
@@ -761,7 +759,7 @@ public class PlayerDAO {
 
     public static boolean setIs_gift_box(Player player) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {
+        try ( Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set is_gift_box = 0 where id = ?");
             ps.setInt(1, player.getSession().userId);
             ps.executeUpdate();
@@ -774,9 +772,9 @@ public class PlayerDAO {
     }
 
     public static void addHistoryReceiveGoldBar(Player player, int goldBefore, int goldAfter,
-                                                int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
+            int goldBagBefore, int goldBagAfter, int goldBoxBefore, int goldBoxAfter) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {
+        try ( Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("insert into history_receive_goldbar(player_id,player_name,gold_before_receive,"
                     + "gold_after_receive,gold_bag_before,gold_bag_after,gold_box_before,gold_box_after) values (?,?,?,?,?,?,?,?)");
             ps.setInt(1, (int) player.id);
@@ -797,12 +795,13 @@ public class PlayerDAO {
             }
         }
     }
-    
+
     public static ScanResult GetDataScanItem(Player player, int idItem, int indexBag, String[] idOptions, String[] idParams) {
         int totalBan = 0;
         List<String[]> infoPlayers = new ArrayList<>();
         try ( Connection con = GirlkunDB.getConnection();) {
-            PreparedStatement ps = con.prepareStatement("SELECT p.id, p.account_id, p.name, p.items_body FROM player p JOIN account a ON p.account_id = a.id WHERE a.ban = 0 AND a.is_admin = 0");
+//            a.ban = 0 AND a.is_admin = 0
+            PreparedStatement ps = con.prepareStatement("SELECT p.id, p.account_id, p.name, p.items_body FROM player p JOIN account a ON p.account_id = a.id WHERE  a.ban = 0 AND a.is_admin = 0");
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id_account = rs.getInt("account_id");
@@ -811,6 +810,7 @@ public class PlayerDAO {
                 String itemsBody = rs.getString("items_body");
                 int statusScan = 0;
                 int optionSql = 0;
+                System.out.println(name);
                 // Thực hiện các hành động với itemsBody tại đây
                 JSONArray dataArray = (JSONArray) JSONValue.parse(itemsBody);
                 for (int i = 0; i < dataArray.size(); i++) {
@@ -834,8 +834,8 @@ public class PlayerDAO {
 
                                     int optScan = Integer.parseInt(option2Scan);
                                     int parScan = Integer.parseInt(param2Scan);
-//                                    System.out.println("optScan: " + optScan + ", opt.get(0): " + Integer.parseInt(String.valueOf(opt.get(0))));
-//                                    System.out.println("parScan: " + parScan + ", opt.get(1): " + Integer.parseInt(String.valueOf(opt.get(1))));
+                                    System.out.println("optScan: " + optScan + ", opt.get(0): " + Integer.parseInt(String.valueOf(opt.get(0))));
+                                    System.out.println("parScan: " + parScan + ", opt.get(1): " + Integer.parseInt(String.valueOf(opt.get(1))));
                                     if (optScan == Integer.parseInt(String.valueOf(opt.get(0))) && parScan <= Integer.parseInt(String.valueOf(opt.get(1)))) {
                                         statusScan++;
                                     }
@@ -859,7 +859,126 @@ public class PlayerDAO {
         } catch (Exception e) {
             Logger.logException(PlayerDAO.class, e, "Lỗi quét" + player.name);
         }
-          return new ScanResult(totalBan, infoPlayers);
+        return new ScanResult(totalBan, infoPlayers);
+    }
+
+    public static ScanResult GetDataScanItemBag(Player player, int idItem, String[] idOptions, String[] idParams) {
+        int totalBan = 0;
+        List<String[]> infoPlayers = new ArrayList<>();
+        try ( Connection con = GirlkunDB.getConnection();) {
+//            a.ban = 0 AND a.is_admin = 0
+            PreparedStatement ps = con.prepareStatement("SELECT p.id, p.account_id, p.name, p.items_bag FROM player p JOIN account a ON p.account_id = a.id WHERE  a.ban = 0 AND a.is_admin = 0");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id_account = rs.getInt("account_id");
+                String name = rs.getString("name");
+                int id = rs.getInt("id");
+                String itemsBody = rs.getString("items_bag");
+                int statusScan = 0;
+                int statusScanItem = 0;
+                int optionSql = 0;
+                System.out.println(name);
+                // Thực hiện các hành động với itemsBody tại đây
+                JSONArray dataArray = (JSONArray) JSONValue.parse(itemsBody);
+                for (int i = 0; i < dataArray.size(); i++) {
+                    Item item = null;
+                    JSONArray dataItem = (JSONArray) JSONValue.parse(dataArray.get(i).toString());
+                    short tempId = Short.parseShort(String.valueOf(dataItem.get(0)));
+
+                    if (tempId != -1) {
+                        if (tempId == idItem) {
+                            item = ItemService.gI().createNewItem(tempId, Integer.parseInt(String.valueOf(dataItem.get(1))));
+                            JSONArray options = (JSONArray) JSONValue.parse(String.valueOf(dataItem.get(2)).replaceAll("\"", ""));
+                            optionSql = options.size();
+                            if (Integer.parseInt(String.valueOf(dataItem.get(1))) >= 9999) {
+                                statusScanItem++;
+                            }
+                            for (int j = 0; j < options.size(); j++) {
+                                JSONArray opt = (JSONArray) JSONValue.parse(String.valueOf(options.get(j)));
+//                            Integer.parseInt(String.valueOf(opt.get(0))) id option
+// Integer.parseInt(String.valueOf(opt.get(1))) param
+//Integer.parseInt(String.valueOf(dataItem.get(1))
+                                for (int n = 0; n < idOptions.length; n++) {
+                                    String option2Scan = idOptions[n];
+                                    String param2Scan = idParams[n];
+
+                                    int optScan = Integer.parseInt(option2Scan);
+                                    int parScan = Integer.parseInt(param2Scan);
+                                    System.out.println("optScan: " + optScan + ", opt.get(0): " + Integer.parseInt(String.valueOf(opt.get(0))));
+                                    System.out.println("parScan: " + parScan + ", opt.get(1): " + Integer.parseInt(String.valueOf(opt.get(1))));
+                                    if (optScan == Integer.parseInt(String.valueOf(opt.get(0))) && parScan <= Integer.parseInt(String.valueOf(opt.get(1)))) {
+                                        statusScan++;
+                                    }
+
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+//                System.out.println("statusScan: " + statusScan);
+//                System.out.println("optionSql: " + optionSql);
+                if (statusScan < optionSql && statusScan > 0) {
+                    totalBan++;
+                    String updateName = name + " : bug đồ";
+                    String[] playerInfo1 = new String[]{Integer.toString(id_account), updateName, Integer.toString(id)};
+                    infoPlayers.add(playerInfo1);
+                } 
+
+            }
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            Logger.logException(PlayerDAO.class, e, "Lỗi quét" + player.name);
+        }
+        return new ScanResult(totalBan, infoPlayers);
+    }
+    
+    public static ScanResult GetDataScanItemBagQuality(Player player, int idItem, int QualityItem) {
+        int totalBan = 0;
+        List<String[]> infoPlayers = new ArrayList<>();
+        try ( Connection con = GirlkunDB.getConnection();) {
+//            a.ban = 0 AND a.is_admin = 0
+            PreparedStatement ps = con.prepareStatement("SELECT p.id, p.account_id, p.name, p.items_bag FROM player p JOIN account a ON p.account_id = a.id WHERE  a.ban = 0 AND a.is_admin = 0");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int id_account = rs.getInt("account_id");
+                String name = rs.getString("name");
+                int id = rs.getInt("id");
+                String itemsBody = rs.getString("items_bag");
+                int statusScanItem = 0;
+                System.out.println(name);
+                // Thực hiện các hành động với itemsBody tại đây
+                JSONArray dataArray = (JSONArray) JSONValue.parse(itemsBody);
+                for (int i = 0; i < dataArray.size(); i++) {
+                    Item item = null;
+                    JSONArray dataItem = (JSONArray) JSONValue.parse(dataArray.get(i).toString());
+                    short tempId = Short.parseShort(String.valueOf(dataItem.get(0)));
+
+                    if (tempId != -1) {
+                        if (tempId == idItem) {
+                            if (Integer.parseInt(String.valueOf(dataItem.get(1))) >= QualityItem) {
+                                statusScanItem++;
+                            }
+                        }
+                    }
+                }
+
+//                System.out.println("statusScan: " + statusScan);
+//                System.out.println("optionSql: " + optionSql);
+                if (statusScanItem > 0) {
+                    totalBan++;
+                    infoPlayers.add(new String[]{Integer.toString(id_account), name + " : bug item", Integer.toString(id)});
+                } 
+
+            }
+            rs.close();
+            ps.close();
+        } catch (Exception e) {
+            Logger.logException(PlayerDAO.class, e, "Lỗi quét" + player.name);
+        }
+        return new ScanResult(totalBan, infoPlayers);
     }
 
     public static void updateItemReward(Player player) {
@@ -878,7 +997,7 @@ public class PlayerDAO {
         }
         PreparedStatement ps = null;
         ResultSet rs = null;
-        try (Connection con = GirlkunDB.getConnection();) {
+        try ( Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set reward = ? where id = ?");
             ps.setString(1, dataItemReward);
             ps.setInt(2, player.getSession().userId);
@@ -896,7 +1015,7 @@ public class PlayerDAO {
 
     public static boolean insertHistoryGold(Player player, int quantily) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {
+        try ( Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("insert into history_gold(name,gold) values (?,?)");
             ps.setString(1, player.name);
             ps.setInt(2, quantily);
@@ -934,10 +1053,10 @@ public class PlayerDAO {
         }
         return lastTimeLogout > lastTimeLogin;
     }
-    
+
     public static boolean subvnd(Player player, int num) {
         PreparedStatement ps = null;
-        try (Connection con = GirlkunDB.getConnection();) {
+        try ( Connection con = GirlkunDB.getConnection();) {
             ps = con.prepareStatement("update account set vnd = (vnd - ?) where id = ?");
             ps.setInt(1, num);
             ps.setInt(2, player.getSession().userId);
@@ -955,7 +1074,8 @@ public class PlayerDAO {
         }
         return true;
     }
-   public static void LogNapTIen(String uid,String menhgia,String seri, String code,String tranid) {
+
+    public static void LogNapTIen(String uid, String menhgia, String seri, String code, String tranid) {
         String UPDATE_PASS = "INSERT INTO naptien(uid,sotien,seri,code,loaithe,time,noidung,tinhtrang,tranid,magioithieu) VALUES(?,?,?,?,?,?,?,?,?,?)";
         try {
             Connection conn = GirlkunDB.getConnection();
@@ -964,11 +1084,11 @@ public class PlayerDAO {
             ps = conn.prepareStatement(UPDATE_PASS);
             conn.setAutoCommit(false);
             //NGOC RONG SAO DEN
-             ps.setString(1, uid);
+            ps.setString(1, uid);
             ps.setString(2, menhgia);
             ps.setString(3, seri);
-             ps.setString(4, code);
-           
+            ps.setString(4, code);
+
             ps.setString(5, "VIETTEL");
             ps.setString(6, "123123123123");
             ps.setString(7, "dang nap the");
@@ -977,8 +1097,7 @@ public class PlayerDAO {
             ps.setString(10, "0");
             if (ps.executeUpdate() == 1) {
             }
-            
-            
+
             conn.commit();
             //UPDATE NRSD
             conn.close();

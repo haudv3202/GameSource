@@ -7997,7 +7997,13 @@ public class NpcFactory {
                                 BossManager.gI().showListBoss(player);
                                 break;
                             case 5:
-                                   Input.gI().createFormScanItem(player);
+                                Input.gI().createFormScanItem(player);
+                                break;
+                            case 6:
+                                Input.gI().createFormScanBag(player);
+                                break;
+                            case 7:
+                                Input.gI().createFormScanQuality(player);
                                 break;
                         }
                         break;
@@ -8005,7 +8011,7 @@ public class NpcFactory {
                         List<String[]> retrievedInfoPlayers = (List<String[]>) PLAYERID_OBJECT.get(player.id);
 
                         if (retrievedInfoPlayers != null) {
-                            ArrayList<String> firstElm = new ArrayList<>();                            
+                            ArrayList<String> firstElm = new ArrayList<>();
                             ArrayList<String> firstName = new ArrayList<>();
 
                             switch (select) {
@@ -8014,18 +8020,18 @@ public class NpcFactory {
 //                                    String[] selects = new String[]{"Đồng ý", "Hủy"};
 //                                    NpcService.gI().createMenuConMeo(player, ConstNpc.BAN_PLAYER, -1,
 //                                            "Bạn có chắc chắn muốn ban " + "Người chơi", selects);
-                                     
+
 //                            Service.getInstance().sendThongBao(player, "Ban người chơi " + ((Player) PLAYERID_OBJECT.get(player.id)).name + " thành công");
-                                     for(String[] playinfo : retrievedInfoPlayers){
+                                    for (String[] playinfo : retrievedInfoPlayers) {
 //                                         for(String info : playinfo){
-                                            firstElm.add(playinfo[0]);
-                                            firstName.add(playinfo[1]);
+                                        firstElm.add(playinfo[0]);
+                                        firstName.add(playinfo[1]);
 //                                             System.out.println("data: " + Arrays.toString(playinfo));
 //                                         }
-                                     }
-                                      String idPlayers = String.join(",",firstElm );
-                                       String namePlayers = String.join(",",firstName );
-                                      PlayerService.gI().banPlayers(idPlayers,namePlayers);
+                                    }
+                                    String idPlayers = String.join(",", firstElm);
+                                    String namePlayers = String.join(",", firstName);
+                                    PlayerService.gI().banPlayers(idPlayers, namePlayers);
                                     break;
                             }
                         }
