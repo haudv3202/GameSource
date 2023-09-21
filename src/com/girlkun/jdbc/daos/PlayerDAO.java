@@ -810,7 +810,7 @@ public class PlayerDAO {
                 String itemsBody = rs.getString("items_body");
                 int statusScan = 0;
                 int optionSql = 0;
-                System.out.println(name);
+               System.out.println("Đang quét đồ mặc");
                 // Thực hiện các hành động với itemsBody tại đây
                 JSONArray dataArray = (JSONArray) JSONValue.parse(itemsBody);
                 for (int i = 0; i < dataArray.size(); i++) {
@@ -851,7 +851,7 @@ public class PlayerDAO {
 //                System.out.println("optionSql: " + optionSql);
                 if (statusScan < optionSql && statusScan > 0) {
                     totalBan++;
-                    infoPlayers.add(new String[]{Integer.toString(id_account), name, Integer.toString(id)});
+                    infoPlayers.add(new String[]{Integer.toString(id_account), name,name + "bug đồ", Integer.toString(id)});
                 }
             }
             rs.close();
@@ -877,7 +877,7 @@ public class PlayerDAO {
                 int statusScan = 0;
                 int statusScanItem = 0;
                 int optionSql = 0;
-                System.out.println(name);
+                System.out.println("Đang quét trong kho đồ");
                 // Thực hiện các hành động với itemsBody tại đây
                 JSONArray dataArray = (JSONArray) JSONValue.parse(itemsBody);
                 for (int i = 0; i < dataArray.size(); i++) {
@@ -922,9 +922,9 @@ public class PlayerDAO {
                 if (statusScan < optionSql && statusScan > 0) {
                     totalBan++;
                     String updateName = name + " : bug đồ";
-                    String[] playerInfo1 = new String[]{Integer.toString(id_account), updateName, Integer.toString(id)};
+                    String[] playerInfo1 = new String[]{Integer.toString(id_account),name, updateName, Integer.toString(id)};
                     infoPlayers.add(playerInfo1);
-                } 
+                }
 
             }
             rs.close();
@@ -934,7 +934,7 @@ public class PlayerDAO {
         }
         return new ScanResult(totalBan, infoPlayers);
     }
-    
+
     public static ScanResult GetDataScanItemBagQuality(Player player, int idItem, int QualityItem) {
         int totalBan = 0;
         List<String[]> infoPlayers = new ArrayList<>();
@@ -948,7 +948,8 @@ public class PlayerDAO {
                 int id = rs.getInt("id");
                 String itemsBody = rs.getString("items_bag");
                 int statusScanItem = 0;
-                System.out.println(name);
+//                System.out.println(name);
+                System.out.println("Đang quét ITEM QUALITY");
                 // Thực hiện các hành động với itemsBody tại đây
                 JSONArray dataArray = (JSONArray) JSONValue.parse(itemsBody);
                 for (int i = 0; i < dataArray.size(); i++) {
@@ -967,10 +968,11 @@ public class PlayerDAO {
 
 //                System.out.println("statusScan: " + statusScan);
 //                System.out.println("optionSql: " + optionSql);
+//  System.out.println("optionSql: " + statusScanItem);
                 if (statusScanItem > 0) {
                     totalBan++;
-                    infoPlayers.add(new String[]{Integer.toString(id_account), name + " : bug item", Integer.toString(id)});
-                } 
+                    infoPlayers.add(new String[]{Integer.toString(id_account),name, name + " : bug item", Integer.toString(id)});
+                }
 
             }
             rs.close();

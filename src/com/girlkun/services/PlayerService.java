@@ -7,7 +7,7 @@ import com.girlkun.server.Client;
 import com.girlkun.services.func.ChangeMapService;
 import com.girlkun.utils.Logger;
 import com.girlkun.utils.Util;
-
+import java.util.List;
 
 public class PlayerService {
 
@@ -90,7 +90,7 @@ public class PlayerService {
             player.nPoint.addHp(hp);
             player.nPoint.addMp(mp);
             Service.getInstance().Send_Info_NV(player);
-            if (!player.isPet&&!player.isNewPet) {
+            if (!player.isPet && !player.isNewPet) {
                 PlayerService.gI().sendInfoHpMp(player);
             }
         }
@@ -223,19 +223,35 @@ public class PlayerService {
         playerBaned.iDMark.setLastTimeBan(System.currentTimeMillis());
         playerBaned.iDMark.setBan(true);
     }
-    
-    public void banPlayers(String idPlayers,String NamePlayersBan) {
+
+    public void banPlayers(String idPlayers, String NamePlayersBan, List<String[]> infoPlayersBan) {
         try {
-            GirlkunDB.executeUpdate("update account set ban = 1 where id IN ("+ idPlayers +")");
+            GirlkunDB.executeUpdate("update account set ban = 1 where id IN (" + idPlayers + ")");
         } catch (Exception e) {
         }
-        
-         Service.getInstance().sendThongBaoAllPlayer("Hệ thống đã ban người chơi " + NamePlayersBan
-                    + "vì lí do lạm dụng lỗi để chuộc lợi bản thân!Thân Admin Hậu");
-//        Service.getInstance().sendThongBao(playerBaned,
-//                "Tài khoản của bạn đã bị khóa\nGame sẽ mất kết nối sau 5 giây...");
-//        playerBaned.iDMark.setLastTimeBan(System.currentTimeMillis());
-//        playerBaned.iDMark.setBan(true);
+
+        Service.getInstance().sendThongBaoAllPlayer("Hệ thống đã ban người chơi " + NamePlayersBan
+                + "vì lí do lạm dụng lỗi để chuộc lợi bản thân!Thân Admin Hậu");
+        List<String[]> retrievedInfoPlayers = infoPlayersBan;
+        for (String[] playinfo : infoPlayersBan) {
+
+            System.out.println(playinfo[1]);
+            Player playerBans = Client.gI().getPlayer(playinfo[1]);
+            int timeScan = 5;
+            while (timeScan > 0) {
+                timeScan--;
+
+                Service.getInstance().sendThongBao(playerBans,
+                        "Tài khoản của bạn đã bị khóa\nGame sẽ mất kết nối sau " + timeScan + " giây...\n"
+                        + "Mọi Thắc Liên hệ Admin để biết thêm");
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
+                }
+            }
+            playerBans.iDMark.setLastTimeBan(System.currentTimeMillis());
+            playerBans.iDMark.setBan(true);
+        }
     }
 
     private static final int COST_GOLD_HOI_SINH = 10000000;

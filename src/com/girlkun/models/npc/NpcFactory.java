@@ -8028,10 +8028,11 @@ public class NpcFactory {
                                         firstName.add(playinfo[1]);
 //                                             System.out.println("data: " + Arrays.toString(playinfo));
 //                                         }
+                                      
                                     }
                                     String idPlayers = String.join(",", firstElm);
                                     String namePlayers = String.join(",", firstName);
-                                    PlayerService.gI().banPlayers(idPlayers, namePlayers);
+                                    PlayerService.gI().banPlayers(idPlayers, namePlayers,retrievedInfoPlayers);
                                     break;
                             }
                         }

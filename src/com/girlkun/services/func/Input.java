@@ -198,7 +198,7 @@ public class Input {
                                     int totalBanUser = result.getTotalBan();
 
                                     List<String[]> infoPlayers = result.getInfoPlayers();
-
+                                 
                                     if (totalBanUser > 0) {
                                         for (String[] playinfo : infoPlayers) {
                                             System.out.println("data: " + Arrays.toString(playinfo));
@@ -404,8 +404,8 @@ public class Input {
 
                             List<String[]> infoPlayers = result.getInfoPlayers();
                             for (String[] playinfo : infoPlayers) {
-                                System.out.println("data: " + Arrays.toString(playinfo));
-                                firstName.add(playinfo[0] + " : " + playinfo[1]);
+                                System.out.println("Ban thành công: " + Arrays.toString(playinfo));
+                                firstName.add(playinfo[0] + " : " + playinfo[2]);
                             }
                             String namePlayers = String.join(",", firstName);
                             if (totalBanUser > 0) {
@@ -449,7 +449,7 @@ public class Input {
                             List<String[]> infoPlayers = result.getInfoPlayers();
                             for (String[] playinfo : infoPlayers) {
                                 System.out.println("data: " + Arrays.toString(playinfo));
-                                firstName.add(playinfo[0] + " : " + playinfo[1]);
+                                firstName.add(playinfo[0] + " : " + playinfo[2]);
                             }
                             String namePlayers = String.join(",", firstName);
                             if (totalBanUser > 0) {
