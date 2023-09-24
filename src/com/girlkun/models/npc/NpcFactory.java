@@ -3610,8 +3610,9 @@ public class NpcFactory {
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
                                 "Người muốn trở về?", "Quay về", "Từ chối");
                     } else if (this.mapId == 5) {
+//                        , "Đổi \nHộp SKH"
                         this.createOtherMenu(player, ConstNpc.BASE_MENU,
-                                "Bạn cần đổi vật phẩm gì?\nHƯỚNG DẪN ĐỔI ĐỒ\b|7|Đổi 1 đồ Thần Linh + 30 Đá Ngũ Sắc => Nhận 1 đồ Hủy Diệt \nĐổi 20 Đá Ngũ Sắc => Hộp Sét Kích Hoạt", "Đổi đồ\nHủy Diệt\nTrái Đất", "Đổi đồ\nHủy Diệt\nNamek", "Đổi Đồ\nHủy Diệt\nXayda", "Đổi \nHộp SKH");
+                                "Bạn cần đổi vật phẩm gì?\nHƯỚNG DẪN ĐỔI ĐỒ\b|7|Đổi 1 đồ Thần Linh + 30 Đá Ngũ Sắc => Nhận 1 đồ Hủy Diệt \nĐổi 20 Đá Ngũ Sắc => Hộp Sét Kích Hoạt", "Đổi đồ\nHủy Diệt\nTrái Đất", "Đổi đồ\nHủy Diệt\nNamek", "Đổi Đồ\nHủy Diệt\nXayda");
                     }
                 }
             }
@@ -3642,19 +3643,19 @@ public class NpcFactory {
                                     this.createOtherMenu(player, 3,
                                             "Bạn muốn đổi 1 món đồ thần linh \nXayda và x30 đá ngũ sắc \n|6|Để đổi lấy 1 món đồ Hủy Diệt không?", "Áo\nHúy Diệt", "Quần\nHúy Diệt", "Găng\nDúy Diệt", "Giày\nHúy Diệt", "Nhẫn\nHúy Diệt", "Thôi Khỏi");
                                     break;
-                                case 3:
-                                    createOtherMenu(player, ConstNpc.MENU_1,
-                                            "Ngươi muốn Đổi SKH hãy chọn bên dưới! "
-                                            + "\n Đổi 20 Đá Ngũ Sắc => Hộp Sét Kích Hoạt "
-                                            + "\n Đổi x1 Mây Ngũ Sắc => Hộp Sét Kích Hoạt ",
-                                            "Đổi Đá NS\nLấy Hộp\nSKH Trái Đất",
-                                            "Đổi Đá NS\nLấy Hộp\nSKH Namek",
-                                            "Đổi Đá NS\nLấy Hộp\nSKH Xayda",
-                                            "Đổi Mây NS\nLấy Hộp\nSKH Trái Đất",
-                                            "Đổi Mây NS\nLấy Hộp\nSKH Namek",
-                                            "Đổi Mây NS\nLấy Hộp\nSKH Xayda",
-                                            "Đóng");
-                                    break;
+//                                case 3:
+//                                    createOtherMenu(player, ConstNpc.MENU_1,
+//                                            "Ngươi muốn Đổi SKH hãy chọn bên dưới! "
+//                                            + "\n Đổi 20 Đá Ngũ Sắc => Hộp Sét Kích Hoạt "
+//                                            + "\n Đổi x1 Mây Ngũ Sắc => Hộp Sét Kích Hoạt ",
+//                                            "Đổi Đá NS\nLấy Hộp\nSKH Trái Đất",
+//                                            "Đổi Đá NS\nLấy Hộp\nSKH Namek",
+//                                            "Đổi Đá NS\nLấy Hộp\nSKH Xayda",
+//                                            "Đổi Mây NS\nLấy Hộp\nSKH Trái Đất",
+//                                            "Đổi Mây NS\nLấy Hộp\nSKH Namek",
+//                                            "Đổi Mây NS\nLấy Hộp\nSKH Xayda",
+//                                            "Đóng");
+//                                    break;
                             }
                         } else if (player.iDMark.getIndexMenu() == ConstNpc.MENU_1) {
                             switch (select) {
