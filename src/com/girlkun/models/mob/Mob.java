@@ -65,22 +65,23 @@ public class Mob {
         this.effectSkill = new MobEffectSkill(this);
         this.location = new Location();
     }
-    
-     public static void initMopbKhiGas(Mob mob, int level) {
-        if ( level <= 700){
-        mob.point.dame = (level * 3250 * mob.level * 4) * 5;
-        mob.point.maxHp = (level * 12472 * mob.level * 2 + level * 7263 * mob.tempId) * 5;
-         }
-        if ( level > 700 && level <= 10000 ){
-        mob.point.dame = (level * 3250 * mob.level * 4) * 5;
-        mob.point.maxHp = 2100000000;
-         }
-        if ( level > 10000 ){
-        mob.point.dame = 2000000000;
-        mob.point.maxHp = 2100000000;
-         }
-    } 
-     public static void hoiSinhMob(Mob mob) {
+
+    public static void initMopbKhiGas(Mob mob, int level) {
+        if (level <= 700) {
+            mob.point.dame = (level * 3250 * mob.level * 4) * 5;
+            mob.point.maxHp = (level * 12472 * mob.level * 2 + level * 7263 * mob.tempId) * 5;
+        }
+        if (level > 700 && level <= 10000) {
+            mob.point.dame = (level * 3250 * mob.level * 4) * 5;
+            mob.point.maxHp = 2100000000;
+        }
+        if (level > 10000) {
+            mob.point.dame = 2000000000;
+            mob.point.maxHp = 2100000000;
+        }
+    }
+
+    public static void hoiSinhMob(Mob mob) {
         mob.point.hp = mob.point.maxHp;
         mob.setTiemNang();
         Message msg;
@@ -95,6 +96,7 @@ public class Mob {
         } catch (Exception e) {
         }
     }
+
     public void setTiemNang() {
         this.maxTiemNang = (long) this.point.getHpFull() * (this.pTiemNang + Util.nextInt(-2, 2)) / 100;
     }
@@ -138,12 +140,12 @@ public class Mob {
         int levelPlayer = Service.getInstance().getCurrLevel(pl);
         int n = levelPlayer - this.level;
         long pDameHit = 0;
-        if (point.getHpFull() >= 100000000)
-        {
-        pDameHit = Util.TamkjllGH(dame) * 500 / point.getHpFull();
+        if (point.getHpFull() >= 100000000) {
+            pDameHit = Util.TamkjllGH(dame) * 500 / point.getHpFull();
+        } else {
+            pDameHit = Util.TamkjllGH(dame) * 100 / point.getHpFull();
         }
-        else pDameHit = Util.TamkjllGH(dame) * 100 / point.getHpFull();
-        
+
         long tiemNang = pDameHit * maxTiemNang / 100;
         if (n >= 0) {
             for (int i = 0; i < n; i++) {
@@ -167,8 +169,8 @@ public class Mob {
         }
         tiemNang = Util.TamkjllGH(pl.nPoint.calSucManhTiemNang(tiemNang));
         if (pl.zone.map.mapId == 122 || pl.zone.map.mapId == 123 || pl.zone.map.mapId == 124 || pl.zone.map.mapId == 141 || pl.zone.map.mapId == 142 || pl.zone.map.mapId == 146) {
-         
-        tiemNang *= 2;
+
+            tiemNang *= 2;
         }
         return tiemNang;
     }
@@ -189,7 +191,7 @@ public class Mob {
             switch (zone.map.type) {
                 case ConstMap.MAP_DOANH_TRAI:
                     break;
-                     case ConstMap.MAP_KHI_GAS:
+                case ConstMap.MAP_KHI_GAS:
                     break;
                 default:
                     if (Util.canDoWithTime(lastTimeDie, 5000)) {
@@ -270,7 +272,7 @@ public class Mob {
         } catch (Exception e) {
         }
     }
-    
+
     public void hoiSinh() {
         this.status = 5;
         this.point.hp = this.point.maxHp;
@@ -393,8 +395,33 @@ public class Mob {
 //            list.add(new ItemMap(zone, 570, 1, x, player.location.y, player.id));// cai nay sua sau nha
 //
 //        }
-//        if (Util.isTrue(10, 100) && this.tempId > 38 && this.tempId < 42) {
-//            list.add(new ItemMap(zone, 698, 1, x, player.location.y, player.id));
+      if (this.zone.map.mapId >= 15 && this.zone.map.mapId <= 17) {
+            if (Util.isTrue(1, 100)) {
+                ItemMap it = new ItemMap(zone, 2002, 1, player.location.x, player.location.y, player.id);
+                list.add(it);
+            }
+        }
+      
+       if (this.zone.map.mapId == 8 || this.zone.map.mapId == 9 || this.zone.map.mapId == 11) {
+            if (Util.isTrue(1, 100)) {
+                ItemMap it = new ItemMap(zone, 2001, 1, player.location.x, player.location.y, player.id);
+                list.add(it);
+            }
+        }
+       
+        if (this.zone.map.mapId >= 1 && this.zone.map.mapId <= 3) {
+            if (Util.isTrue(1, 100)) {
+                ItemMap it = new ItemMap(zone, 2000, 1, player.location.x, player.location.y, player.id);
+                list.add(it);
+            }
+        }
+//
+//        if (Util.isTrue(1, 100) && this.tempId > 15 && this.tempId < 17) {
+//            list.add(new ItemMap(zone, 2000, 1, x, player.location.y, player.id));
+//        }
+//
+//        if (Util.isTrue(1, 100) && this.tempId > 15 && this.tempId < 17) {
+//            list.add(new ItemMap(zone, 2000, 1, x, player.location.y, player.id));
 //        }
 //        if (Util.isTrue(10, 100) && this.tempId > 43 && this.tempId < 54) {
 //            list.add(new ItemMap(zone, 695, 1, x, player.location.y, player.id));
@@ -425,342 +452,387 @@ public class Mob {
 //            InventoryServiceNew.gI().sendItemBags(player);
 //            Service.getInstance().sendThongBao(player, "Bạn vừa nhận được " + random + " hồng ngọc");
 //        }
-        
+
         Item item = player.inventory.itemsBody.get(1); // Sự kiện quần bơi
-        if (this.zone.map.mapId > 0){
-            if(item.isNotNullItem()){
-            if (item.template.id == 691){ // Id vật phẩm 691
-        if (Util.isTrue(5, 100)) {    
-            list.add(new ItemMap(zone, Util.nextInt(695,698), 1, x, player.location.y, player.id));} // Rơi vật phẩm sự kiện 695 - 698
-        }else if (item.template.id != 691 && item.template.id != 692 && item.template.id != 693){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+        if (this.zone.map.mapId > 0) {
+            if (item.isNotNullItem()) {
+                if (item.template.id == 691) { // Id vật phẩm 691
+                    if (Util.isTrue(5, 100)) {
+                        list.add(new ItemMap(zone, Util.nextInt(695, 698), 1, x, player.location.y, player.id));
+                    } // Rơi vật phẩm sự kiện 695 - 698
+                } else if (item.template.id != 691 && item.template.id != 692 && item.template.id != 693) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+                    }
+                }
+            }
+
         }
+        if (this.zone.map.mapId > 0) {
+            if (item.isNotNullItem()) {
+                if (item.template.id == 692) {
+                    if (Util.isTrue(5, 100)) {
+                        list.add(new ItemMap(zone, Util.nextInt(695, 698), 1, x, player.location.y, player.id));
+                    }
+                } else if (item.template.id != 691 && item.template.id != 692 && item.template.id != 693) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id));
+                    }
+                }
+            }
+
         }
-            
-        }if (this.zone.map.mapId > 0){
-            if(item.isNotNullItem()){
-            if (item.template.id == 692){
-        if (Util.isTrue(5, 100)) {    
-            list.add(new ItemMap(zone, Util.nextInt(695,698), 1, x, player.location.y, player.id));}
-        }else if (item.template.id != 691 && item.template.id != 692 && item.template.id != 693){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id));
-        }
-        }
-            
-        }if (this.zone.map.mapId > 0){
-            if(item.isNotNullItem()){
-            if (item.template.id == 693){
-        if (Util.isTrue(5, 100)) {    
-            list.add(new ItemMap(zone, Util.nextInt(695,698), 1, x, player.location.y, player.id));}
-        }else if (item.template.id != 691 && item.template.id != 692 && item.template.id != 693){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id));
-        }
-        }
+        if (this.zone.map.mapId > 0) {
+            if (item.isNotNullItem()) {
+                if (item.template.id == 693) {
+                    if (Util.isTrue(5, 100)) {
+                        list.add(new ItemMap(zone, Util.nextInt(695, 698), 1, x, player.location.y, player.id));
+                    }
+                } else if (item.template.id != 691 && item.template.id != 692 && item.template.id != 693) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id));
+                    }
+                }
+            }
         }
         // Rơi đá nâng cấp đồ
-        if (this.zone.map.mapId >= 0){
-            if (Util.isTrue(5, 100)){
-        list.add(new ItemMap(zone, Util.nextInt(220,224), 1, x, player.location.y, player.id));
-        }}
+        if (this.zone.map.mapId >= 0) {
+            if (Util.isTrue(5, 100)) {
+                list.add(new ItemMap(zone, Util.nextInt(220, 224), 1, x, player.location.y, player.id));
+            }
+        }
         //Roi Do Than Cold
 //        if (!player.isPet && !player.isNewPet && !player.isNewPet1 && player.isBoss){
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Quanthanlinh = ItemService.gI().createNewItem((short) (556));
-                Quanthanlinh.itemOptions. add(new Item.ItemOption(22, Util.nextInt(55,65)));
-                Quanthanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Quanthanlinh.itemOptions.add(new Item.ItemOption(22, Util.nextInt(55, 65)));
+                Quanthanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Quanthanlinh);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Quanthanlinh.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Quanthanlinh.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Quanthanlinhxd = ItemService.gI().createNewItem((short) (560));
-                Quanthanlinhxd.itemOptions.add(new Item.ItemOption(22, Util.nextInt(45,55)));
-                Quanthanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Quanthanlinhxd.itemOptions.add(new Item.ItemOption(22, Util.nextInt(45, 55)));
+                Quanthanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Quanthanlinhxd);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Quanthanlinhxd.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Quanthanlinhxd.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Quanthanlinhnm = ItemService.gI().createNewItem((short) (558));
-                Quanthanlinhnm.itemOptions.add(new Item.ItemOption(22, Util.nextInt(45,60)));
-                Quanthanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Quanthanlinhnm.itemOptions.add(new Item.ItemOption(22, Util.nextInt(45, 60)));
+                Quanthanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Quanthanlinhnm);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Quanthanlinhnm.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Quanthanlinhnm.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Aothanlinh = ItemService.gI().createNewItem((short) (555));
-                Aothanlinh.itemOptions.add(new Item.ItemOption(47, Util.nextInt(500,600)));
-                Aothanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Aothanlinh.itemOptions.add(new Item.ItemOption(47, Util.nextInt(500, 600)));
+                Aothanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Aothanlinh);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Aothanlinh.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Aothanlinh.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Aothanlinhnm = ItemService.gI().createNewItem((short) (557));
-                Aothanlinhnm.itemOptions.add(new Item.ItemOption(47, Util.nextInt(400,550)));
-                Aothanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Aothanlinhnm.itemOptions.add(new Item.ItemOption(47, Util.nextInt(400, 550)));
+                Aothanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Aothanlinhnm);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Aothanlinhnm.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Aothanlinhnm.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Aothanlinhxd = ItemService.gI().createNewItem((short) (559));
-                Aothanlinhxd.itemOptions.add(new Item.ItemOption(47, Util.nextInt(600,700)));
-                Aothanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Aothanlinhxd.itemOptions.add(new Item.ItemOption(47, Util.nextInt(600, 700)));
+                Aothanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Aothanlinhxd);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Aothanlinhxd.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Aothanlinhxd.template.name);
+            }
+        }
 
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 100000)){
+            if (Util.isTrue(1, 100000)) {
                 Item Gangthanlinh = ItemService.gI().createNewItem((short) (562));
-                Gangthanlinh.itemOptions.add(new Item.ItemOption(0, Util.nextInt(6000,7000)));
-                Gangthanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Gangthanlinh.itemOptions.add(new Item.ItemOption(0, Util.nextInt(6000, 7000)));
+                Gangthanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Gangthanlinh);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Gangthanlinh.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Gangthanlinh.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 100000)){
+            if (Util.isTrue(1, 100000)) {
                 Item Gangthanlinhxd = ItemService.gI().createNewItem((short) (566));
-                Gangthanlinhxd.itemOptions.add(new Item.ItemOption(0, Util.nextInt(6500,7500)));
-                Gangthanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Gangthanlinhxd.itemOptions.add(new Item.ItemOption(0, Util.nextInt(6500, 7500)));
+                Gangthanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Gangthanlinhxd);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Gangthanlinhxd.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Gangthanlinhxd.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 100000)){
+            if (Util.isTrue(1, 100000)) {
                 Item Gangthanlinhnm = ItemService.gI().createNewItem((short) (564));
-                Gangthanlinhnm.itemOptions.add(new Item.ItemOption(0, Util.nextInt(5500,6500)));
-                Gangthanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Gangthanlinhnm.itemOptions.add(new Item.ItemOption(0, Util.nextInt(5500, 6500)));
+                Gangthanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Gangthanlinhnm);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Gangthanlinhnm.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Gangthanlinhnm.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Giaythanlinh = ItemService.gI().createNewItem((short) (563));
-                Giaythanlinh.itemOptions.add(new Item.ItemOption(23, Util.nextInt(50,60)));
-                Giaythanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Giaythanlinh.itemOptions.add(new Item.ItemOption(23, Util.nextInt(50, 60)));
+                Giaythanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Giaythanlinh);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Giaythanlinh.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Giaythanlinh.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Giaythanlinhxd = ItemService.gI().createNewItem((short) (567));
-                Giaythanlinhxd.itemOptions.add(new Item.ItemOption(23, Util.nextInt(55,65)));
-                Giaythanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Giaythanlinhxd.itemOptions.add(new Item.ItemOption(23, Util.nextInt(55, 65)));
+                Giaythanlinhxd.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Giaythanlinhxd);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Giaythanlinhxd.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Giaythanlinhxd.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 60000)){
+            if (Util.isTrue(1, 60000)) {
                 Item Giaythanlinhnm = ItemService.gI().createNewItem((short) (565));
-                Giaythanlinhnm.itemOptions.add(new Item.ItemOption(23, Util.nextInt(65,75)));
-                Giaythanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Giaythanlinhnm.itemOptions.add(new Item.ItemOption(23, Util.nextInt(65, 75)));
+                Giaythanlinhnm.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Giaythanlinhnm);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Giaythanlinhnm.template.name);
-                            }}
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Giaythanlinhnm.template.name);
+            }
+        }
         if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
-            if(Util.isTrue(1, 100000)){
+            if (Util.isTrue(1, 100000)) {
                 Item Nhanthanlinh = ItemService.gI().createNewItem((short) (561));
-                Nhanthanlinh.itemOptions.add(new Item.ItemOption(14, Util.nextInt(13,16)));
-                Nhanthanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15,17)));
+                Nhanthanlinh.itemOptions.add(new Item.ItemOption(14, Util.nextInt(13, 16)));
+                Nhanthanlinh.itemOptions.add(new Item.ItemOption(21, Util.nextInt(15, 17)));
                 InventoryServiceNew.gI().addItemBag(player, Nhanthanlinh);
                 InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được "+Nhanthanlinh.template.name);
-                            }}
-        
-        
+                Service.gI().sendThongBao(player, "Bạn vừa nhận được " + Nhanthanlinh.template.name);
+            }
+        }
+
         // Rơi vật phẩm Mảnh Vỡ Bông Tai ( ID 541 )        
-       if (this.zone.map.mapId >= 156 && this.zone.map.mapId <= 159) {
-            if(Util.isTrue(7, 100)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (933));                
+        if (this.zone.map.mapId >= 156 && this.zone.map.mapId <= 159) {
+            if (Util.isTrue(7, 100)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (933));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Mảnh Vỡ Bông Tai ");
-                            }}
-       // Rơi mảnh 
-       if (this.zone.map.mapId >= 156 && this.zone.map.mapId <= 159) {
-            if(Util.isTrue(7, 100)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (934));                
+            }
+        }
+        // Rơi mảnh 
+        if (this.zone.map.mapId >= 156 && this.zone.map.mapId <= 159) {
+            if (Util.isTrue(7, 100)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (934));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Mảnh Hồn Bông Tai ");
-                            }}
-       if (this.zone.map.mapId >= 156 && this.zone.map.mapId <= 159) {
-            if(Util.isTrue(1, 200)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (935));                
+            }
+        }
+        if (this.zone.map.mapId >= 156 && this.zone.map.mapId <= 159) {
+            if (Util.isTrue(1, 200)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (935));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Đá Xanh Lam ");
-                            }}
-                
- 
-        
-        
-        
+            }
+        }
+
         // Rơi vật phẩm Quả Hồng Đào ( ID 541 )
-       if (this.zone.map.mapId >= 122 && this.zone.map.mapId <= 124) {
-            if(Util.isTrue(2, 100)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (541));                
+        if (this.zone.map.mapId >= 122 && this.zone.map.mapId <= 124) {
+            if (Util.isTrue(2, 100)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (541));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Quả Hồng Đào ");
-                            }}
-         
+            }
+        }
+
         // Rơi Event Giải - Khai -Phong - Ấn
         if (this.zone.map.mapId >= 92 && this.zone.map.mapId <= 94) {
-            if(Util.isTrue(2, 100)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (537));                
+            if (Util.isTrue(2, 100)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (537));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Chữ Giải ");
-                            }}
+            }
+        }
         if (this.zone.map.mapId >= 96 && this.zone.map.mapId <= 98) {
-            if(Util.isTrue(2, 100)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (538));                
+            if (Util.isTrue(2, 100)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (538));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Chữ Khai ");
-                            }}
+            }
+        }
         if (this.zone.map.mapId >= 99 && this.zone.map.mapId <= 100) {
-            if(Util.isTrue(2, 100)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (539));                
+            if (Util.isTrue(2, 100)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (539));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Chữ Phong ");
-                            }}
-        
+            }
+        }
+
         //Rơi mảnh Tinh Ấn
         if (this.zone.map.mapId >= 149 && this.zone.map.mapId <= 152) {
-            if(Util.isTrue(1, 200)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (1232));                
+            if (Util.isTrue(1, 200)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (1232));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được mảnh Tinh Ấn ");
-                            }}
-        if (this.zone.map.mapId == 147 ) {
-            if(Util.isTrue(1, 500)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (1232));                
+            }
+        }
+        if (this.zone.map.mapId == 147) {
+            if (Util.isTrue(1, 500)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (1232));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Chữ Phong ");
-                            }}
+            }
+        }
         //Rơi Bí Kíp Tuyệt Kỹ
-         if (this.zone.map.mapId == 155 ) {
-            if(Util.isTrue(1, 200)){
-                Item quahongdao = ItemService.gI().createNewItem((short) (1215));                
+        if (this.zone.map.mapId == 155) {
+            if (Util.isTrue(1, 200)) {
+                Item quahongdao = ItemService.gI().createNewItem((short) (1215));
                 InventoryServiceNew.gI().addItemBag(player, quahongdao);
                 InventoryServiceNew.gI().sendItemBags(player);
                 Service.gI().sendThongBao(player, "Bạn vừa nhận được Mảnh Tuyệt Kỹ ");
-                            }}
-        
+            }
+        }
+
         Item item1 = player.inventory.itemsBody.get(5); // Sự kiện mặc cải trang GoHanSSJ
-        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110){
-            if(item1.isNotNullItem()){
-            if (item1.template.id == 1192){ // Id cải trang
-        if (Util.isTrue(1, 500)) {    
-            Item Thoivang = ItemService.gI().createNewItem((short) (457));                
-                InventoryServiceNew.gI().addItemBag(player, Thoivang);
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được Thỏi vàng ");} // Rơi Thỏi Vàng
-        }else if (item1.template.id != 1192){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
+            if (item1.isNotNullItem()) {
+                if (item1.template.id == 1192) { // Id cải trang
+                    if (Util.isTrue(1, 500)) {
+                        Item Thoivang = ItemService.gI().createNewItem((short) (457));
+                        InventoryServiceNew.gI().addItemBag(player, Thoivang);
+                        InventoryServiceNew.gI().sendItemBags(player);
+                        Service.gI().sendThongBao(player, "Bạn vừa nhận được Thỏi vàng ");
+                    } // Rơi Thỏi Vàng
+                } else if (item1.template.id != 1192) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+                    }
+                }
+            }
         }
-        }}
-        
+
         Item item2 = player.inventory.itemsBody.get(5); // Sự kiện mặc cải trang GoHanSSJ
-        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110){
-            if(item1.isNotNullItem()){
-            if (item1.template.id == 1192){ // Id cải trang
-        if (Util.isTrue(1, 1000)) {    
-            Item Vehongngoc = ItemService.gI().createNewItem((short) (1132));                
-                InventoryServiceNew.gI().addItemBag(player, Vehongngoc);
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được Vé Hồng Ngọc ");} // Rơi Vé Hồng Ngọc
-        }else if (item1.template.id != 1192){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
+            if (item1.isNotNullItem()) {
+                if (item1.template.id == 1192) { // Id cải trang
+                    if (Util.isTrue(1, 1000)) {
+                        Item Vehongngoc = ItemService.gI().createNewItem((short) (1132));
+                        InventoryServiceNew.gI().addItemBag(player, Vehongngoc);
+                        InventoryServiceNew.gI().sendItemBags(player);
+                        Service.gI().sendThongBao(player, "Bạn vừa nhận được Vé Hồng Ngọc ");
+                    } // Rơi Vé Hồng Ngọc
+                } else if (item1.template.id != 1192) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+                    }
+                }
+            }
         }
-        }}
-        
+
         Item item3 = player.inventory.itemsBody.get(5); // Sự kiện mặc cải trang GoHanSSJ
-        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110){
-            if(item1.isNotNullItem()){
-            if (item1.template.id == 1192){ // Id cải trang
-        if (Util.isTrue(1, 400)) {    
-            Item Dangusac = ItemService.gI().createNewItem((short) (674));                
-                InventoryServiceNew.gI().addItemBag(player, Dangusac);
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được Đá Ngũ Sắc ");} // Rơi vật phẩm Đá Ngũ Sắc
-        }else if (item1.template.id != 1192){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
+            if (item1.isNotNullItem()) {
+                if (item1.template.id == 1192) { // Id cải trang
+                    if (Util.isTrue(1, 400)) {
+                        Item Dangusac = ItemService.gI().createNewItem((short) (674));
+                        InventoryServiceNew.gI().addItemBag(player, Dangusac);
+                        InventoryServiceNew.gI().sendItemBags(player);
+                        Service.gI().sendThongBao(player, "Bạn vừa nhận được Đá Ngũ Sắc ");
+                    } // Rơi vật phẩm Đá Ngũ Sắc
+                } else if (item1.template.id != 1192) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+                    }
+                }
+            }
         }
-        }}
-        
+
         Item item4 = player.inventory.itemsBody.get(5); // Sự kiện mặc cải trang Baby Vegeta
-        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110){
-            if(item1.isNotNullItem()){
-            if (item1.template.id == 1216){ // Id cải trang
-        if (Util.isTrue(1, 400)) {    
-            Item Thoivang = ItemService.gI().createNewItem((short) (457));                
-                InventoryServiceNew.gI().addItemBag(player, Thoivang);
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được Thỏi vàng ");} // Rơi Thỏi Vàng
-        }else if (item1.template.id != 1216){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
+            if (item1.isNotNullItem()) {
+                if (item1.template.id == 1216) { // Id cải trang
+                    if (Util.isTrue(1, 400)) {
+                        Item Thoivang = ItemService.gI().createNewItem((short) (457));
+                        InventoryServiceNew.gI().addItemBag(player, Thoivang);
+                        InventoryServiceNew.gI().sendItemBags(player);
+                        Service.gI().sendThongBao(player, "Bạn vừa nhận được Thỏi vàng ");
+                    } // Rơi Thỏi Vàng
+                } else if (item1.template.id != 1216) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+                    }
+                }
+            }
         }
-        }}
-        
+
         Item item5 = player.inventory.itemsBody.get(5); // Sự kiện mặc cải trang Baby Vegeta
-        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110){
-            if(item1.isNotNullItem()){
-            if (item1.template.id == 1216){ // Id cải trang
-        if (Util.isTrue(1, 900)) {    
-            Item Vehongngoc = ItemService.gI().createNewItem((short) (1132));                
-                InventoryServiceNew.gI().addItemBag(player, Vehongngoc);
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được Vé Hồng Ngọc ");} // Rơi Vé Hồng Ngọc
-        }else if (item1.template.id != 1216){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
+            if (item1.isNotNullItem()) {
+                if (item1.template.id == 1216) { // Id cải trang
+                    if (Util.isTrue(1, 900)) {
+                        Item Vehongngoc = ItemService.gI().createNewItem((short) (1132));
+                        InventoryServiceNew.gI().addItemBag(player, Vehongngoc);
+                        InventoryServiceNew.gI().sendItemBags(player);
+                        Service.gI().sendThongBao(player, "Bạn vừa nhận được Vé Hồng Ngọc ");
+                    } // Rơi Vé Hồng Ngọc
+                } else if (item1.template.id != 1216) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+                    }
+                }
+            }
         }
-        }}
-        
+
         Item item6 = player.inventory.itemsBody.get(5); // ự kiện mặc cải trang Baby Vegeta
-        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110){
-            if(item1.isNotNullItem()){
-            if (item1.template.id == 1216){ // Id cải trang
-        if (Util.isTrue(1, 300)) {    
-            Item Dangusac = ItemService.gI().createNewItem((short) (674));                
-                InventoryServiceNew.gI().addItemBag(player, Dangusac);
-                InventoryServiceNew.gI().sendItemBags(player);
-                Service.gI().sendThongBao(player, "Bạn vừa nhận được Đá Ngũ Sắc ");} // Rơi vật phẩm Đá Ngũ Sắc
-        }else if (item1.template.id != 1216){
-            if (Util.isTrue(0, 1))
-            list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+        if (this.zone.map.mapId >= 105 && this.zone.map.mapId <= 110) {
+            if (item1.isNotNullItem()) {
+                if (item1.template.id == 1216) { // Id cải trang
+                    if (Util.isTrue(1, 300)) {
+                        Item Dangusac = ItemService.gI().createNewItem((short) (674));
+                        InventoryServiceNew.gI().addItemBag(player, Dangusac);
+                        InventoryServiceNew.gI().sendItemBags(player);
+                        Service.gI().sendThongBao(player, "Bạn vừa nhận được Đá Ngũ Sắc ");
+                    } // Rơi vật phẩm Đá Ngũ Sắc
+                } else if (item1.template.id != 1216) {
+                    if (Util.isTrue(0, 1)) {
+                        list.add(new ItemMap(zone, 76, 1, x, player.location.y, player.id)); // Rơi vàng
+                    }
+                }
+            }
         }
-        }}
-        
+
 //        if (this.zone.map.mapId >= 0){
 //            if (player.setClothes.setDHD == 5){
 //                if (Util.isTrue(100, 100)) {
@@ -768,7 +840,6 @@ public class Mob {
 //                            }
 //                        }
 //                    }
-            
 //    }
 //        if (!player.isPet && player.getSession().actived && Util.isTrue(15, 100)) {
 //            list.add(new ItemMap(zone, 610, 1, x, player.location.y, player.id));

@@ -323,6 +323,10 @@ public class ChangeMapService {
             Service.getInstance().sendThongBaoOK(pl, "Không thể thực hiện khi có ngọc rồng namec");
             return;
         }
+         if (pl.haveDuongTang) {
+            Service.getInstance().sendThongBaoOK(pl, "Hết bug k bug được nữa đâu em");
+            return;
+        }
         changeMap(pl, zoneJoin, -1, -1, x, y, TELEPORT_YARDRAT);
 
 

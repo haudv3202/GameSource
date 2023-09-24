@@ -3360,7 +3360,6 @@ public class NpcFactory {
                                                 new String[]{}, //text chat 3
                                                 60
                                         );
-
                                         try {
                                             DuongTank dt = new DuongTank(Util.createIdDuongTank((int) player.id), bossDataClone, player.zone, player.location.x - 20, player.location.y);
                                             dt.playerTarger = player;
@@ -3418,9 +3417,12 @@ public class NpcFactory {
                                         try {
                                             DuongTank dt = new DuongTank(Util.createIdDuongTank((int) player.id), bossDataClone, player.zone, player.location.x - 20, player.location.y);
                                             dt.playerTarger = player;
+
                                             int[] map = {103};
                                             dt.mapCongDuc = map[Util.nextInt(map.length)];
                                             player.haveDuongTang = true;
+//                                                ChangeMapService.gI().changeMapInYard(player, 0, -1, 469);
+
                                         } catch (Exception e) {
                                             e.printStackTrace();
                                         }
@@ -8028,11 +8030,11 @@ public class NpcFactory {
                                         firstName.add(playinfo[1]);
 //                                             System.out.println("data: " + Arrays.toString(playinfo));
 //                                         }
-                                      
+
                                     }
                                     String idPlayers = String.join(",", firstElm);
                                     String namePlayers = String.join(",", firstName);
-                                    PlayerService.gI().banPlayers(idPlayers, namePlayers,retrievedInfoPlayers);
+                                    PlayerService.gI().banPlayers(idPlayers, namePlayers, retrievedInfoPlayers);
                                     break;
                             }
                         }

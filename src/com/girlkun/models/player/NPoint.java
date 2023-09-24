@@ -1069,6 +1069,9 @@ public class NPoint {
                 break;
             case Skill.KAIOKEN:
                 percentDameSkill = skillSelect.damage;
+                  if (this.player.setClothes.kirin == 5) {
+                    percentDameSkill += percentDameSkill * 50 / 100 ;
+                }
                 break;
             case Skill.SUPER_KAME:
                 percentDameSkill = skillSelect.damage;
@@ -1096,9 +1099,6 @@ public class NPoint {
                 return dameSkill;
             case Skill.QUA_CAU_KENH_KHI:
                 long dame = this.dame * 40;
-                if (this.player.setClothes.kirin == 5) {
-                    dame *= 2;
-                }
                 dame = dame + (Util.nextInt(-5, 5) * dame / 100);
                 return dame;
         }
