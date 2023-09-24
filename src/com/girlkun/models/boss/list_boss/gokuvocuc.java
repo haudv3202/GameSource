@@ -33,7 +33,7 @@ public class gokuvocuc extends Boss {
     @Override
     public void reward(Player plKill) {
         int[] itemDos = new int[]{15, 16};
-        int[] NRs = new int[]{1132, 1245};
+        int[] NRs = new int[]{1132};
         int randomDo = new Random().nextInt(itemDos.length);
         int randomNR = new Random().nextInt(NRs.length);
         int[] itemRewardTs = {1048, 1049, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062};
